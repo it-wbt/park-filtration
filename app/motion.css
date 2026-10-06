@@ -1,0 +1,21 @@
+.site-scroll-progress{position:fixed;inset:0 0 auto;height:2px;z-index:100;pointer-events:none;background:transparent}
+.site-scroll-progress>div{width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#08639b,#82ad4d)}
+header{transition:box-shadow .3s ease,border-color .3s ease}
+html[data-page-scrolled] header{box-shadow:0 5px 24px #14384a0d;border-bottom-color:#dce5e9}
+.catalogue-item,.product-grid>.product-card,.guide-step-grid>article,.guide-comparisons>article,.product-benefit-grid>article{transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease}
+.button svg,.underlined-link svg,.text-link svg,.finder-results a svg{transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.contact-section :is(input,textarea,select),.product-enquiry :is(input,textarea,select){transition:border-color .22s ease,box-shadow .22s ease,background .22s ease}
+.contact-section :is(input,textarea,select):focus,.product-enquiry :is(input,textarea,select):focus{box-shadow:0 3px 0 -1px #08639b20}
+@media(hover:hover) and (pointer:fine){
+ .catalogue-item:hover,.product-grid>.product-card:hover{transform:translateY(-4px)}
+ .guide-step-grid>article:hover,.guide-comparisons>article:hover,.product-benefit-grid>article:hover{transform:translateY(-3px);box-shadow:0 12px 28px #153b4510}
+ .button:hover svg,.underlined-link:hover svg,.text-link:hover svg,.finder-results a:hover svg{transform:translate(3px,-2px)}
+}
+.product-faq details[open]>p,.variant-grid details[open]>p,.media-library-grid details[open]>p{animation:park-detail-in .3s ease-out}
+.mega-menu,.nav.open{animation:park-menu-in .2s ease-out}
+@keyframes park-menu-in{from{opacity:.65}to{opacity:1}}
+@keyframes park-detail-in{from{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ .site-scroll-progress{display:none}
+ .catalogue-item:hover,.product-grid>.product-card:hover,.guide-step-grid>article:hover,.guide-comparisons>article:hover,.product-benefit-grid>article:hover,.button:hover svg,.underlined-link:hover svg,.text-link:hover svg,.finder-results a:hover svg{transform:none}
+}

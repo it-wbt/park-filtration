@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "slides": 36,
+  "textRuns": 499,
+  "paragraphs": 411,
+  "sourceMediaFiles": 56,
+  "speakerNoteEntries": 29,
+  "productFamiliesMapped": 13,
+  "sourceSha256": "9f2eaf4b40f8f7d94cf71de19e704792315bbf61abfacc4ff63ca2e0b482e0fb",
+  "scope": "Exact PPT text, notes and original media extraction; technical claims are source statements, not independently verified performance."
+}

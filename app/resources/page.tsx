@@ -1,0 +1,9 @@
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import BuyerResources from '../../components/BuyerResources';
+import StructuredData from '../../components/StructuredData';
+import { pageMetadata,breadcrumb,webPageSchema } from '../../lib/seo';
+export const metadata=pageMetadata('Filter Buying Guides & Selection Resources | PARK Filtration','Practical air, dust-collection and liquid filter buying guides. Compare formats, understand selection factors and prepare a useful product enquiry.','/resources');
+export default function Page(){return <><Header/><main id="main-content"><section className="section resource-hub-hero"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><span>Resources</span></nav><div className="eyebrow">PARK FILTRATION / BUYER RESOURCES</div><h1>A clearer path<br/>to the right filter.</h1><p className="lead">Understand the product, define your operating conditions and ask the questions that move a specification forward.</p><Link href="/resources/filter-selection" className="button">Start with the filter selection guide <ArrowUpRight size={17}/></Link></section><BuyerResources/><section className="section resource-hub-cta"><h2>Already know your application?</h2><p>Explore the range, compare product families and send your dimensions, operating conditions and quantity.</p><Link href="/products" className="button">Explore filtration products <ArrowUpRight size={18}/></Link></section></main><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Resources',path:'/resources'}])}/><StructuredData data={webPageSchema('Filter buying resources','PARK filtration selection and buying guides.','/resources')}/><Footer/></>}

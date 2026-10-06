@@ -1,0 +1,55 @@
+{
+  "usage": "Industry context imagery, not PARK facilities or measured filtration demonstrations.",
+  "adaptation": "Up to 8 seconds, 1280x720, 24fps, silent H.264 faststart.",
+  "clips": [
+    {
+      "slug": "mobility",
+      "title": "City traffic",
+      "id": 1192116,
+      "fps": 30,
+      "source": "https://www.pexels.com/video/1192116/",
+      "download": "https://videos.pexels.com/video-files/1192116/1192116-hd_1920_1080_30fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/industries/mobility.mp4",
+      "bytes": 1633834
+    },
+    {
+      "slug": "manufacturing",
+      "title": "Textile production",
+      "local": "reference/textile-factory-original.mp4",
+      "speed": 1.3,
+      "output": "/videos/industries/manufacturing.mp4",
+      "bytes": 697469
+    },
+    {
+      "slug": "heavy-duty-industry",
+      "title": "Flowing molten steel",
+      "id": 5121751,
+      "fps": 25,
+      "source": "https://www.pexels.com/video/flowing-molten-steel-5121751/",
+      "download": "https://videos.pexels.com/video-files/5121751/5121751-hd_1920_1080_25fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/industries/heavy-duty-industry.mp4",
+      "bytes": 1897440
+    },
+    {
+      "slug": "living",
+      "title": "Modern commercial building",
+      "id": 7317314,
+      "fps": 25,
+      "source": "https://www.pexels.com/video/architectural-design-of-a-modern-building-7317314/",
+      "download": "https://videos.pexels.com/video-files/7317314/7317314-hd_1920_1080_25fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/industries/living.mp4",
+      "bytes": 542929
+    },
+    {
+      "slug": "liquid",
+      "title": "Water treatment",
+      "local": "reference/water-treatment-original.mp4",
+      "start": 5,
+      "output": "/videos/industries/liquid.mp4",
+      "bytes": 1905564
+    }
+  ]
+}

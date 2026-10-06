@@ -1,0 +1,24 @@
+const { chromium } = require('@playwright/test');
+const assert = require('node:assert/strict');
+const origin = process.env.TEST_ORIGIN || 'http://localhost:3030';
+(async () => {
+ const browser = await chromium.launch({headless:true});
+ const page = await browser.newPage({viewport:{width:1440,height:1000}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(origin,{waitUntil:'networkidle'});
+ await page.waitForFunction(()=>{const v=document.querySelector('.hero-film');return v?.readyState>=2&&!v.paused;});
+ assert.equal(await page.locator('.hero-film source').getAttribute('src'),'/videos/clean-air-hero.mp4');
+ assert.equal(await page.locator('.hero-film').evaluate(v=>v.muted&&v.loop&&v.videoWidth===1600&&v.duration>19&&v.duration<24),true);
+ await page.getByRole('button',{name:'Pause banner video'}).click();
+ assert.equal(await page.locator('.hero-film').evaluate(v=>v.paused),true);
+ await page.evaluate(()=>window.scrollTo(0,1800));await page.waitForTimeout(200);
+ await page.evaluate(()=>window.scrollTo(0,0));await page.waitForTimeout(500);
+ assert.equal(await page.locator('.hero-film').evaluate(v=>v.paused),true);
+ await page.locator('.hero-film').evaluate(v=>{v.currentTime=2;});await page.waitForTimeout(200);
+ await page.screenshot({path:'real-footage-banner-desktop.png'});
+ await page.getByRole('button',{name:'Play banner video'}).click();await page.waitForFunction(()=>!document.querySelector('.hero-film').paused);
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.getByRole('button',{name:'Pause banner video'}).click();await page.screenshot({path:'real-footage-banner-mobile.png'});
+ const reduced=await browser.newPage({reducedMotion:'reduce'});await reduced.goto(origin,{waitUntil:'networkidle'});assert.equal(await reduced.locator('.hero-film').evaluate(v=>v.paused),true);
+ assert.deepEqual(errors,[]);await browser.close();console.log('PASS: real 1600x900 footage loads and plays, pause persists, mobile has no overflow, reduced-motion poster and no browser errors.');
+})().catch(e=>{console.error(e);process.exit(1);});

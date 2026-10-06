@@ -1,0 +1,12 @@
+node_modules/
+.next/
+*.tsbuildinfo
+test-results/
+*.log
+.env
+.env.*
+!.env.example
+# Local screenshots and uncompressed footage are not website assets.
+/*.png
+/*.jpg
+reference/*.mp4

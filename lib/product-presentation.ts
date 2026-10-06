@@ -1,0 +1,16 @@
+// Original application-first introductions; product facts remain in the PPT catalogue.
+export const productPresentation: Record<string,{headline:string;context:string}> = {
+ 'cabin-air-filter':{headline:'A better starting point for cabin air.',context:'Dust and pollen can enter with your vehicle’s ventilation air. Start with the cabin environment, then explore particle, activated carbon and fine-dust filter options for your system.'},
+ 'engine-air-filter':{headline:'Start with the air your engine takes in.',context:'Road dust and sand place different demands on engine intake filtration. Explore the media and filter format that fit your vehicle and its operating conditions.'},
+ 'battery-air-filter':{headline:'Filtration for battery cooling air.',context:'Filtered cooling-air systems in hybrid and electric vehicles need media that match their installation. Explore the available formats for your battery cooling requirement.'},
+ 'car-purifier-filter':{headline:'Bring your cabin-air requirement into focus.',context:'The purifier format, particle requirement and media choice all matter. Explore filtration options for your in-car air purifier.'},
+ 'panel-filter':{headline:'Make filtration part of your ventilation plan.',context:'From HVAC systems to railway ventilation, airborne dust needs a filter that fits the installation. Start with your airflow, housing and media requirement.'},
+ 'pocket-filter':{headline:'Air handling starts with the right filter.',context:'Buildings and production spaces place different demands on their air-handling systems. Explore extended-surface filtration for your ventilation requirement.'},
+ 'hepa-filter':{headline:'Fine filtration for controlled-air environments.',context:'Cleanrooms and controlled-air systems need a defined particle-filtration requirement. Start with the grade, airflow and installation seal, then explore the available options.'},
+ 'filter-mats':{headline:'Build your first stage of air filtration.',context:'Coarse particles can add load to downstream filtration. Explore nonwoven filter mats for ventilation, railway systems and paint-booth applications.'},
+ 'ceiling-filter':{headline:'Consider the air entering your paint booth.',context:'Dust in supply air matters in painting and spraying environments. Explore ceiling filtration media and formats for your booth.'},
+ 'bag-filter':{headline:'Meet the demands of your process dust.',context:'Dust load, temperature and collector dimensions shape industrial filtration. Start with your process, then compare bag-filter materials and formats.'},
+ 'cartridge-filter':{headline:'A filtration choice shaped by your process.',context:'Industrial dust collection begins with the conditions inside your system. Explore cartridge formats and discuss media compatibility for your collector.'},
+ 'liquid-filter':{headline:'Keep your process-liquid requirement clear.',context:'Suspended particles, fluid compatibility and housing fit all influence selection. Explore liquid bag filtration around your process and micron requirement.'},
+ 'swimming-pool-filter':{headline:'Start with your pool circulation system.',context:'Every enquiry begins with the pool system and its filtration requirement. Share your housing details to discuss the available PARK swimming pool range.'},
+};

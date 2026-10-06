@@ -1,0 +1,6 @@
+/* Product catalogue comparison bar. */
+.comparison-dock{position:fixed;z-index:12;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:18px;padding:12px 16px;background:#153d43;color:white;border:1px solid #3c6267;border-radius:14px;box-shadow:0 12px 40px #14353c40;max-width:calc(100% - 28px);width:max-content}
+.comparison-dock-preview{display:flex;gap:5px}.comparison-dock-preview img{object-fit:contain;background:#f3f7ed;border-radius:5px;padding:3px}.comparison-dock>span{font-size:11px;white-space:nowrap}.comparison-dock>a{display:flex;align-items:center;gap:8px;background:#d8e9b8;color:#254840;border-radius:7px;padding:11px 15px;font-size:12px;font-weight:600;white-space:nowrap}.comparison-dock>button{background:none;border:0;color:#bacece;display:flex;padding:7px}
+body:has(.comparison-dock){padding-bottom:86px}
+
+@media(max-width:760px){.comparison-dock{bottom:12px;gap:8px;padding:10px;max-width:calc(100% - 20px)}.comparison-dock-preview{display:none}.comparison-dock>a{font-size:11px;padding:10px}.comparison-dock>span{font-size:11px}}
