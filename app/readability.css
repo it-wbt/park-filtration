@@ -1,0 +1,24 @@
+/* Desktop reading scale. Keep the existing mobile layout and diagram geometry. */
+@media(min-width:1024px){
+ body{font-size:16px}
+ main p{font-size:16px!important;line-height:1.75!important}
+ main :is(.lead,.hero-value,.architecture-lead,.product-introduction-lead){font-size:19px!important;line-height:1.6!important}
+ main :is(.form-note,.contact-message-meta,.contact-delivery-note,.contact-industry-hint,.spec-note,.studio-hint,.studio-note,.architecture-wheel-hint,.architecture-copy-footer p,.schematic-note,.resource-source-note){font-size:13px!important;line-height:1.65!important}
+ main :is(h2,h3,h4){letter-spacing:-.4px}
+ main .detail-subheading{font-family:'DM Sans',Arial,sans-serif;font-size:20px;letter-spacing:0;font-weight:600}
+ main :is(.product-info h3,.product-benefit-grid h3,.process-grid h3,.architecture-priority strong,.studio-product h4){font-size:19px;line-height:1.4}
+ main :is(.button,.button.small,.text-link,.underlined-link,.tabs button,.product-card-actions button,.product-card-actions a,.product-page-nav,.studio-tabs button,.studio-controls button,.media-parameter-controls button,.architecture-layer-controls button){font-size:14px!important}
+ main :is(label,input,select,textarea),main .contact-enquiry-card .contact-control :is(input,select,textarea){font-size:15px!important}
+ main :is(.feature-list li,.product-selection li,.enquiry-checklist li,.resource-checklist li,.application-card li,.specifications dt,.specifications dd){font-size:16px;line-height:1.7}
+ main :is(.architecture-priority-text,.contact-topics,.material-tags a,.application-tags a,.application-tags span,.resource-sidebar nav a,.architecture-selection p,.media-library-grid li,.comparison-scroll td,.comparison-scroll th){font-size:15px!important;line-height:1.65}
+ main :is(.eyebrow,.submenu-eyebrow,.resource-kicker,.contact-card-kicker,.architecture-priority-heading,.architecture-wheel-top>span,.architecture-selection-content>div>span,.studio-product-step){font-size:12px!important;letter-spacing:1.2px}
+ main .product-card-actions{font-size:13px}.product-card-actions{gap:8px;flex-wrap:wrap}
+ main :is(.architecture-motion-toggle,.architecture-scroll-status,.contact-enquiry-card label small,.contact-submit-caption,.resource-card-bottom,.breadcrumbs,.product-context-industries a,.industry-overlay>span){font-size:13px!important}
+ .nav>a:not(.button),.nav .nav-trigger{font-size:16px}
+ .mega-category{font-size:16px!important}.mega-menu .industry-submenu-layout .mobility-application-tabs button{font-size:15px!important}.mega-menu .mobility-vehicle-tabs button{font-size:14px!important}
+ .mega-menu :is(.submenu-product-name,.product-menu-links strong,.mobility-discover,.mega-all,.mega-catalogue>a){font-size:14px!important}.mega-menu :is(.submenu-application-summary,.product-menu-links small,.product-menu-preview p){font-size:14px;line-height:1.65}
+ .topbar{font-size:12px}
+ .footer-main p,.footer-main>div>a:not(.brand),.footer-main h4{font-size:14px}.footer-bottom{font-size:12px}
+ .support-card p,.event-card p,.event-modal-heading p{font-size:15px}.support-chat,.event-modal .button.small,.event-continue{font-size:14px}
+ .contact-enquiry-card label>span:first-child,.contact-submit-row{flex-wrap:wrap}.contact-submit-caption{max-width:none}
+}
