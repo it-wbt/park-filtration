@@ -45,10 +45,10 @@ export const applicationGroups: Record<string, ApplicationGroup[]> = {
   {name:'Chemical Industry', products:['bag-filter','cartridge-filter','panel-filter','pocket-filter'], summary:'Explore process-air dust collection and ventilation. Share chemical exposure and temperature when discussing media.', sourceSlides:[21,22,23,24,25,26]},
  ],
  'Living': [
-  {name:'House', products:['panel-filter'], summary:'Panel filters for private indoor ventilation and HVAC systems. Match the size and grade to your installation.', sourceSlides:[28,29,14]},
-  {name:'Hotel', products:['panel-filter','pocket-filter'], summary:'Explore panel and pocket options from the living air-handling range for your hotel ventilation system.', sourceSlides:[28,29,14,15]},
-  {name:'Retail and Commercial Building', products:['panel-filter','pocket-filter'], summary:'Air-handling filters for commercial indoor spaces and shopping centres.', sourceSlides:[28,29,14,15]},
-  {name:'Hospital', products:['panel-filter','pocket-filter','hepa-filter'], summary:'Ventilation and fine-filtration options for hospital and medical systems. Confirm the grade required for each area.', sourceSlides:[28,29,14,15,31]},
+  {name:'House', children:['Ventilation','Swimming Pool'], products:['panel-filter','swimming-pool-filter'], summary:'Panel filters for private indoor ventilation and HVAC systems. Match the size and grade to your installation.', sourceSlides:[28,29,14,32]},
+  {name:'Hotel', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','swimming-pool-filter'], summary:'Explore panel and pocket options for ventilation, or discuss separate swimming pool filtration requirements.', sourceSlides:[28,29,14,15,32]},
+  {name:'Retail and Commercial Building', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','swimming-pool-filter'], summary:'Air-handling filters for commercial indoor spaces and shopping centres.', sourceSlides:[28,29,14,15,32]},
+  {name:'Hospital', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','hepa-filter','swimming-pool-filter'], summary:'Ventilation and fine-filtration options for hospital and medical systems. Confirm the grade required for each area.', sourceSlides:[28,29,14,15,31,32]},
  ],
  'Liquid': [
   {name:'Food Industry', products:['liquid-filter'], summary:'Polypropylene liquid bag filters for suspended particles. Discuss your process liquid, micron rating and sealing ring.', sourceSlides:[34,35]},
@@ -57,7 +57,7 @@ export const applicationGroups: Record<string, ApplicationGroup[]> = {
 };
 export const toSlug = (name: string) => name.toLowerCase().replaceAll('&', 'and').replaceAll(' ', '-');
 export function applicationProducts(industry: string, group: ApplicationGroup, child?: string) {
- const slugs = industry === 'Mobility' && child === 'Two wheeler' ? ['engine-air-filter'] : group.products;
+ const slugs = industry === 'Mobility' && child === 'Two wheeler' ? ['engine-air-filter'] : industry === 'Living' ? (child === 'Swimming Pool' ? ['swimming-pool-filter'] : group.products.filter(slug => slug !== 'swimming-pool-filter')) : group.products;
  return slugs.map(slug => products.find(product => product.slug === slug)).filter((product): product is Product => !!product && product.categories.includes(industry));
 }
 const airGrades = 'ISO Coarse 75%; ePM10 55% / 70%; ePM2.5 65%; ePM1 70% / 80%';

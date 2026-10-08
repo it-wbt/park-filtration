@@ -1,0 +1,6 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "public/images/image31.webp",
+  "output": "public/images/hepa-highlight-transparent.png",
+  "prompt": "Background extraction edit. Remove the white background of this exact HEPA panel filter photograph, yielding a clean true transparent alpha cutout. Preserve the existing rectangular black frame, grey fine pleated media, small pale tab at top, perspective, geometry, proportions and all original product details exactly. Do not redesign or add parts. No shadows of any kind, no drop shadow, no contact shadow, no glow, no white rectangle or backdrop, no floor. Only the original filter product on transparency, centered with 12% clear padding, high-resolution crisp edges. Do not add text or logos."
+}

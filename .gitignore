@@ -10,3 +10,5 @@ test-results/
 /*.png
 /*.jpg
 reference/*.mp4
+
+.media-process-frames/

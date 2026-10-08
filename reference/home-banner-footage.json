@@ -1,0 +1,81 @@
+{
+  "usage": "Illustrative context footage, not PARK facilities or a filter performance demonstration.",
+  "adaptation": "10 seconds, 1280x720, 24 fps, silent H.264 faststart.",
+  "clips": [
+    {
+      "slug": "forest-road",
+      "id": 19534739,
+      "fps": 60,
+      "resolution": "1280_720",
+      "title": "Aerial view of a winding road in the forest",
+      "source": "https://www.pexels.com/video/aerial-view-of-a-winding-road-in-the-forest-19534739/",
+      "download": "https://videos.pexels.com/video-files/19534739/19534739-hd_1280_720_60fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/home/forest-road.mp4",
+      "bytes": 3239531
+    },
+    {
+      "slug": "freight-train",
+      "id": 7586931,
+      "fps": 30,
+      "resolution": "1920_1080",
+      "title": "A moving cargo train",
+      "source": "https://www.pexels.com/video/a-moving-cargo-train-7586931/",
+      "download": "https://videos.pexels.com/video-files/7586931/7586931-hd_1920_1080_30fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/home/freight-train.mp4",
+      "bytes": 4192481
+    },
+    {
+      "slug": "family-cabin",
+      "id": 6181414,
+      "fps": 25,
+      "resolution": "1920_1080",
+      "title": "Family on a road trip with baby",
+      "source": "https://www.pexels.com/video/family-on-a-road-trip-with-baby-6181414/",
+      "download": "https://videos.pexels.com/video-files/6181414/6181414-hd_1920_1080_25fps.mp4",
+      "license": "https://www.pexels.com/license/",
+      "output": "/videos/home/family-cabin.mp4",
+      "bytes": 1243648
+    }
+  ],
+  "highResolutionClips": [
+    {
+      "slug": "forest-road",
+      "download": "https://videos.pexels.com/video-files/19534739/19534739-uhd_3840_2160_60fps.mp4",
+      "output": "/videos/home/forest-road-4k.mp4",
+      "resolution": "3840x2160",
+      "bytes": 11661053
+    },
+    {
+      "slug": "freight-train",
+      "download": "https://videos.pexels.com/video-files/7586931/7586931-uhd_3840_2160_30fps.mp4",
+      "output": "/videos/home/freight-train-4k.mp4",
+      "resolution": "3840x2160",
+      "bytes": 13191760
+    },
+    {
+      "slug": "family-cabin",
+      "download": "https://videos.pexels.com/video-files/6181414/6181414-uhd_3840_2160_25fps.mp4",
+      "output": "/videos/home/family-cabin-4k.mp4",
+      "resolution": "3840x2160",
+      "bytes": 10504735
+    }
+  ],
+  "highResolutionAdaptation": "4K UHD 3840x2160, 24fps, 10 seconds, silent H.264 faststart; 720p variant for smaller screens.",
+  "cityHighway": {
+    "source": "https://www.pexels.com/video/drone-footage-of-a-highway-in-a-city-8396910/",
+    "download": "https://videos.pexels.com/video-files/8396910/8396910-hd_1920_1080_25fps.mp4",
+    "license": "https://www.pexels.com/license/",
+    "resolution": "1920x1080",
+    "output": "/videos/home/city-highway-hd.mp4"
+  },
+  "scenicTrain": {
+    "source": "https://www.pexels.com/video/drone-footage-of-moving-train-during-sunset-5171206/",
+    "download": "https://videos.pexels.com/video-files/5171206/5171206-uhd_3840_2160_30fps.mp4",
+    "license": "https://www.pexels.com/license/",
+    "resolution": "3840x2160",
+    "output": "/videos/home/scenic-train-4k.mp4",
+    "mobileOutput": "/videos/home/scenic-train.mp4"
+  }
+}

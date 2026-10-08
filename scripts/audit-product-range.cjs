@@ -37,7 +37,11 @@ for (const [industry, groups] of Object.entries(applicationGroups)) {
 }
 const applicationSlugs = (industry, name, child) => Array.from(applicationProducts(industry, applicationGroups[industry].find(group => group.name === name), child), product => product.slug);
 assert.deepEqual(applicationSlugs('Manufacturing','Paint Booth'), ['pocket-filter','filter-mats','ceiling-filter']);
-assert.ok(!applicationSlugs('Living','Hospital').includes('swimming-pool-filter'));
+assert.ok(!applicationSlugs('Living','Hospital','Ventilation').includes('swimming-pool-filter'));
+for (const group of applicationGroups.Living) {
+ assert.deepEqual(applicationSlugs('Living',group.name,'Swimming Pool'), ['swimming-pool-filter']);
+ assert.ok(!applicationSlugs('Living',group.name,'Ventilation').includes('swimming-pool-filter'));
+}
 assert.deepEqual(applicationSlugs('Living','House'), ['panel-filter']);
 assert.deepEqual(applicationSlugs('Mobility','Automobiles','Two wheeler'), ['engine-air-filter']);
 assert.deepEqual(applicationSlugs('Mobility','Railways','Coach'), ['panel-filter','filter-mats']);
