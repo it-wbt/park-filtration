@@ -11,7 +11,7 @@ OUT = ROOT / 'public/videos/industries'
 OUT.mkdir(parents=True, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 clips = [
- {'slug':'mobility','title':'City traffic','id':1192116,'fps':30,'source':'https://www.pexels.com/video/1192116/'},
+ {'slug':'mobility','title':'Close road-level vehicle view','local':'reference/mobility-12934006.mp4','duration':3,'filter':"crop=600:400:x='200+80*t':y=440,scale=1080:720,eq=saturation=1.1:contrast=1.05:brightness=0.025,setsar=1,fps=24",'source':'https://www.pexels.com/video/driving-on-highway-12934006/','license':'https://www.pexels.com/license/'},
  {'slug':'manufacturing','title':'Textile production','local':'reference/textile-factory-original.mp4','speed':1.3},
  {'slug':'heavy-duty-industry','title':'Flowing molten steel','id':5121751,'fps':25,'source':'https://www.pexels.com/video/flowing-molten-steel-5121751/'},
  {'slug':'living','title':'Modern commercial building','id':7317314,'fps':25,'source':'https://www.pexels.com/video/architectural-design-of-a-modern-building-7317314/'},
@@ -25,7 +25,7 @@ for clip in clips:
  if 'local' in clip:
   original = ROOT / clip['local']
  else:
-  original = ROOT / 'reference' / (clip['slug']+'-original.mp4')
+  original = ROOT / 'reference' / (('mobility-highway' if clip['slug']=='mobility' else clip['slug'])+'-original.mp4')
   clip['download'] = f"https://videos.pexels.com/video-files/{clip['id']}/{clip['id']}-hd_1920_1080_{clip['fps']}fps.mp4"
   clip['license'] = 'https://www.pexels.com/license/'
   if not original.exists():
@@ -34,7 +34,7 @@ for clip in clips:
     shutil.copyfileobj(response,target)
    print(f"Downloaded {clip['slug']}: {original.stat().st_size} bytes",flush=True)
  video = OUT / (clip['slug']+'.mp4')
- run(['-ss',str(clip.get('start',0)),'-i',str(original),'-t','8','-vf',f"setpts={clip.get('speed',1)}*PTS,scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720,setsar=1,fps=24",'-an','-map_metadata','-1','-c:v','libx264','-pix_fmt','yuv420p','-preset','fast','-crf','25','-maxrate','1800k','-bufsize','3600k','-movflags','+faststart',str(video)])
+ run(['-ss',str(clip.get('start',0)),'-i',str(original),'-t',str(clip.get('duration',8)),'-vf',clip.get('filter') or f"setpts={clip.get('speed',1)}*PTS,scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720,setsar=1,fps=24",'-an','-map_metadata','-1','-c:v','libx264','-pix_fmt','yuv420p','-preset','fast','-crf','25','-maxrate','1800k','-bufsize','3600k','-movflags','+faststart',str(video)])
  run(['-ss','0.5','-i',str(video),'-frames:v','1','-q:v','3',str(OUT/(clip['slug']+'-poster.jpg'))])
  clip['output']='/videos/industries/'+clip['slug']+'.mp4'
  clip['bytes']=video.stat().st_size

@@ -116,6 +116,25 @@
 .park-banner-eyebrow{margin-bottom:16px;color:#fff}
 .home-showcase .park-banner-copy p{max-width:700px;font-size:17px;line-height:1.6;margin-bottom:24px;color:#e7edf2}
 .park-banner-arrows{right:5%;bottom:34px}
-@media(min-width:1001px){.home-showcase{grid-template-rows:clamp(560px,calc(100svh - var(--showcase-header,100px)),900px) 32px auto;margin-top:0}.park-banner-copy{width:78%;padding:40px 7% 64px}.park-banner-copy h1{font-size:clamp(40px,3.7vw,68px)}}
+@media(min-width:1001px){
+ .home-showcase{height:calc(100svh - var(--showcase-header,100px));min-height:540px;grid-template-rows:minmax(0,1.4fr) 28px minmax(0,1fr);margin-top:0}
+ .park-banner-copy{width:78%;padding:24px 7% 36px}
+ .park-banner-copy h1{font-size:clamp(32px,min(3.2vw,5.5svh),54px);margin-bottom:12px}
+ .park-banner-eyebrow{margin-bottom:12px}
+ .home-showcase .park-banner-copy p{font-size:clamp(14px,1.1vw,18px);line-height:1.5;margin-bottom:18px;max-width:720px}
+ .park-banner-link{padding:11px 18px}
+ .park-banner-arrows{bottom:24px}
+ .park-banner-controls{height:28px}
+ .park-industry-shortcuts{padding:12px 28px 18px;min-height:0;overflow:hidden}
+ .park-industry-kicker{margin-bottom:5px;font-size:9px}
+ .park-industry-shortcuts h2{font-size:clamp(21px,1.7vw,30px);line-height:1.2}
+ .home-showcase .park-industry-shortcuts>p{font-size:14px;margin:5px 0 12px;line-height:1.4}
+ .park-industry-cards{flex:1;min-height:0;gap:18px}
+ .park-industry-card{height:100%;min-height:0}
+ .park-industry-number{top:12px;left:12px;width:28px;height:28px}
+ .park-industry-card-copy{inset:auto 14px 12px}
+ .park-industry-card .park-industry-card-copy h3{font-size:clamp(18px,1.4vw,25px);margin-bottom:8px}
+ .park-industry-arrow{width:28px;height:28px}
+}
 @media(min-width:641px) and (max-width:1000px){.park-banner{height:560px}.park-banner-copy{width:85%;padding:30px 6% 70px}.park-banner-video{left:0;width:100%}.park-banner-copy h1{font-size:42px}}
 @media(max-width:640px){.home-showcase{margin:0}.park-banner{min-height:580px}.park-banner-copy{width:100%;min-height:580px;padding:200px 24px 84px;justify-content:flex-end}.park-banner-copy h1{font-size:36px;white-space:normal}.park-banner-panel{background:linear-gradient(0deg,#051b30ed,#051b3080 50%,#051b3012)}.home-showcase .park-banner-copy p{font-size:15px}.park-banner-arrows{bottom:20px;right:24px}}

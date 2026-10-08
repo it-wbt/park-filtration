@@ -4,14 +4,15 @@
   "clips": [
     {
       "slug": "mobility",
-      "title": "City traffic",
-      "id": 1192116,
-      "fps": 30,
-      "source": "https://www.pexels.com/video/1192116/",
-      "download": "https://videos.pexels.com/video-files/1192116/1192116-hd_1920_1080_30fps.mp4",
+      "title": "Close road-level vehicle view",
+      "id": 12934006,
+      "fps": 25,
+      "source": "https://www.pexels.com/video/driving-on-highway-12934006/",
+      "download": "https://videos.pexels.com/video-files/12934006/12934006-hd_1920_1080_25fps.mp4",
       "license": "https://www.pexels.com/license/",
       "output": "/videos/industries/mobility.mp4",
-      "bytes": 1633834
+      "bytes": 677319,
+      "adaptation": "3-second tracking crop focused on nearby vehicles, excluding shopfronts and overhead signs."
     },
     {
       "slug": "manufacturing",
