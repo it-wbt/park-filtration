@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import IndustrySelect from './IndustrySelect';
 import { ArrowUpRight, UserRound, Mail, Building2, Factory, ChevronDown, Send, Check, MessageSquareText } from 'lucide-react';
 
 const industryHints:Record<string,string>={
@@ -29,7 +30,7 @@ export default function Contact(){
       </div>
       <div className="contact-field-row">
         <label htmlFor="contact-company"><span>Company <small>Optional</small></span><span className="contact-control"><Building2 size={17} aria-hidden="true"/><input id="contact-company" name="company" autoComplete="organization" placeholder="Company or organisation" maxLength={150}/></span></label>
-        <label htmlFor="contact-industry">Your industry<span className="contact-control contact-select"><Factory size={17} aria-hidden="true"/><select id="contact-industry" name="industry" value={industry} onChange={event=>{setIndustry(event.target.value);setReady(false);}} aria-describedby={industry?'contact-industry-hint':undefined} required><option value="" disabled>Select your industry</option>{Object.keys(industryHints).map(item=><option key={item}>{item}</option>)}</select><ChevronDown size={15} className="contact-select-arrow" aria-hidden="true"/></span></label>
+        <IndustrySelect value={industry} options={Object.keys(industryHints)} onChange={value=>{setIndustry(value);setReady(false);}}/>
       </div>
       {industry&&<p className="contact-industry-hint" id="contact-industry-hint"><span/>{industryHints[industry]}</p>}
       <label htmlFor="contact-message" className="contact-message-label"><span>What do you need?<small>Application, size, grade or quantity</small></span><span className="contact-control contact-textarea"><textarea id="contact-message" name="message" placeholder="Tell us about your system and the filter you’re looking for…" required rows={4} maxLength={4000} value={message} onChange={event=>{setMessage(event.target.value);setReady(false);}} aria-describedby="contact-message-help"/></span></label>

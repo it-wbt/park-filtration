@@ -1,0 +1,24 @@
+.media-process-section{padding-top:28px;padding-bottom:28px}.media-process-banner{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.5fr);background:#0a2d44;border-radius:8px;overflow:hidden}.media-process-copy{padding:30px;background:#145c86;color:#fff;display:flex;flex-direction:column;justify-content:center}.media-process-copy .eyebrow{color:#c2ddeb;font-size:10px}.media-process-copy h2{font-size:30px;letter-spacing:-.8px;margin-bottom:16px;color:white}.media-process-copy p{color:#e0edf3;font-size:15px;line-height:1.7}.media-process-copy .underlined-link{align-self:flex-start;border-color:#a9cbdc;font-size:13px;margin-top:6px}.media-process-visual{position:relative;min-width:0;display:flex;align-items:center;background:#071e2e}.media-process-visual video{width:100%;height:auto;display:block;aspect-ratio:8/3;object-fit:contain}.media-process-visual>button{position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;background:#082d43dd;color:white;border:1px solid #ffffff60;border-radius:20px;padding:7px 10px;font-size:11px}.media-process-note{font-size:12px!important;color:#6e838f;margin:10px 0 0;line-height:1.5}
+@media(max-width:1050px){.media-process-banner{grid-template-columns:1fr}.media-process-copy{padding:24px}.media-process-copy p{max-width:680px}.media-process-copy h2{font-size:27px}.media-process-visual video{aspect-ratio:8/3}}
+@media(max-width:760px){.media-process-copy{padding:22px 18px}.media-process-copy h2{font-size:25px}.media-process-copy p{font-size:14px}.media-process-visual>button{top:6px;right:6px;padding:5px 8px}.media-process-visual>button span{display:none}}
+
+.hero.hero-photo{height:calc(100svh - var(--hero-chrome-height,125px));min-height:480px;max-height:none;background:#092b40;display:flex;align-items:center;padding:0;overflow:hidden}
+.hero-photo .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-photo .hero-shade{background:linear-gradient(90deg,rgba(5,30,46,.94),rgba(5,30,46,.78) 38%,rgba(5,30,46,.16) 100%)}
+.hero.hero-photo .hero-content{position:relative;width:100%;max-width:1600px;margin:0 auto;padding:44px 4% 88px;z-index:1}
+.hero.hero-photo h1{font-size:clamp(44px,4.6vw,76px);max-width:780px;line-height:1.08;letter-spacing:-2px;margin-bottom:24px}
+.hero.hero-photo .hero-value{max-width:610px;font-size:18px!important;line-height:1.7!important}
+.hero.hero-photo .hero-actions{max-width:none;display:flex;flex-wrap:wrap;gap:24px;margin-top:28px}
+.hero-photo .hero-bottom{bottom:22px;left:4%;right:4%;z-index:1}.hero-photo .hero-side{display:none}
+@media(max-width:760px){.hero.hero-photo{min-height:530px}.hero.hero-photo .hero-content{padding:32px 22px}.hero.hero-photo h1{font-size:clamp(36px,9vw,48px);letter-spacing:-1.2px}.hero.hero-photo .hero-value{font-size:15px!important;line-height:1.65!important}.hero.hero-photo .hero-actions{gap:20px;flex-direction:column;align-items:flex-start}.hero-photo .hero-bottom{display:none}.hero-photo .hero-shade{background:rgba(5,30,46,.76)}}
+@media(min-width:761px) and (max-height:700px){.hero.hero-photo{min-height:420px}.hero.hero-photo h1{font-size:46px;margin-bottom:16px}.hero.hero-photo .hero-content{padding-top:24px;padding-bottom:68px}.hero.hero-photo .hero-value{font-size:16px!important}.hero.hero-photo .hero-actions{margin-top:20px}}
+
+.hero-photo .hero-image{object-position:center;object-fit:cover}
+.hero-photo .hero-shade{background:linear-gradient(90deg,rgba(6,35,57,.24),rgba(6,35,57,.12) 36%,transparent 52%)}
+.hero.hero-photo .hero-content{padding-left:3%;padding-right:3%}
+.hero.hero-photo h1{max-width:40%;font-size:clamp(38px,3.8vw,64px)}
+.hero.hero-photo .hero-value{max-width:35%;font-size:17px!important}
+.hero.hero-photo .hero-actions{max-width:36%;gap:20px;align-items:flex-start}
+.hero.hero-photo .hero-actions .button{font-size:14px!important;padding:15px 18px}
+@media(max-width:1100px) and (min-width:761px){.hero.hero-photo h1{font-size:40px}.hero.hero-photo .hero-value{font-size:15px!important}.hero.hero-photo .hero-actions{flex-direction:column}}
+@media(max-width:760px){.hero-photo .hero-image{object-position:70% center}.hero-photo .hero-shade{background:rgba(5,30,46,.82)}.hero.hero-photo .hero-content{padding-left:22px;padding-right:22px}.hero.hero-photo h1,.hero.hero-photo .hero-value,.hero.hero-photo .hero-actions{max-width:none}.hero.hero-photo h1{font-size:40px}}

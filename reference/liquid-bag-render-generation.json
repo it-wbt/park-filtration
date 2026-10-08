@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "public/images/image32.webp",
+  "output": "public/images/liquid-bag-highlight-render.png",
+  "usage": "Illustrative homepage render; original catalogue image retained.",
+  "prompt": "Use case: product-mockup / identity-preserve. Create one high resolution studio catalogue product render of the exact liquid filtration bag in the reference image for a PARK website product slider. Preserve the single long cylindrical white nonwoven felt filter bag, soft closed rounded bottom, open circular rigid white sealing ring mouth and visible pale interior fabric, no handles, no mesh cage, no housing, no extra components, no logo or text. Preserve this product identity and construction; improve lighting, clarity and fabric texture only. Recompose as a refined three-quarter view: ring mouth faces viewer at front-left, long bag body extends diagonally toward upper-right with the rounded closed end visible. Whole product visible and centered in a landscape 3:2 canvas with generous padding on every edge, occupies about 70% of width and 55% of height. Crisp fine matte polypropylene textile texture and accurate seam details only as visible in source. Soft commercial studio illumination, neutral white fabric with natural light grey shading for readable contours. True transparent background. No labels, no brand logos, no sales claims. This is an illustrative reconstruction of the supplied product, not a different product."
+}

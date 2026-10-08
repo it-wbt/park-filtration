@@ -16,9 +16,10 @@ export const productMenuGroups = [
 
 export default function ProductMenu({onNavigate}:{onNavigate:()=>void}) {
  const [selected,setSelected] = useState(0);
+ const [previewSlug,setPreviewSlug] = useState<string | null>(null);
  const group = productMenuGroups[selected];
  const range = group.slugs.map(slug => products.find(product => product.slug === slug)!);
- const featured = range[0];
+ const featured = range.find(product => product.slug === previewSlug) ?? range[0];
  const selectOnHover = (index:number) => { if(window.matchMedia('(min-width:761px) and (hover:hover)').matches) setSelected(index); };
  return <>
   <div className="mega-categories">
@@ -28,7 +29,7 @@ export default function ProductMenu({onNavigate}:{onNavigate:()=>void}) {
   </div>
   <div className="mega-details product-menu-details">
    <div className="mobility-intro"><div><span className="submenu-eyebrow">PRODUCT RANGE</span><h2>{group.name}</h2></div><span className="solution-count">{range.length} product {range.length===1?'family':'families'}</span></div>
-   <div className="product-menu-links">{range.map(product=><Link key={product.slug} href={'/products/'+product.slug} onClick={onNavigate}><img src={'/images/'+product.image+'.webp'} alt="" width={64} height={64}/><span><strong>{product.name}</strong><small>{product.description}</small></span><ArrowRight size={18}/></Link>)}</div>
+   <div className="product-menu-links">{range.map(product=><Link key={product.slug} href={'/products/'+product.slug} onMouseEnter={()=>{if(window.matchMedia('(hover:hover) and (pointer:fine)').matches)setPreviewSlug(product.slug);}} onFocus={()=>setPreviewSlug(product.slug)} onClick={onNavigate}><img src={'/images/'+product.image+'.webp'} alt="" width={64} height={64}/><span><strong>{product.name}</strong><small>{product.description}</small></span><ArrowRight size={18}/></Link>)}</div>
   </div>
   <div className="mega-feature product-menu-feature"><div className="product-menu-preview"><span className="submenu-eyebrow">PARK FILTRATION</span><img src={'/images/'+featured.image+'.webp'} alt={featured.name} width={320} height={240}/><h3>{featured.name}</h3><p>{featured.material}</p><Link className="button small" href={'/products/'+featured.slug} onClick={onNavigate}>View product <ArrowRight size={17}/></Link></div><div className="mega-catalogue"><Link href="/products" onClick={onNavigate}>Explore filtration products <ArrowUpRight size={20}/></Link></div></div>
  </>;
