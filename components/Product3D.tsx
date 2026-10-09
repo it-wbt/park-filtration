@@ -1,4 +1,5 @@
 'use client';
+import NextImage from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Box, Image as ImageIcon, Pause, Play, RotateCcw, Layers, ZoomIn, ZoomOut } from 'lucide-react';
 
@@ -33,7 +34,7 @@ export default function Product3D({slug,name,image}:{slug:string;name:string;ima
   },[view,slug,name]);
   return <div className="product-studio">
     <div className="studio-tabs" role="group" aria-label="Product views"><button aria-pressed={view==='photo'} onClick={()=>setView('photo')}><ImageIcon size={15}/>Product photo</button><button aria-pressed={view==='model'} onClick={()=>setView('model')}><Box size={15}/>Interactive 3D</button></div>
-    <div className="studio-stage">{view==='photo'||error?<img src={`/images/${image}.webp`} alt={name} width={720} height={600} fetchPriority="high"/>:<><div className="studio-canvas" ref={host}/>{!ready&&<p className="studio-loading" role="status">Preparing your 3D view…</p>}<span className="studio-watermark">PARK / PRODUCT STUDIO</span></>}</div>
+    <div className="studio-stage">{view==='photo'||error?<NextImage sizes="(max-width: 640px) 90vw, (max-width: 1000px) 45vw, 640px" src={`/images/${image}.webp`} alt={name} width={720} height={600} loading="lazy"/>:<><div className="studio-canvas" ref={host}/>{!ready&&<p className="studio-loading" role="status">Preparing your 3D view…</p>}<span className="studio-watermark">PARK / PRODUCT STUDIO</span></>}</div>
     {view==='model'&&!error&&<><div className="studio-controls" role="group" aria-label="3D model controls"><button disabled={!ready} title={playing?'Pause rotation':'Start rotation'} aria-label={playing?'Pause rotation':'Start rotation'} onClick={()=>{action.current?.play(!playing);setPlaying(!playing);}}>{playing?<Pause size={17}/>:<Play size={17}/>}</button><button disabled={!ready} aria-pressed={exploded} onClick={()=>{action.current?.explode(!exploded);setExploded(!exploded);}}><Layers size={16}/>{exploded?'Assemble':'Explore layers'}</button><span className="studio-toolbar-divider" aria-hidden="true"/><button disabled={!ready} title="Zoom in" aria-label="Zoom in" onClick={()=>action.current?.zoom(.85)}><ZoomIn size={17}/></button><button disabled={!ready} title="Zoom out" aria-label="Zoom out" onClick={()=>action.current?.zoom(1.15)}><ZoomOut size={17}/></button><button disabled={!ready} title="Reset view" aria-label="Reset 3D view" onClick={()=>action.current?.reset()}><RotateCcw size={17}/></button></div><p className="studio-hint">Drag to rotate · Scroll to zoom · Two fingers on mobile</p><p className="studio-note">Illustrative model. Confirm construction and dimensions for your selected product.</p></>}
     {error&&<p className="studio-note" role="status">3D is unavailable on this device. Your product photo is shown above.</p>}
   </div>;

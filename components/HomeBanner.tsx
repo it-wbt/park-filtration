@@ -2,6 +2,7 @@
 
 import {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
+import {preload} from 'react-dom';
 import {ChevronLeft, ChevronRight, Pause, Play} from 'lucide-react';
 import {industries, toSlug} from '../lib/products';
 import './home-banner.css';
@@ -13,9 +14,9 @@ const slides = [
   {title: 'Better air for\nevery journey', description: 'PARK cabin air filters help reduce dust and pollen entering vehicle cabins. Explore particle and activated carbon media options.', image: '/images/image7.webp', alt: 'Children travelling together in a vehicle cabin', href: '/products/cabin-air-filter', action: 'Explore cabin filters'},
 ];
 const bannerVideos = [
-  {src: '/videos/home/city-highway.mp4', poster: '/videos/home/city-highway-poster.jpg'},
-  {src: '/videos/home/scenic-train.mp4', poster: '/videos/home/scenic-train-poster.jpg'},
-  {src: '/videos/home/family-cabin.mp4', poster: '/videos/home/family-cabin-poster.jpg'},
+  {src: '/videos/home/city-highway-mobile.mp4', poster: '/videos/home/city-highway-poster.webp'},
+  {src: '/videos/home/scenic-train-mobile.mp4', poster: '/videos/home/scenic-train-poster.webp'},
+  {src: '/videos/home/family-cabin-mobile.mp4', poster: '/videos/home/family-cabin-poster.webp'},
 ];
 
 export default function HomeBanner() {
@@ -43,11 +44,12 @@ export default function HomeBanner() {
     }, 6500);
     return () => window.clearInterval(timer);
   }, [paused, interacting]);
+  preload(bannerVideos[active].poster, {as: 'image', fetchPriority: 'high'});
   const slide = slides[active];
   const move = (direction: number) => {setActive(value => (value + direction + slides.length) % slides.length);};
   return <div ref={showcase} className="home-showcase">
     <section className="park-banner" aria-label="PARK filtration highlights" aria-roledescription="carousel" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false);}}>
-      <ShowcaseVideo key={active} className="park-banner-video" src={bannerVideos[active].src} highResolutionSrc={bannerVideos[active].src.replace('.mp4', active === 0 ? '-hd.mp4' : '-4k.mp4')} poster={bannerVideos[active].poster} paused={paused}/>
+      <ShowcaseVideo key={active} priority className="park-banner-video" src={bannerVideos[active].src} highResolutionSrc={bannerVideos[active].src.replace('-mobile.mp4', '-optimized.mp4')} poster={bannerVideos[active].poster} paused={paused}/>
       <div className="park-banner-panel"/>
       <div key={`copy-${active}`} className="park-banner-copy" aria-live={paused ? 'polite' : 'off'}>
         <span className="park-banner-eyebrow"><span/>PARK / FILTRATION SOLUTIONS</span>
@@ -64,7 +66,7 @@ export default function HomeBanner() {
       <span className="park-industry-kicker">FIND YOUR INDUSTRY</span>
       <h2 id="industry-shortcuts-title">Innovation in filtration for every industry</h2>
       <p>Advanced materials. Smarter filtration. Cleaner solutions.</p>
-      <div className="park-industry-cards">{industries.map((industry, index) => <Link key={industry.name} href={`/industries/${toSlug(industry.name)}`} className="park-industry-card"><ShowcaseVideo src={`/videos/industries/${toSlug(industry.name)}.mp4`} poster={`/videos/industries/${toSlug(industry.name)}-poster.jpg`} paused={paused}/><span className="park-industry-number" aria-hidden="true">0{index + 1}</span><div className="park-industry-card-copy"><h3>{industry.name}</h3><span className="park-industry-discover">Explore solutions <span className="park-industry-arrow"><ChevronRight size={19}/></span></span></div></Link>)}</div>
+      <div className="park-industry-cards">{industries.map((industry, index) => <Link key={industry.name} href={`/industries/${toSlug(industry.name)}`} className="park-industry-card"><ShowcaseVideo src={`/videos/industries/${toSlug(industry.name)}-optimized.mp4`} poster={`/videos/industries/${toSlug(industry.name)}-poster.webp`} paused={paused}/><span className="park-industry-number" aria-hidden="true">0{index + 1}</span><div className="park-industry-card-copy"><h3>{industry.name}</h3><span className="park-industry-discover">Explore solutions <span className="park-industry-arrow"><ChevronRight size={19}/></span></span></div></Link>)}</div>
     </section>
   </div>;
 }

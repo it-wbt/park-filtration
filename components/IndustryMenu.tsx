@@ -1,4 +1,5 @@
  'use client';
+import NextImage from 'next/image';
 import { useId, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Car, TrainFront, Truck, Bike, Layers, Check } from 'lucide-react';
@@ -30,7 +31,7 @@ export default function IndustryMenu({ industry, onNavigate }: { industry: strin
    {group && (!group.children || child) && <div id={id + '-products'} role={group.children ? 'tabpanel' : undefined} aria-labelledby={group.children ? id + '-child-' + group.children.indexOf(child!) : undefined} className="mobility-tab-results">
     <div className="mobility-tab-results-heading"><span className="submenu-eyebrow">SELECTED APPLICATION</span><h3>{child || group.name}</h3><span className="solution-count">{solutions.length} product options</span></div>
     <p className="submenu-application-summary">{child === 'Two wheeler' ? 'Synthetic nonwoven engine air filters for two-wheeler intake air. Explore standard and special sizes.' : child === 'Swimming Pool' ? 'Explore PARK swimming pool filters. Share your pool-system and housing details to confirm the available format and specifications.' : group.summary}</p>
-    <div className="mobility-tab-products">{solutions.map(product => <Link key={product.slug} href={'/products/' + product.slug} onClick={onNavigate}><span className="submenu-product-thumb"><img src={"/images/" + product.image + ".webp"} alt="" width={52} height={52}/></span><span className="submenu-product-name">{product.name}<small>{product.slug === 'swimming-pool-filter' ? 'Explore pool filtration' : product.slug === 'liquid-filter' ? 'Suspended-particle removal' : ['bag-filter','cartridge-filter'].includes(product.slug) ? 'Industrial dust collection' : product.slug === 'ceiling-filter' ? 'Final-stage booth air filtration' : product.slug === 'filter-mats' ? 'Nonwoven pre-filtration' : 'Explore air filtration'}</small></span><ArrowRight size={16}/></Link>)}</div>
+    <div className="mobility-tab-products">{solutions.map(product => <Link key={product.slug} href={'/products/' + product.slug} onClick={onNavigate}><span className="submenu-product-thumb"><NextImage sizes="52px" src={"/images/" + product.image + ".webp"} alt="" width={52} height={52}/></span><span className="submenu-product-name">{product.name}<small>{product.slug === 'swimming-pool-filter' ? 'Explore pool filtration' : product.slug === 'liquid-filter' ? 'Suspended-particle removal' : ['bag-filter','cartridge-filter'].includes(product.slug) ? 'Industrial dust collection' : product.slug === 'ceiling-filter' ? 'Final-stage booth air filtration' : product.slug === 'filter-mats' ? 'Nonwoven pre-filtration' : 'Explore air filtration'}</small></span><ArrowRight size={16}/></Link>)}</div>
     <Link className="application-menu-link" href={href + '#' + toSlug(group.name)} onClick={onNavigate}>View application details <ArrowRight size={16}/></Link>
    </div>}
   </div>

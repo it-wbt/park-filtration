@@ -1,0 +1,104 @@
+[
+  {
+    "mode": "desktop",
+    "seo": {
+      "title": "Air & Liquid Filtration Solutions | PARK Nonwoven",
+      "description": "Find air filters, liquid bag filters and nonwoven media for HVAC, vehicles and industry. Discuss your filtration problem and compare suitable options with PARK.",
+      "h1": 1,
+      "canonical": null,
+      "overflow": false
+    },
+    "requestedVideos": [
+      "/videos/home/city-highway-optimized.mp4",
+      "/videos/industries/heavy-duty-industry-optimized.mp4",
+      "/videos/industries/mobility-optimized.mp4",
+      "/videos/industries/living-optimized.mp4",
+      "/videos/industries/liquid-optimized.mp4",
+      "/videos/industries/manufacturing-optimized.mp4"
+    ]
+  },
+  {
+    "mode": "mobile",
+    "seo": {
+      "title": "Air & Liquid Filtration Solutions | PARK Nonwoven",
+      "description": "Find air filters, liquid bag filters and nonwoven media for HVAC, vehicles and industry. Discuss your filtration problem and compare suitable options with PARK.",
+      "h1": 1,
+      "canonical": null,
+      "overflow": false
+    },
+    "requestedVideos": [
+      "/videos/home/city-highway-mobile.mp4"
+    ]
+  },
+  {
+    "mode": "reduced",
+    "seo": {
+      "title": "Air & Liquid Filtration Solutions | PARK Nonwoven",
+      "description": "Find air filters, liquid bag filters and nonwoven media for HVAC, vehicles and industry. Discuss your filtration problem and compare suitable options with PARK.",
+      "h1": 1,
+      "canonical": null,
+      "overflow": false
+    },
+    "requestedVideos": []
+  },
+  {
+    "mode": "save-data",
+    "seo": {
+      "title": "Air & Liquid Filtration Solutions | PARK Nonwoven",
+      "description": "Find air filters, liquid bag filters and nonwoven media for HVAC, vehicles and industry. Discuss your filtration problem and compare suitable options with PARK.",
+      "h1": 1,
+      "canonical": null,
+      "overflow": false
+    },
+    "requestedVideos": []
+  },
+  {
+    "path": "/products",
+    "seo": {
+      "title": "Air & Liquid Filtration Products | PARK Nonwoven",
+      "description": "Compare PARK air filters, HEPA filters, industrial dust filters and liquid bag filters. Explore applications, materials and sizes for your system.",
+      "h1": 1,
+      "images": 0
+    }
+  },
+  {
+    "path": "/products/panel-filter",
+    "seo": {
+      "title": "Panel Filters | PARK Filtration",
+      "description": "Capture dust in HVAC and ventilation systems with PARK pleated panel filters. Compare synthetic media, frame options and sizes for your installation.",
+      "h1": 1,
+      "images": 0
+    }
+  },
+  {
+    "path": "/industries/living",
+    "seo": {
+      "title": "Living Filtration Solutions | PARK Nonwoven",
+      "description": "Find PARK HVAC air filters for homes, hotels, hospitals and commercial buildings. Compare filtration stages and sizes for your ventilation system.",
+      "h1": 1,
+      "images": 0
+    }
+  },
+  {
+    "path": "/filtration-media",
+    "seo": {
+      "title": "Nonwoven Filter Media & Filtration Materials | PARK",
+      "description": "Explore nonwoven filter media, polyester, polypropylene and activated carbon options. Discuss material, construction and filtration needs with PARK Nonwoven.",
+      "h1": 1,
+      "images": 0
+    }
+  },
+  {
+    "path": "/resources",
+    "seo": {
+      "title": "Filter Buying Guides & Selection Resources | PARK Filtration",
+      "description": "Practical air, dust-collection and liquid filter buying guides. Compare formats, understand selection factors and prepare a useful product enquiry.",
+      "h1": 1,
+      "images": 0
+    }
+  },
+  {
+    "sitemapUrls": 0,
+    "cache": "public, max-age=86400, stale-while-revalidate=604800"
+  }
+]
