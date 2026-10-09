@@ -1,4 +1,5 @@
 'use client';
+import NextImage from 'next/image';
 import {useState} from 'react';
 import Link from 'next/link';
 import {ArrowUpRight, ArrowRight, ChevronLeft, ChevronRight} from 'lucide-react';
@@ -17,7 +18,7 @@ export default function ProductHighlights() {
       <button className="highlights-prev highlights-arrow" onClick={() => move(-1)} aria-label="Previous highlighted product"><ChevronLeft size={36} strokeWidth={1.5}/></button>
       <div key={product.slug} className="highlights-slide" aria-live="polite" aria-atomic="true">
         <div className="highlights-copy"><span className="highlights-category"><i/>PARK FILTRATION / {product.categories[0]}</span><h3>{product.name}</h3><p>{product.description}</p><Link href={`/products/${product.slug}`} className="highlights-learn">Explore product <ArrowRight size={22}/></Link></div>
-        <Link className="highlights-image" href={`/products/${product.slug}`} aria-label={`Explore ${product.name}`}><img src={product.slug === "hepa-filter" ? "/images/hepa-highlight-transparent.png" : product.slug === "liquid-filter" ? "/images/liquid-bag-highlight-render.png" : `/images/${product.image}.webp`} alt={product.slug === "liquid-filter" ? "Illustrative studio render of a white liquid bag filter" : product.name} width={640} height={480}/></Link>
+        <Link className="highlights-image" href={`/products/${product.slug}`} aria-label={`Explore ${product.name}`}><NextImage sizes="(max-width: 640px) 90vw, (max-width: 1000px) 45vw, 640px" src={product.slug === "hepa-filter" ? "/images/hepa-highlight-transparent.webp" : product.slug === "liquid-filter" ? "/images/liquid-bag-highlight-render.webp" : `/images/${product.image}.webp`} alt={product.slug === "liquid-filter" ? "Illustrative studio render of a white liquid bag filter" : product.name} width={640} height={480} loading="lazy"/></Link>
       </div>
       <button className="highlights-next highlights-arrow" onClick={() => move(1)} aria-label="Next highlighted product"><ChevronRight size={36} strokeWidth={1.5}/></button>
     </div>

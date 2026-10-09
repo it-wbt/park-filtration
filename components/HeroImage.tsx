@@ -1,4 +1,5 @@
 'use client';
+import NextImage from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function HeroImage() {
@@ -15,5 +16,5 @@ export default function HeroImage() {
     fit();
     return () => observer.disconnect();
   }, []);
-  return <img ref={image} className="hero-image" src="/images/filtration-materials-hero.webp" alt="Illustrative filtration process: nonwoven fibers, production rollers, media roll and pleated panel filter" width={1280} height={720} fetchPriority="high" />;
+  return <NextImage sizes="100vw" ref={image} className="hero-image" src="/images/filtration-materials-hero.webp" alt="Illustrative filtration process: nonwoven fibers, production rollers, media roll and pleated panel filter" width={1280} height={720} loading="eager" fetchPriority="high" />;
 }

@@ -1,0 +1,122 @@
+[
+  {
+    "asset": "public\\images\\hepa-highlight-transparent.webp",
+    "before": 1079743,
+    "after": 45714
+  },
+  {
+    "asset": "public\\images\\liquid-bag-highlight-render.webp",
+    "before": 1578246,
+    "after": 27978
+  },
+  {
+    "asset": "public\\videos\\home\\city-highway-optimized.mp4",
+    "before": 6886486,
+    "after": 2143872
+  },
+  {
+    "asset": "public\\videos\\home\\city-highway-mobile.mp4",
+    "before": 6886486,
+    "after": 860691
+  },
+  {
+    "asset": "public\\videos\\home\\scenic-train-optimized.mp4",
+    "before": 15904573,
+    "after": 1569392
+  },
+  {
+    "asset": "public\\videos\\home\\scenic-train-mobile.mp4",
+    "before": 15904573,
+    "after": 462377
+  },
+  {
+    "asset": "public\\videos\\home\\family-cabin-optimized.mp4",
+    "before": 10504735,
+    "after": 1929012
+  },
+  {
+    "asset": "public\\videos\\home\\family-cabin-mobile.mp4",
+    "before": 10504735,
+    "after": 572226
+  },
+  {
+    "asset": "public\\videos\\clean-air-hero-poster.webp",
+    "before": 180038,
+    "after": 31556
+  },
+  {
+    "asset": "public\\videos\\filtration-hero-poster.webp",
+    "before": 38428,
+    "after": 3112
+  },
+  {
+    "asset": "public\\videos\\media-process-poster.webp",
+    "before": 42679,
+    "after": 8816
+  },
+  {
+    "asset": "public\\videos\\home\\city-highway-poster.webp",
+    "before": 421481,
+    "after": 111886
+  },
+  {
+    "asset": "public\\videos\\home\\family-cabin-poster.webp",
+    "before": 45516,
+    "after": 22124
+  },
+  {
+    "asset": "public\\videos\\home\\scenic-train-poster.webp",
+    "before": 135409,
+    "after": 53916
+  },
+  {
+    "asset": "public\\videos\\industries\\heavy-duty-industry-poster.webp",
+    "before": 79935,
+    "after": 15444
+  },
+  {
+    "asset": "public\\videos\\industries\\liquid-poster.webp",
+    "before": 186679,
+    "after": 44124
+  },
+  {
+    "asset": "public\\videos\\industries\\living-poster.webp",
+    "before": 81216,
+    "after": 17494
+  },
+  {
+    "asset": "public\\videos\\industries\\manufacturing-poster.webp",
+    "before": 117600,
+    "after": 26068
+  },
+  {
+    "asset": "public\\videos\\industries\\mobility-poster.webp",
+    "before": 29312,
+    "after": 8458
+  },
+  {
+    "asset": "public\\videos\\industries\\heavy-duty-industry-optimized.mp4",
+    "before": 1897440,
+    "after": 394978
+  },
+  {
+    "asset": "public\\videos\\industries\\liquid-optimized.mp4",
+    "before": 1905564,
+    "after": 539002
+  },
+  {
+    "asset": "public\\videos\\industries\\living-optimized.mp4",
+    "before": 542929,
+    "after": 125732
+  },
+  {
+    "asset": "public\\videos\\industries\\manufacturing-optimized.mp4",
+    "before": 697469,
+    "after": 150310
+  },
+  {
+    "asset": "public\\videos\\industries\\mobility-optimized.mp4",
+    "before": 677319,
+    "after": 120155
+  }
+]
