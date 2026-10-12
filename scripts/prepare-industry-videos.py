@@ -10,13 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'public/videos/industries'
 OUT.mkdir(parents=True, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-clips = [
- {'slug':'mobility','title':'Close road-level vehicle view','local':'reference/mobility-12934006.mp4','duration':3,'filter':"crop=600:400:x='200+80*t':y=440,scale=1080:720,eq=saturation=1.1:contrast=1.05:brightness=0.025,setsar=1,fps=24",'source':'https://www.pexels.com/video/driving-on-highway-12934006/','license':'https://www.pexels.com/license/'},
- {'slug':'manufacturing','title':'Textile production','local':'reference/textile-factory-original.mp4','speed':1.3},
- {'slug':'heavy-duty-industry','title':'Flowing molten steel','id':5121751,'fps':25,'source':'https://www.pexels.com/video/flowing-molten-steel-5121751/'},
- {'slug':'living','title':'Modern commercial building','id':7317314,'fps':25,'source':'https://www.pexels.com/video/architectural-design-of-a-modern-building-7317314/'},
- {'slug':'liquid','title':'Water treatment','local':'reference/water-treatment-original.mp4','start':5},
-]
+clips = json.loads((ROOT / 'reference/industry-footage.json').read_text(encoding='utf-8'))['clips']
+
 def run(args):
  result = subprocess.run([FFMPEG,'-hide_banner','-loglevel','error','-y',*args],capture_output=True,text=True)
  if result.returncode: raise RuntimeError(result.stderr)

@@ -59,7 +59,6 @@
 .park-industry-card{position:relative;isolation:isolate;display:block;height:280px;border-radius:14px;background:#12374c;box-shadow:0 5px 16px #183b5218;border:1px solid #ffffff70;transition:transform .3s ease,box-shadow .3s ease}
 .park-industry-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
 .park-industry-card::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#071e3833 0%,transparent 30%,#071e3866 58%,#071e38ed 100%);pointer-events:none}
-.park-industry-number{position:absolute;z-index:2;top:16px;left:16px;display:grid;place-items:center;width:32px;height:32px;border:1px solid #ffffff55;border-radius:50%;background:#10375040;color:#fff;font-size:11px;letter-spacing:1px;backdrop-filter:blur(8px)}
 .park-industry-card-copy{position:absolute;z-index:2;inset:auto 18px 18px}
 .park-industry-card .park-industry-card-copy h3{display:block;padding:0;margin:0 0 12px;background:transparent;height:auto;min-height:0;color:#fff;font-size:clamp(20px,1.5vw,28px);font-weight:550;line-height:1.22;letter-spacing:-.35px;max-width:90%}
 .park-industry-discover{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#e0ecf4;font-size:12px;font-weight:500}
@@ -69,7 +68,7 @@
 @media(hover:hover) and (pointer:fine){.park-industry-card:hover{transform:translateY(-5px);box-shadow:0 14px 26px #183b5230}.park-industry-card:hover video{transform:scale(1.055)}.park-industry-card:hover .park-industry-arrow{background:#2e79b9;transform:translateX(2px)}}
 @media(min-width:1001px){.home-showcase{grid-template-rows:clamp(480px,62svh,720px) 32px auto}.park-industry-shortcuts{padding:28px 28px 34px}.park-industry-cards{flex:none}.park-industry-card{height:clamp(245px,21vw,340px)}}
 @media(min-width:641px) and (max-width:1000px){.park-industry-cards{gap:12px}.park-industry-card{height:260px}.park-industry-card-copy{inset:auto 12px 16px}.park-industry-card .park-industry-card-copy h3{font-size:19px}.park-industry-discover{font-size:10px}.park-industry-arrow{width:26px;height:26px}}
-@media(max-width:640px){.park-industry-shortcuts{padding:24px 14px 26px}.park-industry-cards{gap:14px}.park-industry-card{height:230px}.park-industry-card-copy{inset:auto 14px 16px}.park-industry-card .park-industry-card-copy h3{font-size:21px}.park-industry-discover{font-size:11px}.park-industry-card:last-child{height:230px}.park-industry-number{top:12px;left:12px}.park-industry-shortcuts h2{font-size:25px}}
+@media(max-width:640px){.park-industry-shortcuts{padding:24px 14px 26px}.park-industry-cards{gap:14px}.park-industry-card{height:230px}.park-industry-card-copy{inset:auto 14px 16px}.park-industry-card .park-industry-card-copy h3{font-size:21px}.park-industry-discover{font-size:11px}.park-industry-card:last-child{height:230px}.park-industry-shortcuts h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.park-industry-card,.park-industry-card video,.park-industry-arrow{transition:none}.park-industry-card:hover,.park-industry-card:hover video,.park-industry-card:hover .park-industry-arrow{transform:none}}
 
 /* A softer transition from the text to the film keeps the hero balanced. */
@@ -131,10 +130,35 @@
  .home-showcase .park-industry-shortcuts>p{font-size:14px;margin:5px 0 12px;line-height:1.4}
  .park-industry-cards{flex:1;min-height:0;gap:18px}
  .park-industry-card{height:100%;min-height:0}
- .park-industry-number{top:12px;left:12px;width:28px;height:28px}
  .park-industry-card-copy{inset:auto 14px 12px}
  .park-industry-card .park-industry-card-copy h3{font-size:clamp(18px,1.4vw,25px);margin-bottom:8px}
  .park-industry-arrow{width:28px;height:28px}
 }
 @media(min-width:641px) and (max-width:1000px){.park-banner{height:560px}.park-banner-copy{width:85%;padding:30px 6% 70px}.park-banner-video{left:0;width:100%}.park-banner-copy h1{font-size:42px}}
 @media(max-width:640px){.home-showcase{margin:0}.park-banner{min-height:580px}.park-banner-copy{width:100%;min-height:580px;padding:200px 24px 84px;justify-content:flex-end}.park-banner-copy h1{font-size:36px;white-space:normal}.park-banner-panel{background:linear-gradient(0deg,#051b30ed,#051b3080 50%,#051b3012)}.home-showcase .park-banner-copy p{font-size:15px}.park-banner-arrows{bottom:20px;right:24px}}
+
+.park-industry-context{position:absolute;z-index:2;top:14px;left:14px;max-width:calc(100% - 28px);padding:5px 9px;border-radius:4px;background:#092d46b8;color:#fff;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:.1px}
+
+/* Full-width film with local contrast behind the white copy. */
+.park-banner{background:#172b30}
+.park-banner-video{left:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:none;opacity:1}
+.park-banner-panel{display:block;background:linear-gradient(90deg,#06161cd6 0%,#06161c99 30%,#06161c40 53%,transparent 75%);clip-path:none}
+.park-banner-copy{width:54%;height:100%;min-height:0;padding:24px 4% 30px 5%;justify-content:center;background:transparent;animation:none}
+.park-banner-copy h1{font-size:clamp(30px,2.65vw,52px);font-weight:500;line-height:1.2;letter-spacing:-.6px;color:#fff;white-space:pre-line;text-shadow:none;margin-bottom:20px}
+.home-showcase .park-banner-copy p{max-width:600px;font-size:clamp(14px,1.05vw,20px);line-height:1.65;color:#fff;text-shadow:none;margin-bottom:22px}
+.park-banner-eyebrow{color:#fff;font-size:10px;letter-spacing:1.4px;margin-bottom:16px}
+.park-banner-arrows{right:3%;bottom:18px;padding:7px 10px;border-radius:30px;background:#101e27c9}
+.park-banner-arrows button{width:36px;height:36px;background:transparent;backdrop-filter:none}
+.park-banner-count>span{color:#e5eef5}
+.park-banner-film{position:absolute;inset:0;opacity:1;transition:opacity 180ms ease-in-out}
+.park-banner-copy{opacity:1;transition:opacity 180ms ease-in-out}
+.park-banner-film.is-changing,.park-banner-copy.is-changing{opacity:0}
+.park-industry-card{transition:border-color 180ms ease,box-shadow 180ms ease}
+@media(hover:hover) and (pointer:fine){.park-industry-card:hover{transform:none;box-shadow:0 5px 16px #183b5218;border-color:#8db9d3}.park-industry-card:hover video{transform:none}.park-industry-card:hover .park-industry-arrow{transform:none}.park-banner-link:hover,.park-banner-link:hover svg,.park-banner-arrows button:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.park-banner-film,.park-banner-copy,.park-industry-card{transition:none}}
+@media(min-width:1001px){.park-banner-copy{width:54%;padding:24px 4% 30px 5%}}
+@media(min-width:641px) and (max-width:1000px){.park-banner{height:440px}.park-banner-copy{width:68%;padding:28px 4%}.park-banner-copy h1{font-size:34px}.home-showcase .park-banner-copy p{font-size:16px}}
+@media(max-width:640px){.park-banner{height:auto;min-height:580px;padding:0}.park-banner-video{left:0;top:0;width:100%;height:100%;object-position:center}.park-banner-panel{display:block;background:linear-gradient(0deg,#06161ce8 0%,#06161cb0 40%,#06161c33 72%,transparent 100%)}.park-banner-copy{width:100%;height:auto;min-height:580px;padding:190px 24px 90px;background:transparent;justify-content:flex-end}.park-banner-copy h1{font-size:32px;white-space:normal;margin-bottom:16px}.home-showcase .park-banner-copy p{font-size:16px;margin-bottom:20px}.park-banner-eyebrow{font-size:9px;letter-spacing:1px}.park-banner-arrows{top:auto;bottom:18px;right:14px;padding:6px 8px}.park-banner-count{font-size:12px;margin-right:4px}.park-banner-arrows button{width:32px;height:32px}}
+
+/* Keep the passing train centered in the wide railway banner crop. */
+.park-banner-film-rail .park-banner-video { object-position: center 45%; }

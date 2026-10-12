@@ -4,53 +4,58 @@
   "clips": [
     {
       "slug": "mobility",
-      "title": "Close road-level vehicle view",
-      "id": 12934006,
-      "fps": 25,
-      "source": "https://www.pexels.com/video/driving-on-highway-12934006/",
-      "download": "https://videos.pexels.com/video-files/12934006/12934006-hd_1920_1080_25fps.mp4",
+      "title": "Family travelling in a vehicle cabin",
+      "source": "https://www.pexels.com/video/family-on-a-road-trip-with-baby-6181414/",
       "license": "https://www.pexels.com/license/",
+      "local": "reference/family-cabin-original.mp4",
+      "relevance": "Vehicle cabin-air filtration",
       "output": "/videos/industries/mobility.mp4",
-      "bytes": 677319,
-      "adaptation": "3-second tracking crop focused on nearby vehicles, excluding shopfronts and overhead signs."
+      "bytes": 1117299,
+      "download": "https://videos.pexels.com/video-files/6181414/6181414-hd_1920_1080_25fps.mp4"
     },
     {
       "slug": "manufacturing",
-      "title": "Textile production",
-      "local": "reference/textile-factory-original.mp4",
-      "speed": 1.3,
+      "title": "Containers moving through a food-production line",
+      "source": "https://www.pexels.com/video/empty-glass-jars-moving-through-conveyor-belt-in-factory-10615247/",
+      "license": "https://www.pexels.com/license/",
+      "local": "reference/industry-10615247-original.mp4",
+      "relevance": "Food-industry production environments",
       "output": "/videos/industries/manufacturing.mp4",
-      "bytes": 697469
+      "bytes": 1410649,
+      "download": "https://videos.pexels.com/video-files/10615247/10615247-hd_2048_996_30fps.mp4"
     },
     {
       "slug": "heavy-duty-industry",
-      "title": "Flowing molten steel",
-      "id": 5121751,
-      "fps": 25,
-      "source": "https://www.pexels.com/video/flowing-molten-steel-5121751/",
-      "download": "https://videos.pexels.com/video-files/5121751/5121751-hd_1920_1080_25fps.mp4",
+      "title": "Cement manufacturing plant",
+      "source": "https://www.pexels.com/video/drone-shot-over-a-cement-manufacturing-plant-4198768/",
       "license": "https://www.pexels.com/license/",
+      "local": "reference/industry-4198768-original.mp4",
+      "relevance": "Industrial dust collection in cement plants",
       "output": "/videos/industries/heavy-duty-industry.mp4",
-      "bytes": 1897440
+      "bytes": 1131373,
+      "download": "https://videos.pexels.com/video-files/4198768/4198768-uhd_3840_2160_24fps.mp4"
     },
     {
       "slug": "living",
-      "title": "Modern commercial building",
-      "id": 7317314,
-      "fps": 25,
-      "source": "https://www.pexels.com/video/architectural-design-of-a-modern-building-7317314/",
-      "download": "https://videos.pexels.com/video-files/7317314/7317314-hd_1920_1080_25fps.mp4",
+      "title": "Family in a home living room",
+      "source": "https://www.pexels.com/video/family-time-in-the-living-room-5998694/",
       "license": "https://www.pexels.com/license/",
+      "local": "reference/industry-5998694-original.mp4",
+      "relevance": "Indoor air and home ventilation",
       "output": "/videos/industries/living.mp4",
-      "bytes": 542929
+      "bytes": 1036700,
+      "download": "https://videos.pexels.com/video-files/5998694/5998694-uhd_4096_2160_25fps.mp4"
     },
     {
       "slug": "liquid",
-      "title": "Water treatment",
-      "local": "reference/water-treatment-original.mp4",
-      "start": 5,
+      "title": "Operating water-treatment facility",
+      "source": "https://www.pexels.com/video/drone-footage-of-a-water-treatment-facility-5099278/",
+      "license": "https://www.pexels.com/license/",
+      "local": "reference/industry-5099278-original.mp4",
+      "relevance": "Process-liquid treatment environment",
       "output": "/videos/industries/liquid.mp4",
-      "bytes": 1905564
+      "bytes": 3721434,
+      "download": "https://videos.pexels.com/video-files/5099278/5099278-uhd_3840_2160_30fps.mp4"
     }
   ]
 }

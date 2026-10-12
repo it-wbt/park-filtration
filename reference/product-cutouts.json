@@ -1,0 +1,133 @@
+{
+  "source": "reference/park-filtration-products.pptx",
+  "method": "Built-in image_gen edits; original clean transparent panel photo reused.",
+  "prompt": "Isolate only the exact product from its source photo. Remove background, lettering, logos, labels, diagrams, icons and surrounding shadows. Preserve product design, construction, color, texture, proportions and viewpoint; do not add parts. Center complete product on genuine transparent alpha background with no text, checkerboard, backdrop or watermark.",
+  "assets": [
+    {
+      "slug": "panel-filter",
+      "sourceAsset": "public/catalogue-media/image24.png",
+      "png": "public/images/products/panel-filter.png",
+      "webp": "public/images/products/panel-filter.webp",
+      "method": "Original transparent source reused"
+    },
+    {
+      "slug": "pocket-filter",
+      "sourceAsset": "public/catalogue-media/image30.png",
+      "png": "public/images/products/pocket-filter.png",
+      "webp": "public/images/products/pocket-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "hepa-filter",
+      "sourceAsset": "public/catalogue-media/image31.png",
+      "png": "public/images/products/hepa-filter.png",
+      "webp": "public/images/products/hepa-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cabin-air-filter",
+      "sourceAsset": "public/catalogue-media/image16.png",
+      "png": "public/images/products/cabin-air-filter.png",
+      "webp": "public/images/products/cabin-air-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "engine-air-filter",
+      "sourceAsset": "public/catalogue-media/image23.jpeg",
+      "png": "public/images/products/engine-air-filter.png",
+      "webp": "public/images/products/engine-air-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "battery-air-filter",
+      "sourceAsset": "public/catalogue-media/image14.png",
+      "png": "public/images/products/battery-air-filter.png",
+      "webp": "public/images/products/battery-air-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "car-purifier-filter",
+      "sourceAsset": "public/catalogue-media/image15.png",
+      "png": "public/images/products/car-purifier-filter.png",
+      "webp": "public/images/products/car-purifier-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "filter-mats",
+      "sourceAsset": "public/catalogue-media/image25.png",
+      "png": "public/images/products/filter-mats.png",
+      "webp": "public/images/products/filter-mats.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "ceiling-filter",
+      "sourceAsset": "public/catalogue-media/image33.png",
+      "png": "public/images/products/ceiling-filter.png",
+      "webp": "public/images/products/ceiling-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "bag-filter",
+      "sourceAsset": "public/catalogue-media/image38.jpeg",
+      "png": "public/images/products/bag-filter.png",
+      "webp": "public/images/products/bag-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cartridge-filter",
+      "sourceAsset": "public/catalogue-media/image37.png",
+      "png": "public/images/products/cartridge-filter.png",
+      "webp": "public/images/products/cartridge-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "liquid-filter",
+      "sourceAsset": "public/catalogue-media/image32.jpeg",
+      "png": "public/images/products/liquid-filter.png",
+      "webp": "public/images/products/liquid-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "swimming-pool-filter",
+      "sourceAsset": "public/catalogue-media/image44.png",
+      "png": "public/images/products/swimming-pool-filter.png",
+      "webp": "public/images/products/swimming-pool-filter.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cabin-particle",
+      "sourceAsset": "public/catalogue-media/image20.jpeg",
+      "png": "public/images/products/cabin-particle.png",
+      "webp": "public/images/products/cabin-particle.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cabin-fine-dust",
+      "sourceAsset": "public/catalogue-media/image17.png",
+      "png": "public/images/products/cabin-fine-dust.png",
+      "webp": "public/images/products/cabin-fine-dust.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cabin-bio-functional",
+      "sourceAsset": "public/catalogue-media/image18.png",
+      "png": "public/images/products/cabin-bio-functional.png",
+      "webp": "public/images/products/cabin-bio-functional.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "cabin-hepa",
+      "sourceAsset": "public/catalogue-media/image19.png",
+      "png": "public/images/products/cabin-hepa.png",
+      "webp": "public/images/products/cabin-hepa.webp",
+      "method": "image_gen edit"
+    },
+    {
+      "slug": "engine-synthetic",
+      "sourceAsset": "public/catalogue-media/image21.png",
+      "png": "public/images/products/engine-synthetic.png",
+      "webp": "public/images/products/engine-synthetic.webp",
+      "method": "image_gen edit"
+    }
+  ]
+}

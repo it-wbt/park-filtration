@@ -77,9 +77,7 @@ export default function MediaArchitecture(){
           
           <circle className="architecture-core" cx="270" cy="270" r="84" fill={`url(#core-${unique})`} stroke="#dce9ed"/>
 
-          <image className="architecture-core-logo" href="/images/park-nonwoven-logo.png" x="201" y="238" width="138" height="23" preserveAspectRatio="xMidYMid meet"><title>PARK Nonwoven</title></image>
-          <text x="270" y="285" textAnchor="middle" className="architecture-core-sub">Nonwoven air filter</text>
-          <g key={priority} className="architecture-focus-badge"><rect x="232" y="302" width="76" height="23" rx="11.5" fill="#e4edda"/><text x="270" y="317" textAnchor="middle">{mediaPriorities[priority].label}</text></g>
+          <image className="architecture-core-logo" href="/images/park-nonwoven-logo.png" x="201" y="258.5" width="138" height="23" preserveAspectRatio="xMidYMid meet"><title>PARK Nonwoven</title></image>
           <g className="architecture-ring-key" aria-hidden="true"><text x="22" y="150">03</text><text x="72" y="181">02</text><text x="119" y="208">01</text></g>
         </svg></div>
         <div className="architecture-scroll-status" aria-hidden="true"><span className="architecture-scroll-phase">01 / Materials</span><span className="architecture-scroll-meter"><i/></span><span>Scroll to build</span></div>

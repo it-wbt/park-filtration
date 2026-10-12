@@ -1,6 +1,6 @@
 """Prepare smaller web delivery assets; retain source originals."""
 from pathlib import Path
-import json,subprocess
+import json,subprocess,sys
 from PIL import Image
 import imageio_ffmpeg
 ROOT=Path(__file__).resolve().parents[1]
@@ -20,8 +20,8 @@ for slug,source in [('city-highway','city-highway-hd'),('scenic-train','scenic-t
   if result.returncode:raise RuntimeError(result.stderr)
   records.append(dict(asset=str(target.relative_to(ROOT)),before=source.stat().st_size,after=target.stat().st_size))
   print(target.name,target.stat().st_size,flush=True)
-for source in (ROOT/'public/videos/industries').glob('*.mp4'):
- if source.stem.endswith('-optimized'): continue
+for clip in json.loads((ROOT/'reference/industry-footage.json').read_text(encoding='utf-8'))['clips']:
+ source=ROOT/'public'/clip['output'].lstrip('/')
  target=source.with_name(source.stem+'-optimized.mp4')
  result=subprocess.run([ff,'-hide_banner','-loglevel','error','-y','-i',str(source),'-vf','scale=640:-2,fps=24','-an','-map_metadata','-1','-c:v','libx264','-pix_fmt','yuv420p','-preset','fast','-crf','28','-maxrate','500k','-bufsize','1000k','-movflags','+faststart',str(target)],capture_output=True,text=True)
  if result.returncode:raise RuntimeError(result.stderr)
@@ -34,3 +34,5 @@ for source in (ROOT/'public/videos').rglob('*poster.jpg'):
  records.append(dict(asset=str(target.relative_to(ROOT)),before=source.stat().st_size,after=target.stat().st_size))
 (ROOT/'reference/media-optimization.json').write_text(json.dumps(records,indent=2))
 print('Images, posters and videos optimized')
+
+subprocess.run([sys.executable,str(ROOT/'scripts/version-industry-media.py')],check=True)
