@@ -1,4 +1,5 @@
 import {ArrowUpRight} from 'lucide-react';
+import Link from 'next/link';
 import HomeBanner from './HomeBanner';
 import MediaArchitecture from './MediaArchitecture';
 import Header from './Header';
@@ -15,7 +16,7 @@ export default function Home() {
   <p>Founded in 1997 by Pankaj Kapoor, PARK Group manufactures nonwoven textiles and polymer materials. Headquartered in Panipat, Haryana, the group grew from its beginnings in automotive materials into a manufacturing business serving industries in India and overseas.</p>
   <p>The group brings together PARK Industries Pvt Ltd, PARK Non-Woven Pvt Ltd, PARK Felts Pvt Ltd and Essar Industries. Its manufacturing network includes locations across Delhi NCR, Chennai, Pune, Gujarat and Bangalore, supported by in-house laboratory testing.</p>
   <p>PARK combines processes such as needle punching, stitch bonding, thermo-bonding and lamination with a focus on quality and responsible manufacturing. Its community initiatives include health check-ups and eye-care camps.</p>
-  <a className="underlined-link" href="https://parknonwoven.com/about-us/" target="_blank" rel="noopener noreferrer">Learn more about PARK Group <ArrowUpRight size={18}/></a>
+  <Link className="underlined-link" href="/about">Learn more about PARK Group <ArrowUpRight size={18}/></Link>
   <div className="range-proof" aria-label="PARK Group at a glance"><div><strong>1997</strong><span>Year founded</span></div><div><strong>Panipat</strong><span>Group headquarters</span></div><div><strong>12+</strong><span>Manufacturing plants</span></div></div>
 </div></section>
 
