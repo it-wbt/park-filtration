@@ -170,3 +170,6 @@
 @media(max-width:640px){.park-factory-step{top:20px;right:20px;max-width:calc(100% - 40px);padding:11px 14px}.park-factory-step strong{font-size:14px}}
 .park-banner-film-rail .park-banner-video{object-fit:cover;object-position:center 65%}
 .home-showcase .park-banner-copy p{max-width:460px;width:100%;white-space:normal;overflow-wrap:break-word;text-wrap:pretty}
+.home-showcase .park-banner-materials .park-banner-copy p{max-width:420px;overflow-wrap:anywhere}
+.park-banner-materials .park-banner-copy strong{white-space:nowrap}
+@media(min-width:1001px){.park-banner-materials .park-banner-copy{width:38%;padding-right:24px}.park-banner-materials .park-banner-copy h1{white-space:normal;font-size:clamp(30px,2.6vw,46px)}}

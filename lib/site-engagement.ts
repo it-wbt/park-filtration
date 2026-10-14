@@ -14,5 +14,5 @@ export type CompanyEvent = {
 export const companyEvents: CompanyEvent[] = [];
 
 // International WhatsApp number, digits only including country code.
-export const whatsappNumber = '';
+export const whatsappNumber = '917496961240';
 export const whatsappMessage = 'Hello PARK, I would like help with a filtration requirement.';
