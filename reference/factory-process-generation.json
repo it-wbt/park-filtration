@@ -1,0 +1,41 @@
+{
+  "tool": "built-in image_gen",
+  "usage": "User-approved photorealistic generated scenes, animated into a four-step process illustration. Not actual factory recording. Product identity referenced from existing catalogue product image.",
+  "scenes": [
+    {
+      "slug": "01-fibres",
+      "title": "Fibre / pulp / glass fibre",
+      "prompt": "Use case: photorealistic-natural. Asset: one 16:9 landscape still for a cinematic factory-process video, natural realistic industrial photography, cohesive bright white and brushed-steel factory with restrained blue accents, soft neutral daylight, crisp authentic material textures. Compose the main subject in the center-right so website banner copy can sit at left; leave clear visual breathing room near the bottom for labels. Generic illustrative facility, no company names, logos, lettering, watermarks, certificates, invented performance figures, futuristic neon effects or infographic panels. Scene 1: close-up of clean loose white raw fibre tufts and wispy fibre bundles on a stainless preparation table. Delicate fine filaments are clearly visible. A blurred industrial fibre preparation area in the background. Emphasize tactile raw material, not yarn spools or woven cloth. No people.",
+      "source": "C:\\Users\\lenovo\\.codex\\generated_images\\01a13906-266b-7541-9e15-e32a14b5eb05\\exec-a515c65e-9384-4651-8e2e-b75746c3a409.png",
+      "path": "public/images/factory-process/01-fibres.webp"
+    },
+    {
+      "slug": "02-nonwoven",
+      "title": "Nonwoven filtration process",
+      "prompt": "Use case: photorealistic-natural. Asset: one 16:9 landscape still for a cinematic factory-process video, natural realistic industrial photography, cohesive bright white and brushed-steel factory with restrained blue accents, soft neutral daylight, crisp authentic material textures. Compose the main subject in the center-right so website banner copy can sit at left; leave clear visual breathing room near the bottom for labels. Generic illustrative facility, no company names, logos, lettering, watermarks, certificates, invented performance figures, futuristic neon effects or infographic panels. Scene 2: wide close view of a generic nonwoven production machine, a continuous broad white fibrous web passing flat between large metal rollers inside an organized factory hall. Soft felt-like unpatterned white sheet, visible rollers and guarded machinery, coherent industrial geometry. No weaving loom, yarn threads or knitted material. No people or text.",
+      "source": "C:\\Users\\lenovo\\.codex\\generated_images\\01a13906-266b-7541-9e15-e32a14b5eb05\\exec-e42d1538-ccbd-4a5f-a0d8-b3ed5707e761.png",
+      "path": "public/images/factory-process/02-nonwoven.webp"
+    },
+    {
+      "slug": "03-media-roll",
+      "title": "Filter media",
+      "prompt": "Use case: photorealistic-natural. Asset: one 16:9 landscape still for a cinematic factory-process video, natural realistic industrial photography, cohesive bright white and brushed-steel factory with restrained blue accents, soft neutral daylight, crisp authentic material textures. Compose the main subject in the center-right so website banner copy can sit at left; leave clear visual breathing room near the bottom for labels. Generic illustrative facility, no company names, logos, lettering, watermarks, certificates, invented performance figures, futuristic neon effects or infographic panels. Scene 3: a large clean white nonwoven filter-media roll mounted on a steel winding spindle with a short length of soft fibrous sheet draping over a roller. Clearly visible layered roll cross-section and matte felt-like texture. Factory production equipment softly blurred behind. Three-quarter view. No logos, no printed marks.",
+      "source": "C:\\Users\\lenovo\\.codex\\generated_images\\01a13906-266b-7541-9e15-e32a14b5eb05\\exec-d9a57044-af95-481b-afb8-bf8f9f8dd456.png",
+      "path": "public/images/factory-process/03-media-roll.webp"
+    },
+    {
+      "slug": "04-finished-filter",
+      "title": "Finished filter",
+      "prompt": "Use case: photorealistic-natural. Asset: one 16:9 landscape still for a cinematic factory-process video, natural realistic industrial photography, cohesive bright white and brushed-steel factory with restrained blue accents, soft neutral daylight, crisp authentic material textures. Compose the main subject in the center-right so website banner copy can sit at left; leave clear visual breathing room near the bottom for labels. Generic illustrative facility, no company names, logos, lettering, watermarks, certificates, invented performance figures, futuristic neon effects or infographic panels. Scene 4: use the attached product image only as an identity reference. Preserve its rectangular black frame and densely packed white pleats, with the same overall panel-filter shape, frame and white pleat texture. Place one finished filter upright on a clean factory quality-control bench, three-quarter angle, neatly finished surface and soft grounded shadow. Industrial rollers softly out of focus behind. No product labels, no branding, no other filter designs.",
+      "source": "C:\\Users\\lenovo\\.codex\\generated_images\\01a13906-266b-7541-9e15-e32a14b5eb05\\exec-50331d32-b1c5-4b4a-9b96-6ec3539fcf1e.png",
+      "path": "public/images/factory-process/04-finished-filter.webp"
+    }
+  ],
+  "assets": {
+    "highResolutionSrc": "/videos/home/banner-factory-process-desktop-5eebee7555.mp4",
+    "durationMs": 20500,
+    "src": "/videos/home/banner-factory-process-mobile-df0f1fa52a.mp4",
+    "poster": "/videos/home/banner-factory-process-poster-083d365f7d.webp"
+  },
+  "adaptation": "Four generated scenes with subtle camera pans and zooms, 0.5-second crossfades, 20.5 seconds, silent. Website step captions follow video playback. Not actual factory footage or a verified PARK manufacturing sequence."
+}

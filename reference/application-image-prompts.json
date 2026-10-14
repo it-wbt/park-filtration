@@ -1,0 +1,82 @@
+{
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "slug": "automobiles",
+      "name": "Automobiles",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-fd7f4a81-6283-49a2-8240-b32600bb26c2.png",
+      "path": "public/images/applications/automobiles-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Modern passenger car cabin viewed through an open door, dashboard air vents clearly visible, clean realistic upholstery and soft daylight, parked outdoors. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "railways",
+      "name": "Railways",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-9a8798d6-c00f-4df0-8bf4-14d95adfb632.png",
+      "path": "public/images/applications/railways-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Modern railway passenger coach interior with rows of seats, overhead ventilation grilles and bright windows, clean practical rail interior. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "pharmaceutical",
+      "name": "Pharmaceutical",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-79b39bfe-a8ff-4f3d-bb6e-4ac423a7fdcf.png",
+      "path": "public/images/applications/pharmaceutical-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Bright pharmaceutical production cleanroom with a technician in cleanroom coveralls beside stainless processing equipment, ceiling air supply grilles visible. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "electronics-and-optics",
+      "name": "Electronics & Optics",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-b0b84ec3-27d0-4465-a909-92dff693c557.png",
+      "path": "public/images/applications/electronics-and-optics-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Technician in cleanroom coveralls and gloves inspecting a small optical lens assembly at an electronics workbench, clean manufacturing room, ceiling ventilation in background. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "power-plant",
+      "name": "Power Plant",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-f041d172-fc68-4ac8-a383-8ae6e34cb619.png",
+      "path": "public/images/applications/power-plant-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Industrial power generation plant with large ducts and enclosed dust collection equipment, pipes and steel structures, daylight, realistic organized facility. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "cement-plant",
+      "name": "Cement Plant",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-6ca6847e-b710-410d-bed0-9ead8cc3f409.png",
+      "path": "public/images/applications/cement-plant-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Cement processing facility with a large enclosed baghouse dust collector, steel ductwork and silos, pale mineral textures, daytime, no dramatic pollution. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "chemical-industry",
+      "name": "Chemical Industry",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-4acd8c97-6a17-4d2f-8df7-2e743344abde.png",
+      "path": "public/images/applications/chemical-industry-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Chemical processing hall with enclosed stainless vessels, pipework and ventilation ducts, a helmeted technician in the background, natural clean industrial photography. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "house",
+      "name": "House",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-e548d169-caca-456b-b5c2-c07ddf797a52.png",
+      "path": "public/images/applications/house-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Bright modern family living room with a discreet ceiling ventilation grille, sofa, indoor plants and large daylight windows, warm inviting realistic interior. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "hotel",
+      "name": "Hotel",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-abe05403-2d0d-4443-be85-dee1ff8807f0.png",
+      "path": "public/images/applications/hotel-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Elegant contemporary hotel lobby with seating, reception in background and discreet linear ceiling ventilation grilles, warm natural daylight. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "retail-and-commercial-building",
+      "name": "Retail and Commercial Building",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-1369dcbb-c540-47b1-89d5-5d37ee986fe0.png",
+      "path": "public/images/applications/retail-and-commercial-building-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Modern commercial office atrium with glass partitions, collaborative seating and visible ceiling HVAC diffusers, bright natural light. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    },
+    {
+      "slug": "hospital",
+      "name": "Hospital",
+      "source": "C:/Users/lenovo/.codex/generated_images/01a13906-266b-7541-9e15-e32a14b5eb05/exec-5f155104-c959-4ed1-85c0-a83843c794db.png",
+      "path": "public/images/applications/hospital-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 professional editorial website application photograph. Bright modern hospital corridor with clean doors, ceiling ventilation diffusers and a nurse in background, calm neutral daylight, no medical procedures. Balanced composition suitable for a 4:3 crop, natural detailed textures, restrained cool-neutral colors, high quality realistic photography. Generic illustrative application environment, not a specific company's facility. No text, logos, watermark, visible product branding or invented certification claims."
+    }
+  ]
+}

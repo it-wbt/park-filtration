@@ -1,0 +1,13 @@
+{
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "path": "public/images/industries/manufacturing-bottling-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Create a landscape 3:2 high resolution editorial photograph for a manufacturing filtration website hero. Rows of clear glass bottles on an automated stainless steel beverage bottling conveyor in a bright clean production hall, turquoise guide rails, detailed realistic machinery in background, cool neutral daylight, crisp professional industrial photography. Close eye-level composition like the user's bottling-line reference; fill the image with the production scene. No text, logos, watermark, or claims that this is a specific company's facility."
+    },
+    {
+      "path": "public/images/industries/paint-booth-generated.webp",
+      "prompt": "Use case: photorealistic-natural. Create a landscape 3:2 editorial photo for a paint-booth filtration application card. A worker wearing white protective coveralls, respirator and orange protective gloves uses a gravity-fed spray gun to paint a silver automotive body panel inside a bright enclosed spray booth. Worker cropped at left, gloved hand and physically accurate spray gun prominent, curved car panel and masking paper on right. Subtle paint mist, clean neutral light, detailed natural professional industrial photography matching the user's paint-booth reference. No text, logos or watermark. Generic illustrative facility."
+    }
+  ]
+}

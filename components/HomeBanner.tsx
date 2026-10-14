@@ -2,6 +2,7 @@
 
 import {useCallback, useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import {preload} from 'react-dom';
 import {ChevronLeft, ChevronRight, Pause, Play} from 'lucide-react';
 import {industries, toSlug} from '../lib/products';
@@ -11,9 +12,10 @@ import {industryMedia} from '../lib/industry-media';
 import {bannerMedia} from '../lib/banner-media';
 
 const slides = [
-  {title: 'Innovating filtration for\na cleaner world', description: 'Explore PARK air filters, liquid filters and nonwoven media for vehicles, buildings and industrial processes.', context: 'FILTRATION SOLUTIONS', href: '/products', action: 'Explore products'},
-  {title: 'With you the\nwhole way', description: 'From railway coach ventilation to automotive cabin air, find PARK filtration options for your transport system.', context: 'MOBILITY / RAILWAY & AUTOMOTIVE', href: '/industries/mobility', action: 'Explore mobility'},
-  {title: 'Better air for\nevery journey', description: 'PARK cabin air filters help reduce dust and pollen entering vehicle cabins. Explore particle and activated carbon options.', context: 'MOBILITY / CABIN AIR FILTERS', href: '/products/cabin-air-filter', action: 'Explore cabin filters'},
+  {title: 'Filtration Materials', description: 'Filtration materials drives our mission to innovate products that form the heart of every filtration system', context: 'FILTER MEDIA / PROCESS OVERVIEW', href: '/filtration-media', action: 'Explore filter media'},
+  {title: 'Innovating filtration for\na cleaner world', description: 'Delivering innovative filtration solutions that enhance air quality, protect equipment, and contribute to a healthier and more sustainable future.', context: 'FILTRATION SOLUTIONS', href: '/products', action: 'Explore products'},
+  {title: 'With you the\nWhole way', description: 'From manufacturing to transportation, Our industrial filtration solution help you drive cleaner', context: 'MOBILITY / RAILWAY & AUTOMOTIVE', href: '/industries/mobility', action: 'Explore mobility'},
+  {title: 'Better quality\nEvery time for secure world', description: 'No matter what conditions are like outside, Cabin air filters make sure that the air inside the vehicle is clean and pollution free.', context: 'MOBILITY / CABIN AIR FILTERS', href: '/products/cabin-air-filter', action: 'Explore cabin filters'},
 ];
 
 export default function HomeBanner() {
@@ -59,15 +61,14 @@ export default function HomeBanner() {
   const slide = slides[active];
   const move = (direction: number) => {selectSlide((active + direction + slides.length) % slides.length);};
   return <div ref={showcase} className="home-showcase">
-    <section className="park-banner" aria-label="PARK filtration highlights" aria-roledescription="carousel" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false);}}>
-      <div className={'park-banner-film' + (active === 1 ? ' park-banner-film-rail' : '') + (fading ? ' is-changing' : '')}><ShowcaseVideo key={active} priority className="park-banner-video" src={bannerMedia[active].src} highResolutionSrc={bannerMedia[active].highResolutionSrc} poster={bannerMedia[active].poster} paused={paused}/></div>
+    <section className={'park-banner' + (active === 2 ? ' park-banner-rail' : '')} aria-label="PARK filtration highlights" aria-roledescription="carousel" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false);}}>
+      <div className={'park-banner-film' + (active === 2 ? ' park-banner-film-rail' : '') + (fading ? ' is-changing' : '')}>{active === 0 ? <NextImage className="park-banner-video park-banner-process-image" src={bannerMedia[0].poster} alt="Illustrative journey from fibre through nonwoven processing and filter-media roll to a finished filter" width={1672} height={941} sizes="100vw" loading="eager" fetchPriority="high"/> : <ShowcaseVideo key={active} priority className="park-banner-video" src={bannerMedia[active].src} highResolutionSrc={bannerMedia[active].highResolutionSrc} poster={bannerMedia[active].poster} paused={paused}/>}</div>
       <div className="park-banner-panel"/>
       <div className={'park-banner-copy' + (fading ? ' is-changing' : '')} aria-live={paused ? 'polite' : 'off'}>
-        <span className="park-banner-eyebrow"><span/>PARK / {slide.context}</span>
-        <h1>{slide.title}</h1><p>{slide.description}</p>
+        <h1>{slide.title}</h1><p>{active === 0 ? <>Filtration materials drives our mission to <strong><u>innovate products</u></strong> that form the heart of every filtration system</> : active === 2 ? <>From manufacturing to transportation,<br/>Our industrial filtration solution help you drive cleaner</> : slide.description}</p>
         <Link href={slide.href} className="park-banner-link">{slide.action} <ChevronRight size={18}/></Link>
       </div>
-      <div className="park-banner-arrows"><span className="park-banner-count">0{active + 1}<span> / 03</span></span><button onClick={() => move(-1)} aria-label="Previous banner"><ChevronLeft/></button><button onClick={() => move(1)} aria-label="Next banner"><ChevronRight/></button></div>
+      <div className="park-banner-arrows"><span className="park-banner-count">0{active + 1}<span> / {String(slides.length).padStart(2, "0")}</span></span><button onClick={() => move(-1)} aria-label="Previous banner"><ChevronLeft/></button><button onClick={() => move(1)} aria-label="Next banner"><ChevronRight/></button></div>
     </section>
     <div className="park-banner-controls">
       <div className="park-banner-dots">{slides.map((item, index) => <button key={item.href} aria-label={`Show banner ${index + 1}: ${item.title.replace('\n', ' ')}`} aria-pressed={active === index} onClick={() => {selectSlide(index);}}><span/></button>)}</div>
@@ -77,7 +78,7 @@ export default function HomeBanner() {
       <span className="park-industry-kicker">FIND YOUR INDUSTRY</span>
       <h2 id="industry-shortcuts-title">Innovation in filtration for every industry</h2>
       <p>Advanced materials. Smarter filtration. Cleaner solutions.</p>
-      <div className="park-industry-cards">{industries.map((industry) => <Link key={industry.name} href={`/industries/${toSlug(industry.name)}`} className="park-industry-card"><ShowcaseVideo key={industryMedia[toSlug(industry.name)].src} src={industryMedia[toSlug(industry.name)].src} poster={industryMedia[toSlug(industry.name)].poster} paused={paused}/><span className="park-industry-context">{industryMedia[toSlug(industry.name)].context}</span><div className="park-industry-card-copy"><h3>{industry.name}</h3><span className="park-industry-discover">Explore solutions <span className="park-industry-arrow"><ChevronRight size={19}/></span></span></div></Link>)}</div>
+      <div className="park-industry-cards">{industries.map((industry) => <Link key={industry.name} href={`/industries/${toSlug(industry.name)}`} className="park-industry-card"><ShowcaseVideo key={industryMedia[toSlug(industry.name)].src} src={industryMedia[toSlug(industry.name)].src} poster={industryMedia[toSlug(industry.name)].poster} paused={paused}/><div className="park-industry-card-copy"><h3>{industry.name}</h3><span className="park-industry-discover">Explore solutions <span className="park-industry-arrow"><ChevronRight size={19}/></span></span></div></Link>)}</div>
     </section>
   </div>;
 }

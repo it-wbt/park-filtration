@@ -37,8 +37,6 @@ export default function MediaArchitecture(){
       section.style.setProperty('--media-progress',String(progress));
       section.querySelector<SVGElement>('.architecture-orbit')?.style.setProperty('transform',`rotate(${progress*100}deg)`);
       paths.forEach(path=>{const amount=preference.matches?1:clamp((progress-Number(path.dataset.ring)*.24)/.48);path.style.strokeDashoffset=String(1-amount);});
-      const phase=section.querySelector<HTMLElement>('.architecture-scroll-phase');
-      if(phase)phase.textContent=progress<.34?'01 / Materials':progress<.68?'02 / Technologies':'03 / Enhancements';
     };
     const schedule=()=>{if(!frame)frame=requestAnimationFrame(render);};
     const update=()=>{setReduced(preference.matches);schedule();};
@@ -54,9 +52,9 @@ export default function MediaArchitecture(){
     <div className="architecture-layout">
       <div className="architecture-copy">
     <div className="architecture-heading"><div><div className="eyebrow">THE SCIENCE INSIDE EVERY FILTER</div><h2>Advanced nonwoven media.<br/><span>High-performance filtration.</span></h2></div><Link href="/filtration-media#media-architecture" className="underlined-link">Explore the media possibilities <ArrowUpRight size={17}/></Link></div>
-      <p className="architecture-lead">At PARK, nonwoven filtration media are at the heart of every high-performance filtration solution.</p><p>We develop and manufacture advanced nonwoven filtration materials engineered to balance performance, durability and energy efficiency across different applications.</p><div className="architecture-priority-heading"><span>THREE PERFORMANCE PRIORITIES</span><span>01 — 03</span></div>
-        <div className="architecture-priorities">{mediaPriorities.map((entry,index)=>{const Icon=priorityIcons[index];return <button key={entry.name} className="architecture-priority" aria-pressed={priority===index} onClick={()=>setPriority(index)}><span className="architecture-priority-icon"><Icon size={21} strokeWidth={1.5}/></span><span><strong>{entry.name}</strong><span className="architecture-priority-text">{entry.text}</span></span><span className="architecture-priority-number">0{index+1}</span></button>;})}</div>
-        <div className="architecture-copy-footer"><span className="architecture-small-dot"/><p>Media, treatments and performance are specified for your application.</p><Link href="/#contact">Discuss your requirements <ArrowUpRight size={15}/></Link></div>
+      <p className="architecture-lead">At PARK, nonwoven filtration media are at the heart of every high-performance filtration solution.</p><p>We develop and manufacture advanced nonwoven filtration materials engineered to balance performance, durability and energy efficiency across different applications.</p><div className="architecture-priority-heading"><span>THREE PERFORMANCE PRIORITIES</span></div>
+        <div className="architecture-priorities">{mediaPriorities.map((entry,index)=>{const Icon=priorityIcons[index];return <button key={entry.name} className="architecture-priority" aria-pressed={priority===index} onClick={()=>setPriority(index)}><span className="architecture-priority-icon"><Icon size={21} strokeWidth={1.5}/></span><span><strong>{entry.name}</strong><span className="architecture-priority-text">{entry.text}</span></span></button>;})}</div>
+        <div className="architecture-copy-footer"><Link href="/#contact">Discuss your requirements <ArrowUpRight size={15}/></Link></div>
       </div>
       <div className="architecture-wheel-card"><div className="architecture-wheel-top"><span>ENGINEER YOUR MEDIA</span><button className="architecture-motion-toggle" disabled={reduced} aria-label={paused?'Play media animation':'Pause media animation'} onClick={()=>setPaused(!paused)}>{paused||reduced?<Play size={12}/>:<Pause size={12}/>}<span>{reduced?'Still view':paused?'Play':'Pause'}</span></button></div>
         <div className="architecture-layer-controls" role="group" aria-label="Explore media design layers">{mediaLayers.map((group,index)=>{const Icon=icons[index];return <button key={group.name} aria-pressed={layer===index} onClick={()=>choose(index,0)}><Icon size={14}/>{group.name}</button>;})}</div>
@@ -78,10 +76,7 @@ export default function MediaArchitecture(){
           <circle className="architecture-core" cx="270" cy="270" r="84" fill={`url(#core-${unique})`} stroke="#dce9ed"/>
 
           <image className="architecture-core-logo" href="/images/park-nonwoven-logo.png" x="201" y="258.5" width="138" height="23" preserveAspectRatio="xMidYMid meet"><title>PARK Nonwoven</title></image>
-          <g className="architecture-ring-key" aria-hidden="true"><text x="22" y="150">03</text><text x="72" y="181">02</text><text x="119" y="208">01</text></g>
         </svg></div>
-        <div className="architecture-scroll-status" aria-hidden="true"><span className="architecture-scroll-phase">01 / Materials</span><span className="architecture-scroll-meter"><i/></span><span>Scroll to build</span></div>
-        <p className="architecture-wheel-hint">Hover to preview. Select a segment to explore its role in your filter.</p>
         <div className="architecture-item-choices" role="group" aria-label={`${mediaLayers[layer].name} options`}>{mediaLayers[layer].items.map((entry,index)=><button key={entry.name} aria-pressed={item===index} onClick={()=>choose(layer,index)}>{entry.name}</button>)}</div>
         <div className="architecture-selection" aria-live="polite" aria-atomic="true"><div key={`${displayLayer}-${displayItem}`} className="architecture-selection-content"><span className="architecture-selection-icon"><CurrentIcon size={19}/></span><div><span>{mediaLayers[displayLayer].name} / {mediaLayers[displayLayer].label}</span><h3>{selected.name}</h3><p>{selected.text}</p></div></div></div>
       </div>

@@ -1,13 +1,5 @@
-'use client';
-import useEnquirySend from './useEnquirySend';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import Contact from './Contact';
 
-export default function ProductEnquiry({ product, variants = [] }: { product: string; variants?: string[] }) {
- const {status,error,send}=useEnquirySend();
- return <section className="product-enquiry" id="product-enquiry"><div><span className="eyebrow">LET'S SPECIFY YOUR FILTER</span><h2>Request a quote for<br/>{product.toLowerCase()}.</h2><p>Share your application and assembly requirements. A useful enquiry gives our team the information to confirm the available format, technical specification and quotation.</p><a href={'mailto:sales@parknonwoven.com?subject=' + encodeURIComponent('Enquiry: ' + product)}><Mail size={17}/> sales@parknonwoven.com</a><p className="enquiry-note">No catalogue price or delivery time is assumed. Your specification and quantity form the basis of the enquiry.</p></div><form onSubmit={async event => {
-  event.preventDefault();
-  const form=event.currentTarget;const data = new FormData(form);
-  const body = `Product: ${product}\nName: ${data.get('name')}\nWork email: ${data.get('email')}\nCompany: ${data.get('company')}\nVariant: ${data.get('variant') || 'Please advise'}\nQuantity: ${data.get('quantity') || 'To be confirmed'}\nDimensions / grade: ${data.get('specification') || 'To be confirmed'}\n\nApplication and operating conditions:\n${data.get('application')}`;
-  if(await send(data,body,product))form.reset();
- }}><input type="text" name="website" hidden tabIndex={-1} autoComplete="off" aria-hidden="true"/><div className="form-row"><label>Your name<input name="name" autoComplete="name" required maxLength={100}/></label><label>Work email<input name="email" type="email" autoComplete="email" required maxLength={150}/></label></div><div className="form-row"><label>Company<input name="company" autoComplete="organization" maxLength={150}/></label><label>Estimated quantity<input name="quantity" placeholder="e.g. 100 units or 50 m²" maxLength={80}/></label></div>{variants.length > 0 && <label>Preferred variant<select name="variant" defaultValue=""><option value="">Help me choose a variant</option>{variants.map(v => <option key={v}>{v}</option>)}</select></label>}<label>Dimensions / required grade<input name="specification" placeholder="Existing filter dimensions, drawing reference or media grade" maxLength={250}/></label><label>Application and operating conditions<textarea name="application" rows={3} required maxLength={3000} placeholder="What are you filtering? Include the system, airflow or liquid flow, temperature and any existing filter reference."/></label><button type="submit" className="button" disabled={status==='sending'}>{status==='sending'?'Sending?':'Send quotation enquiry'} <ArrowUpRight size={17}/></button><p className="form-note" role="status">{status==='sent'?'Your enquiry has been submitted. Our team will get back to you.':status==='error'?error:'Send your requirements directly to the PARK team.'}</p></form></section>;
+export default function ProductEnquiry({product}: {product: string; variants?: string[]}) {
+  return <Contact id="product-enquiry" product={product}/>;
 }

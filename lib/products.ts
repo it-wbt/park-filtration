@@ -3,10 +3,10 @@
 export type Product = { slug: string; name: string; image: string; categories: string[]; description: string; material: string; applications: string[]; features: string[]; specifications?: { label: string; value: string }[]; variants?: string[]; sourceSlides?: number[] };
 export const industries = [
  { name: 'Mobility', image: 'image5', label: 'Filters for cabins, engines and cooling air.', description: 'Manage dust and particles in vehicle cabins, engine intakes and battery cooling air. Explore PARK automotive and railway filters for your system.' },
- { name: 'Manufacturing', image: 'image2', label: 'Keep particles out of your process.', description: 'Address airborne particles and process-liquid contamination with PARK air and liquid filters for production, cleanrooms and paint booths.' },
+ { name: 'Manufacturing', image: 'industries/paint-booth-generated', label: 'Keep particles out of your process.', description: 'Address airborne particles and process-liquid contamination with PARK air and liquid filters for production, cleanrooms and paint booths.' },
  { name: 'Heavy Duty Industry', image: 'image4', label: 'Tackle dust in demanding processes.', description: 'Manage industrial dust with PARK bag and cartridge filters. Discuss materials and fit for cement, power and chemical processing systems.' },
  { name: 'Living', image: 'image3', label: 'Choose filters for your indoor air.', description: 'Find PARK HVAC air filters for homes, hotels, hospitals and commercial buildings. Compare filtration stages and sizes for your ventilation system.' },
- { name: 'Liquid', image: 'image32', label: 'Keep unwanted particles out of your liquid.', description: 'Remove suspended solids from process liquids with PARK liquid bag filters. Discuss micron rating, fluid compatibility, flow and housing fit.' },
+ { name: 'Liquid', image: 'industries/liquid-filtration-generated', label: 'Keep unwanted particles out of your liquid.', description: 'Remove suspended solids from process liquids with PARK liquid bag filters. Discuss micron rating, fluid compatibility, flow and housing fit.' },
 ];
 export const products: Product[] = [
  {slug:'panel-filter',name:'Panel Filters',image:'products/panel-filter',categories:['Mobility','Manufacturing','Heavy Duty Industry','Living'],description:'Capture dust in HVAC and ventilation systems with PARK pleated panel filters. Compare synthetic media, frame options and sizes for your installation.',material:'Synthetic nonwoven media',applications:['HVAC systems','Railway ventilation','Commercial buildings','Cleanroom pre-filtration'],features:['Standard and custom sizes','Metal or plastic frame options','Temperature resistance up to 70°C']},
@@ -48,7 +48,7 @@ export const applicationGroups: Record<string, ApplicationGroup[]> = {
   {name:'House', children:['Ventilation','Swimming Pool'], products:['panel-filter','swimming-pool-filter'], summary:'Panel filters for private indoor ventilation and HVAC systems. Match the size and grade to your installation.', sourceSlides:[28,29,14,32]},
   {name:'Hotel', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','swimming-pool-filter'], summary:'Explore panel and pocket options for ventilation, or discuss separate swimming pool filtration requirements.', sourceSlides:[28,29,14,15,32]},
   {name:'Retail and Commercial Building', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','swimming-pool-filter'], summary:'Air-handling filters for commercial indoor spaces and shopping centres.', sourceSlides:[28,29,14,15,32]},
-  {name:'Hospital', children:['Ventilation','Swimming Pool'], products:['panel-filter','pocket-filter','hepa-filter','swimming-pool-filter'], summary:'Ventilation and fine-filtration options for hospital and medical systems. Confirm the grade required for each area.', sourceSlides:[28,29,14,15,31,32]},
+  {name:'Hospital', children:['Ventilation'], products:['panel-filter','pocket-filter','hepa-filter'], summary:'Ventilation and fine-filtration options for hospital and medical systems. Confirm the grade required for each area.', sourceSlides:[28,29,14,15,31,32]},
  ],
  'Liquid': [
   {name:'Food Industry', products:['liquid-filter'], summary:'Polypropylene liquid bag filters for suspended particles. Discuss your process liquid, micron rating and sealing ring.', sourceSlides:[34,35]},
@@ -105,3 +105,6 @@ for (const slug of ['bag-filter','cartridge-filter']) {
  product.applications = [...dustApplications];
  product.specifications!.push({label:'ISO 16890 classification options (confirm application)',value:airGrades}, {label:'EN 779 classification options (confirm application)',value:legacyGrades});
 }
+// Display HEPA and swimming-pool filters first; preserve the order of the rest.
+const productDisplayPriority: Record<string, number> = {'hepa-filter': 0, 'swimming-pool-filter': 1};
+products.sort((a, b) => (productDisplayPriority[a.slug] ?? 2) - (productDisplayPriority[b.slug] ?? 2));

@@ -137,7 +137,6 @@
 @media(min-width:641px) and (max-width:1000px){.park-banner{height:560px}.park-banner-copy{width:85%;padding:30px 6% 70px}.park-banner-video{left:0;width:100%}.park-banner-copy h1{font-size:42px}}
 @media(max-width:640px){.home-showcase{margin:0}.park-banner{min-height:580px}.park-banner-copy{width:100%;min-height:580px;padding:200px 24px 84px;justify-content:flex-end}.park-banner-copy h1{font-size:36px;white-space:normal}.park-banner-panel{background:linear-gradient(0deg,#051b30ed,#051b3080 50%,#051b3012)}.home-showcase .park-banner-copy p{font-size:15px}.park-banner-arrows{bottom:20px;right:24px}}
 
-.park-industry-context{position:absolute;z-index:2;top:14px;left:14px;max-width:calc(100% - 28px);padding:5px 9px;border-radius:4px;background:#092d46b8;color:#fff;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:.1px}
 
 /* Full-width film with local contrast behind the white copy. */
 .park-banner{background:#172b30}
@@ -162,3 +161,12 @@
 
 /* Keep the passing train centered in the wide railway banner crop. */
 .park-banner-film-rail .park-banner-video { object-position: center 45%; }
+.park-factory-step{position:absolute;top:28px;right:4%;max-width:42%;padding:14px 18px;background:#082b43d9;border:1px solid #ffffff3b;border-radius:9px;color:white;z-index:2;backdrop-filter:blur(8px)}
+.park-factory-step>span{display:block;font-size:9px;letter-spacing:1.4px;color:#d0e2ea;margin-bottom:7px}
+.park-factory-step strong{font-size:16px;font-weight:500}
+.park-factory-step>div{display:flex;gap:5px;margin-top:12px}
+.park-factory-step i{height:3px;width:30px;background:#ffffff38;border-radius:2px}
+.park-factory-step i.is-active{background:#a4c980}
+@media(max-width:640px){.park-factory-step{top:20px;right:20px;max-width:calc(100% - 40px);padding:11px 14px}.park-factory-step strong{font-size:14px}}
+.park-banner-film-rail .park-banner-video{object-fit:cover;object-position:center 65%}
+.home-showcase .park-banner-copy p{max-width:460px;width:100%;white-space:normal;overflow-wrap:break-word;text-wrap:pretty}

@@ -1,6 +1,7 @@
 'use client';
+import { codeFrameColumns } from 'next/dist/build/swc/generated-native';
 import {useEffect, useRef} from 'react';
-export default function ShowcaseVideo({src, poster, paused, className, highResolutionSrc, priority = false}: {src: string; poster: string; paused: boolean; className?: string; highResolutionSrc?: string; priority?: boolean}) {
+export default function ShowcaseVideo({src, poster, paused, className, highResolutionSrc, priority = false, onTimeUpdate}: {src: string; poster: string; paused: boolean; className?: string; highResolutionSrc?: string; priority?: boolean; onTimeUpdate?: (time: number) => void}) {
  const ref = useRef<HTMLVideoElement>(null);
  const pausedRef = useRef(paused);
  pausedRef.current = paused;
@@ -44,5 +45,5 @@ export default function ShowcaseVideo({src, poster, paused, className, highResol
   return () => {disposed = true; clearTimeout(timer); observer.disconnect(); sizeObserver.disconnect(); document.removeEventListener('visibilitychange', sync); motion.removeEventListener('change', sync); video.pause(); syncRef.current = () => {};};
  }, [src, highResolutionSrc, priority]);
  useEffect(() => {syncRef.current();}, [paused]);
- return <video ref={ref} className={className} poster={poster} muted loop playsInline preload="none" aria-hidden="true"/>;
+ return <video ref={ref} className={className} poster={poster} muted loop playsInline preload="none" aria-hidden="true" onTimeUpdate={event => onTimeUpdate?.(event.currentTarget.currentTime)}/>;
 }
