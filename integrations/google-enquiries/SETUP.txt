@@ -3,7 +3,8 @@ PARK chatbot: Google Sheet + email setup
 1. Create or choose the Google Sheet that will receive enquiries.
 2. Open Extensions > Apps Script. Paste Code.gs into the script project.
 3. In Project Settings > Script Properties, add:
-   SHEET_ID: the ID between /d/ and /edit in the spreadsheet URL.
+   SHEET_ID is optional; Code.gs defaults to the supplied PARK lead Sheet.
+   To use a different spreadsheet later, set SHEET_ID to the ID between /d/ and /edit.
    RECIPIENT_EMAIL: sales@parknonwoven.com (or your confirmed enquiry address).
    ALLOWED_ORIGINS: your exact website origin(s), separated by commas.
    For local testing include http://localhost:3000. For production include
@@ -12,7 +13,10 @@ PARK chatbot: Google Sheet + email setup
    Authorize spreadsheet access and email sending with the Sheet owner's account.
 5. Copy the deployed /exec URL. Set it in the website environment:
    NEXT_PUBLIC_GOOGLE_ENQUIRY_URL=https://script.google.com/macros/s/DEPLOYMENT_ID/exec
-6. Restart the local server, or rebuild and redeploy the website.
+   For local development, put this line in a new `.env.local` file in the
+   website project root. `.env.example` is only a template and is not loaded.
+6. Restart the local server, or rebuild and redeploy the website. Production
+   deployments need NEXT_PUBLIC_GOOGLE_ENQUIRY_URL set in their build environment.
 7. Submit a test enquiry. Confirm an Enquiries row and an email arrive.
    The chatbot only shows success after both operations are acknowledged.
 

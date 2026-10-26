@@ -61,6 +61,7 @@ export default function ParkChat() {
     const data=new FormData();data.set('name',details.name);data.set('email',details.email);data.set('phone',details.phone);
     const queries=messages.filter(message=>message.role==='user' && ![details.name,details.phone,details.email].includes(message.text)).map(message=>message.text).join('\n');
     const body=`Chatbot enquiry\nName: ${details.name}\nMobile: ${details.phone}\nEmail: ${details.email}\n\nUser queries:\n${queries || 'Please contact me about PARK filtration.'}`;
+    data.set('siteDomain',location.hostname);
     await send(data,body);
   };
   return <div className="park-chat-widget">

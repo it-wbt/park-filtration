@@ -1,6 +1,7 @@
 export type GoogleEnquiry = {name: string; email: string; phone: string; message: string; product?: string; website?: string};
 
-// Apps Script replies through postMessage, avoiding opaque no-cors responses.
+// Post directly from the browser to Apps Script. The hidden iframe lets us
+// receive its postMessage confirmation without a server-side API route.
 export function submitGoogleEnquiry(endpoint: string, enquiry: GoogleEnquiry, requestId: string): Promise<void> {
   const url = new URL(endpoint);
   if (url.origin !== 'https://script.google.com' || !/^\/macros\/s\/[^/]+\/exec$/.test(url.pathname)) throw new Error('Google enquiry service is not configured correctly.');
@@ -16,7 +17,7 @@ export function submitGoogleEnquiry(endpoint: string, enquiry: GoogleEnquiry, re
       cleanup();
       if(event.data.success===true)resolve();else reject(new Error(event.data.message || 'Unable to submit your enquiry. Please try again.'));
     };
-    const timer=window.setTimeout(()=>{cleanup();reject(new Error('Submission could not be confirmed. Please retry; your existing enquiry will not be duplicated.'));},45000);
+    const timer=window.setTimeout(()=>{cleanup();reject(new Error('Submission could not be confirmed. Check Apps Script deployment and ALLOWED_ORIGINS, then retry.'));},45000);
     window.addEventListener('message',receive);document.body.append(frame,form);form.submit();
   });
 }
