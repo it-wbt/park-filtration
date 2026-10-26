@@ -1,10 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useEnquirySend from './useEnquirySend';
-import { ArrowUpRight, UserRound, Mail, Send, Check, MessageSquareText } from 'lucide-react';
+import { ArrowUpRight, UserRound, Mail, Send, Check, MessageSquareText, X, CircleCheck } from 'lucide-react';
 
 export default function Contact({id = 'contact', product}: {id?: string; product?: string} = {}){
-  const [message,setMessage]=useState('');const {status,error,send}=useEnquirySend();
+  const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const {status,error,send}=useEnquirySend();
+  const closeSuccessRef=useRef<HTMLButtonElement>(null);
+  useEffect(()=>{if(!showSuccess)return;closeSuccessRef.current?.focus();const onKeyDown=(event:KeyboardEvent)=>{if(event.key==='Escape')setShowSuccess(false);};window.addEventListener('keydown',onKeyDown);return()=>window.removeEventListener('keydown',onKeyDown);},[showSuccess]);
   return <section id={id} className="contact-section section contact-shared">
     <div className="contact-introduction"><div className="eyebrow">TELL US YOUR FILTRATION PROBLEM</div><h2>Need help choosing?<br/>Talk to PARK.</h2><p>Whether you are replacing a filter or selecting one for a new system, tell us what you need to remove and how your equipment works. We can discuss suitable product options and the details needed for your enquiry.</p>
       <div className="contact-topics">{['Find a filter for your application','Discuss dimensions and custom formats','Explore media and grade options'].map(text=><div key={text}><span><Check size={15}/></span>{text}</div>)}</div>
@@ -14,7 +16,7 @@ export default function Contact({id = 'contact', product}: {id?: string; product
       event.preventDefault();const form=event.currentTarget;const data=new FormData(form);
       data.set('siteDomain',location.hostname);
       const body = (product ? `Product: ${product}\n\n` : '') + String(data.get('message')||'');
-      if(await send(data,body,product)){form.reset();setMessage('');}
+      if(await send(data,body,product)){form.reset();setMessage('');setShowSuccess(true);}
     }}>
       <input type="text" name="website" hidden tabIndex={-1} autoComplete="off" aria-hidden="true"/><div className="contact-card-heading"><div><span className="contact-card-kicker">YOUR NEXT FILTRATION SOLUTION</span><h3>Let’s start with your needs.</h3><p>Share your problem, system details and quantity to get the conversation started.</p></div><span className="contact-heading-icon"><MessageSquareText size={23} strokeWidth={1.5}/></span></div>
       <div className="contact-field-row">
@@ -26,5 +28,14 @@ export default function Contact({id = 'contact', product}: {id?: string; product
       <div className="contact-submit-row"><button className="button contact-submit" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending?':'Send enquiry'} <Send size={17}/></button><span className="contact-submit-caption">AIR · LIQUID · NONWOVEN MEDIA</span></div>
       <p className="contact-delivery-note" role="status"><Mail size={13} aria-hidden="true"/>{status==='sent'?'Your enquiry has been submitted. Our team will get back to you.':status==='error'?error:'Send your requirements directly to the PARK team.'}</p>
     </form>
+    {showSuccess&&<div className="contact-success-overlay" onMouseDown={event=>{if(event.target===event.currentTarget)setShowSuccess(false);}}>
+      <section className="contact-success-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-success-title" aria-describedby="contact-success-description">
+        <button ref={closeSuccessRef} className="contact-success-close" type="button" aria-label="Close confirmation" onClick={()=>setShowSuccess(false)}><X size={20}/></button>
+        <span className="contact-success-icon"><CircleCheck size={34} strokeWidth={1.7}/></span>
+        <h3 id="contact-success-title">Enquiry sent</h3>
+        <p id="contact-success-description">Thank you for contacting PARK. Your enquiry has been sent to our team, and we’ll get back to you.</p>
+        <button className="button contact-success-done" type="button" onClick={()=>setShowSuccess(false)}>Done</button>
+      </section>
+    </div>}
   </section>;
 }
