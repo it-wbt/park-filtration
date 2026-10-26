@@ -13,7 +13,7 @@ export default function useEnquirySend({requireGoogle = false}: {requireGoogle?:
   try {
    const googleEndpoint=process.env.NEXT_PUBLIC_GOOGLE_ENQUIRY_URL || 'https://script.google.com/macros/s/AKfycbzFzTpdcN-nm45LYeysTsBj3HEcUYT-BskK2Cv7SmAiMcp7ELS00txWFG2lBfiQdlC7/exec';
    if(googleEndpoint){
-    const enquiry={name:String(data.get('name')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),message,product,website:String(data.get('siteDomain')||'')};
+    const enquiry={name:String(data.get('name')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),message,product,website:String(data.get('siteDomain')||''),requirement:String(data.get('requirement')||'')};
     const body=JSON.stringify(enquiry);
     if(request.current?.body!==body)request.current={body,id:crypto.randomUUID()};
     await submitGoogleEnquiry(googleEndpoint,enquiry,request.current!.id);

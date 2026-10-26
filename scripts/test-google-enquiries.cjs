@@ -27,10 +27,10 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync('integrations/google-enquiries/Code.gs','utf8'),sandbox);
-const payload = {requestId:'12345678-1234-1234-1234-123456789012',origin:'http://localhost:3000',website:'localhost',name:'Test customer',email:'test@example.com',phone:'7496961240',message:'Need a filter'};
+const payload = {requestId:'12345678-1234-1234-1234-123456789012',origin:'http://localhost:3000',website:'localhost',requirement:'Need a HEPA filter for a cleanroom',name:'Test customer',email:'test@example.com',phone:'7496961240',message:'Need a filter'};
 const submit = changes => sandbox.doPost({parameter:{payload:JSON.stringify({...payload,...changes})}});
 assert.match(submit(), /"success":true/);
-assert.equal(rows.length,2);assert.equal(emails,0);assert.equal(rows[1][7],'localhost');assert.equal(rows[1][8],'http://localhost:3000');assert.equal(rows[1][9],'Saved');
+assert.equal(rows.length,2);assert.equal(emails,0);assert.equal(rows[1][7],'localhost');assert.equal(rows[1][8],'http://localhost:3000');assert.equal(rows[1][9],'Saved');assert.equal(rows[1][10],'Need a HEPA filter for a cleanroom');
 assert.match(submit(), /"success":true/);
 assert.equal(rows.length,2);assert.equal(emails,0);
 const retryId = 'abcdefgh-1234-1234-1234-123456789012';
@@ -42,4 +42,4 @@ assert.match(submit({origin:'https://unconfigured.example'}), /"success":false/)
 assert.match(submit({email:'invalid'}), /"success":false/);
 assert.match(submit({requestId:'zzzzzzzz-1234-1234-1234-123456789012',email:'bad'}), /"success":false/);
 assert.equal(rows.length,3);assert.equal(emails,0);
-console.log('Google enquiry tests passed: sheet-only save, duplicate protection, formula safety and validation.');
+console.log('Google enquiry tests passed: sheet-only save, requirement column, duplicate protection, formula safety and validation.');

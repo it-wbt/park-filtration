@@ -20,18 +20,20 @@ function doPost(e) {
     var message = String(payload.message || '').trim();
     var product = String(payload.product || '').trim();
     var website = String(payload.website || '').trim();
-    if (website.length > 253 || name.length < 2 || name.length > 100 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || phone.length > 30 || message.length > 12000 || !message || product.length > 150) throw new Error('Please check your contact details and try again.');
+    var requirement = String(payload.requirement || '').trim();
+    if (website.length > 253 || requirement.length > 2000 || name.length < 2 || name.length > 100 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || phone.length > 30 || message.length > 12000 || !message || product.length > 150) throw new Error('Please check your contact details and try again.');
     var sheetId = settings.getProperty('SHEET_ID') || PARK_LEADS_SHEET_ID;
     if (!sheetId) throw new Error('Enquiry Sheet is not configured.');
     lock.waitLock(20000);
     var book = SpreadsheetApp.openById(sheetId);
     var sheet = book.getSheetByName('Enquiries') || book.insertSheet('Enquiries');
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Request ID','Received at','Name','Mobile','Email','Product','Query','Website','Page origin','Status']);
+      sheet.appendRow(['Request ID','Received at','Name','Mobile','Email','Product','Query','Website','Page origin','Status','Requirement']);
       sheet.setFrozenRows(1);
     } else if (sheet.getRange(1,10).getValue() === 'Email status') {
       sheet.getRange(1,10).setValue('Status');
     }
+    if (sheet.getRange(1,11).getValue() !== 'Requirement') sheet.getRange(1,11).setValue('Requirement');
     var match = sheet.getLastRow() > 1 ? sheet.getRange(2,1,sheet.getLastRow()-1,1).createTextFinder(result.requestId).matchEntireCell(true).findNext() : null;
     var row;
     if (match) {
@@ -40,7 +42,7 @@ function doPost(e) {
       result.success=true;
       return enquiryReply_(result,origin);
     } else {
-      sheet.appendRow([result.requestId,new Date(),safeCell_(name),safeCell_(phone),safeCell_(email),safeCell_(product),safeCell_(message),safeCell_(website),origin,'Saved']);
+      sheet.appendRow([result.requestId,new Date(),safeCell_(name),safeCell_(phone),safeCell_(email),safeCell_(product),safeCell_(message),safeCell_(website),origin,'Saved',safeCell_(requirement)]);
     }
     result.success=true;
   } catch (error) {

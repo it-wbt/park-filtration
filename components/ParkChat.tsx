@@ -60,6 +60,7 @@ export default function ParkChat() {
   };
   const submitEnquiry = async (details = lead) => {
     const data=new FormData();data.set('name',details.name);data.set('email',details.email);data.set('phone',details.phone);
+    data.set('requirement',details.requirement);
     const queries=messages.filter(message=>message.role==='user' && ![details.name,details.phone,details.email,details.requirement].includes(message.text)).map(message=>message.text).join('\n');
     const body=`Chatbot enquiry\nName: ${details.name}\nMobile: ${details.phone}\nEmail: ${details.email}\nRequirement: ${details.requirement}\n\nOther questions:\n${queries || 'None'}`;
     data.set('siteDomain',location.hostname);
