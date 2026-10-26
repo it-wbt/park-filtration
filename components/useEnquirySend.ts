@@ -28,7 +28,11 @@ export default function useEnquirySend({requireGoogle = false}: {requireGoogle?:
    const result=await response.json();
    if(!response.ok||(result.success!==true&&result.success!=='true'))throw new Error('Your enquiry could not be submitted. Please try again or email sales@parknonwoven.com.');
    setStatus('sent');return true;
-  }catch(cause){setError(cause instanceof Error ? cause.message : 'Your enquiry could not be submitted. Please try again or email sales@parknonwoven.com.');setStatus('error');return false;}
+  }catch(cause){
+   const message=cause instanceof Error ? cause.message : 'Your enquiry could not be submitted. Please try again.';
+   if(requireGoogle&&message.toLowerCase().includes('details were saved, but the email could not be sent')){setStatus('sent');return true;}
+   setError(message);setStatus('error');return false;
+  }
   finally{pending.current=false;}
  };
  const reset=()=>{if(!pending.current){setStatus('idle');setError('');request.current=null;}};
