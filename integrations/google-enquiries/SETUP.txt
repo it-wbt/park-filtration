@@ -1,27 +1,25 @@
-PARK chatbot: Google Sheet + email setup
+PARK chatbot: Google Sheet setup
 
 1. Create or choose the Google Sheet that will receive enquiries.
 2. Open Extensions > Apps Script. Paste Code.gs into the script project.
 3. In Project Settings > Script Properties, add:
    SHEET_ID is optional; Code.gs defaults to the supplied PARK lead Sheet.
    To use a different spreadsheet later, set SHEET_ID to the ID between /d/ and /edit.
-   RECIPIENT_EMAIL: sales@parknonwoven.com (or your confirmed enquiry address).
    ALLOWED_ORIGINS: your exact website origin(s), separated by commas.
    For local testing include http://localhost:3000. For production include
    https://your-domain.example and the www origin if it is used.
 4. Deploy > New deployment > Web app. Execute as: Me. Access: Anyone.
-   Authorize spreadsheet access and email sending with the Sheet owner's account.
+   Authorize spreadsheet access with the Sheet owner's account.
 5. Copy the deployed /exec URL. Set it in the website environment:
    NEXT_PUBLIC_GOOGLE_ENQUIRY_URL=https://script.google.com/macros/s/DEPLOYMENT_ID/exec
    For local development, put this line in a new `.env.local` file in the
    website project root. `.env.example` is only a template and is not loaded.
 6. Restart the local server, or rebuild and redeploy the website. Production
    deployments need NEXT_PUBLIC_GOOGLE_ENQUIRY_URL set in their build environment.
-7. Submit a test enquiry. Confirm an Enquiries row and an email arrive.
-   The chatbot only shows success after both operations are acknowledged.
+7. Submit a test enquiry. Confirm the lead appears in the Enquiries tab.
+   The chatbot saves the lead to the Sheet; it does not send email.
 
-The public URL is safe to include in the frontend; account credentials and the
-recipient configuration stay in Apps Script. WhatsApp remains a separate button.
-If an email fails after the row was saved, retrying updates that row rather than
-adding another one. Update the deployment version when changing Code.gs.
-Google account quotas apply to spreadsheet operations and outgoing emails.
+The public URL is safe to include in the frontend; account credentials stay in
+Apps Script. WhatsApp remains a separate button. Retrying updates the existing
+lead rather than adding another one. Update the deployment version when changing
+Code.gs. Google account quotas apply to spreadsheet operations.
