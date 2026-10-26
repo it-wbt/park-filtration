@@ -4,7 +4,7 @@ import useEnquirySend from './useEnquirySend';
 import { ArrowUpRight, UserRound, Mail, Send, Check, MessageSquareText, X, CircleCheck } from 'lucide-react';
 
 export default function Contact({id = 'contact', product}: {id?: string; product?: string} = {}){
-  const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const {status,error,send}=useEnquirySend();
+  const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const [emailSent,setEmailSent]=useState(false);const {status,error,send}=useEnquirySend();
   const closeSuccessRef=useRef<HTMLButtonElement>(null);
   useEffect(()=>{if(!showSuccess)return;closeSuccessRef.current?.focus();const onKeyDown=(event:KeyboardEvent)=>{if(event.key==='Escape')setShowSuccess(false);};window.addEventListener('keydown',onKeyDown);return()=>window.removeEventListener('keydown',onKeyDown);},[showSuccess]);
   return <section id={id} className="contact-section section contact-shared">
@@ -16,7 +16,8 @@ export default function Contact({id = 'contact', product}: {id?: string; product
       event.preventDefault();const form=event.currentTarget;const data=new FormData(form);
       data.set('siteDomain',location.hostname);
       const body = (product ? `Product: ${product}\n\n` : '') + String(data.get('message')||'');
-      if(await send(data,body,product)){form.reset();setMessage('');setShowSuccess(true);}
+      const result=await send(data,body,product);
+      if(result.saved){form.reset();setMessage('');setEmailSent(result.sent);setShowSuccess(true);}
     }}>
       <input type="text" name="website" hidden tabIndex={-1} autoComplete="off" aria-hidden="true"/><div className="contact-card-heading"><div><span className="contact-card-kicker">YOUR NEXT FILTRATION SOLUTION</span><h3>Let’s start with your needs.</h3><p>Share your problem, system details and quantity to get the conversation started.</p></div><span className="contact-heading-icon"><MessageSquareText size={23} strokeWidth={1.5}/></span></div>
       <div className="contact-field-row">
@@ -32,8 +33,8 @@ export default function Contact({id = 'contact', product}: {id?: string; product
       <section className="contact-success-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-success-title" aria-describedby="contact-success-description">
         <button ref={closeSuccessRef} className="contact-success-close" type="button" aria-label="Close confirmation" onClick={()=>setShowSuccess(false)}><X size={20}/></button>
         <span className="contact-success-icon"><CircleCheck size={34} strokeWidth={1.7}/></span>
-        <h3 id="contact-success-title">Enquiry sent</h3>
-        <p id="contact-success-description">Thank you for contacting PARK. Your enquiry has been sent to our team, and we’ll get back to you.</p>
+        <h3 id="contact-success-title">{emailSent?'Enquiry sent':'Enquiry saved'}</h3>
+        <p id="contact-success-description">{emailSent?'Thank you for contacting PARK. Your enquiry has been saved and sent to our team. We’ll get back to you.':'Your enquiry has been saved to our records. The email notification could not be sent, but PARK has your details.'}</p>
         <button className="button contact-success-done" type="button" onClick={()=>setShowSuccess(false)}>Done</button>
       </section>
     </div>}
