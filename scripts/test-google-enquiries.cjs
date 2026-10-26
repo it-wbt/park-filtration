@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const rows = [];
+const chatRows = [];
 let emails = 0;
 const sheet = {
   getLastRow: () => rows.length,
@@ -17,11 +18,12 @@ const sheet = {
     }})}),
   }),
 };
+const chatSheet = {getLastRow:()=>chatRows.length,appendRow:row=>chatRows.push(row),setFrozenRows:()=>{}};
 const settings = {SHEET_ID:'sheet',ALLOWED_ORIGINS:'http://localhost:3000'};
 const sandbox = {
   PropertiesService:{getScriptProperties:()=>({getProperty:key=>settings[key]})},
   LockService:{getScriptLock:()=>({waitLock:()=>{},hasLock:()=>true,releaseLock:()=>{}})},
-  SpreadsheetApp:{openById:()=>({getSheetByName:()=>sheet})},
+  SpreadsheetApp:{openById:()=>({getSheetByName:name=>name==='Chat Logs'?chatSheet:sheet,insertSheet:()=>chatSheet})},
   MailApp:{sendEmail:()=>{emails++;}},
   HtmlService:{XFrameOptionsMode:{ALLOWALL:'all'},createHtmlOutput:html=>({html,setXFrameOptionsMode:()=>html})},
 };
@@ -42,4 +44,6 @@ assert.match(submit({origin:'https://unconfigured.example'}), /"success":false/)
 assert.match(submit({email:'invalid'}), /"success":false/);
 assert.match(submit({requestId:'zzzzzzzz-1234-1234-1234-123456789012',email:'bad'}), /"success":false/);
 assert.equal(rows.length,3);assert.equal(emails,0);
-console.log('Google enquiry tests passed: sheet-only save, requirement column, duplicate protection, formula safety and validation.');
+assert.match(submit({action:'chat-message',sessionId:'session-12345678-1234-1234-1234',speaker:'user',message:'Which filter do I need?',website:'park.example',requestId:'chatreq-12345678-1234-1234'}), /"success":true/);
+assert.equal(chatRows.length,2);assert.equal(chatRows[1][4],'user');assert.equal(chatRows[1][5],'Which filter do I need?');
+console.log('Google enquiry tests passed: sheet-only save, requirement column, chat log, duplicate protection, formula safety and validation.');

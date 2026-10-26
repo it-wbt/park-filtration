@@ -1,14 +1,15 @@
 export type GoogleEnquiry = {name: string; email: string; phone: string; message: string; product?: string; website?: string};
+export const googleEnquiryEndpoint=process.env.NEXT_PUBLIC_GOOGLE_ENQUIRY_URL || 'https://script.google.com/macros/s/AKfycbzFzTpdcN-nm45LYeysTsBj3HEcUYT-BskK2Cv7SmAiMcp7ELS00txWFG2lBfiQdlC7/exec';
 
 // Post directly from the browser to Apps Script. The hidden iframe lets us
 // receive its postMessage confirmation without a server-side API route.
-export function submitGoogleEnquiry(endpoint: string, enquiry: GoogleEnquiry, requestId: string): Promise<void> {
+function postGooglePayload(endpoint: string, payload: Record<string,string|undefined>, requestId: string): Promise<void> {
   const url = new URL(endpoint);
   if (url.origin !== 'https://script.google.com' || !/^\/macros\/s\/[^/]+\/exec$/.test(url.pathname)) throw new Error('Google enquiry service is not configured correctly.');
   return new Promise((resolve,reject)=>{
     const frame=document.createElement('iframe');frame.name='park-enquiry-'+requestId;frame.title='Enquiry submission';frame.style.display='none';
     const form=document.createElement('form');form.method='POST';form.action=endpoint;form.target=frame.name;form.style.display='none';
-    const field=document.createElement('input');field.type='hidden';field.name='payload';field.value=JSON.stringify({...enquiry,requestId,origin:location.origin});form.appendChild(field);
+    const field=document.createElement('input');field.type='hidden';field.name='payload';field.value=JSON.stringify({...payload,requestId,origin:location.origin});form.appendChild(field);
     const cleanup=()=>{clearTimeout(timer);window.removeEventListener('message',receive);form.remove();frame.remove();};
     const receive=(event:MessageEvent)=>{
       let hostname: string;try{hostname=new URL(event.origin).hostname;}catch{return;}
@@ -20,4 +21,12 @@ export function submitGoogleEnquiry(endpoint: string, enquiry: GoogleEnquiry, re
     const timer=window.setTimeout(()=>{cleanup();reject(new Error('Submission could not be confirmed. Check Apps Script deployment and ALLOWED_ORIGINS, then retry.'));},45000);
     window.addEventListener('message',receive);document.body.append(frame,form);form.submit();
   });
+}
+
+export function submitGoogleEnquiry(endpoint: string, enquiry: GoogleEnquiry, requestId: string): Promise<void> {
+  return postGooglePayload(endpoint,enquiry as unknown as Record<string,string|undefined>,requestId);
+}
+
+export function logGoogleChatMessage(sessionId: string, speaker: 'user'|'bot', message: string): Promise<void> {
+  return postGooglePayload(googleEnquiryEndpoint,{action:'chat-message',sessionId,speaker,message,website:location.hostname},crypto.randomUUID());
 }

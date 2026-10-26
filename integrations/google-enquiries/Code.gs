@@ -14,6 +14,23 @@ function doPost(e) {
     origin = String(payload.origin || '');
     if (allowed.indexOf(origin) === -1) throw new Error('This website is not configured for enquiries.');
     if (!/^[a-zA-Z0-9-]{20,80}$/.test(result.requestId)) throw new Error('Invalid request.');
+    if (payload.action === 'chat-message') {
+      var sessionId = String(payload.sessionId || '');
+      var speaker = String(payload.speaker || '');
+      var chatMessage = String(payload.message || '').trim();
+      var chatWebsite = String(payload.website || '').trim();
+      if (!/^[a-zA-Z0-9-]{20,80}$/.test(sessionId) || (speaker !== 'user' && speaker !== 'bot') || !chatMessage || chatMessage.length > 4000 || chatWebsite.length > 253) throw new Error('Invalid chat message.');
+      lock.waitLock(20000);
+      var chatBook = SpreadsheetApp.openById(settings.getProperty('SHEET_ID') || PARK_LEADS_SHEET_ID);
+      var chatSheet = chatBook.getSheetByName('Chat Logs') || chatBook.insertSheet('Chat Logs');
+      if (chatSheet.getLastRow() === 0) {
+        chatSheet.appendRow(['Session ID','Received at','Website','Page origin','Speaker','Message']);
+        chatSheet.setFrozenRows(1);
+      }
+      chatSheet.appendRow([sessionId,new Date(),safeCell_(chatWebsite),origin,speaker,safeCell_(chatMessage)]);
+      result.success=true;
+      return enquiryReply_(result,origin);
+    }
     var name = String(payload.name || '').trim();
     var email = String(payload.email || '').trim();
     var phone = String(payload.phone || '').trim();
