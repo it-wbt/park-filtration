@@ -4,7 +4,7 @@ import useEnquirySend from './useEnquirySend';
 import { ArrowUpRight, UserRound, Mail, Send, Check, MessageSquareText, X, CircleCheck } from 'lucide-react';
 
 export default function Contact({id = 'contact', product}: {id?: string; product?: string} = {}){
-  const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const [emailSent,setEmailSent]=useState(false);const {status,error,send}=useEnquirySend();
+  const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const [emailSent,setEmailSent]=useState(false);const {status,error,send,reset}=useEnquirySend();
   const closeSuccessRef=useRef<HTMLButtonElement>(null);
   useEffect(()=>{if(!showSuccess)return;closeSuccessRef.current?.focus();const onKeyDown=(event:KeyboardEvent)=>{if(event.key==='Escape')setShowSuccess(false);};window.addEventListener('keydown',onKeyDown);return()=>window.removeEventListener('keydown',onKeyDown);},[showSuccess]);
   return <section id={id} className="contact-section section contact-shared">
@@ -17,7 +17,7 @@ export default function Contact({id = 'contact', product}: {id?: string; product
       data.set('siteDomain',location.hostname);
       const body = (product ? `Product: ${product}\n\n` : '') + String(data.get('message')||'');
       const result=await send(data,body,product);
-      if(result.saved){form.reset();setMessage('');setEmailSent(result.sent);setShowSuccess(true);}
+      if(result.saved){form.reset();setMessage('');setEmailSent(result.sent);reset();setShowSuccess(true);}
     }}>
       <input type="text" name="website" hidden tabIndex={-1} autoComplete="off" aria-hidden="true"/><div className="contact-card-heading"><div><span className="contact-card-kicker">YOUR NEXT FILTRATION SOLUTION</span><h3>Let’s start with your needs.</h3><p>Share your problem, system details and quantity to get the conversation started.</p></div><span className="contact-heading-icon"><MessageSquareText size={23} strokeWidth={1.5}/></span></div>
       <div className="contact-field-row">
