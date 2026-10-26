@@ -11,15 +11,14 @@ export default function useEnquirySend({requireGoogle = false}: {requireGoogle?:
   if(data.get('website')){setStatus('error');setError('Unable to submit your enquiry. Please try again.');return false;}
   pending.current=true;setStatus('sending');setError('');
   try {
-   const googleEndpoint=process.env.NEXT_PUBLIC_GOOGLE_ENQUIRY_URL || 'https://script.google.com/macros/s/AKfycbzFzTpdcN-nm45LYeysTsBj3HEcUYT-BskK2Cv7SmAiMcp7ELS00txWFG2lBfiQdlC7/exec';
-   if(googleEndpoint){
+   if(requireGoogle){
+    const googleEndpoint=process.env.NEXT_PUBLIC_GOOGLE_ENQUIRY_URL || 'https://script.google.com/macros/s/AKfycbzFzTpdcN-nm45LYeysTsBj3HEcUYT-BskK2Cv7SmAiMcp7ELS00txWFG2lBfiQdlC7/exec';
     const enquiry={name:String(data.get('name')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),message,product,website:String(data.get('siteDomain')||''),requirement:String(data.get('requirement')||'')};
     const body=JSON.stringify(enquiry);
     if(request.current?.body!==body)request.current={body,id:crypto.randomUUID()};
     await submitGoogleEnquiry(googleEndpoint,enquiry,request.current!.id);
     setStatus('sent');return true;
    }
-   if(requireGoogle)throw new Error('Enquiry submission is being set up. Please email sales@parknonwoven.com for now.');
    const response=await fetch('https://formsubmit.co/ajax/sales@parknonwoven.com',{
     method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
     body:JSON.stringify({name:String(data.get('name')||''),email:String(data.get('email')||''),message,...(product?{product}:{}),_replyto:String(data.get('email')||''),_subject:product?'Quotation enquiry: '+product:'Filtration enquiry',_template:'table'}),
