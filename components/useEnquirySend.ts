@@ -10,15 +10,14 @@ export default function useEnquirySend({requireGoogle = false}: {requireGoogle?:
   if(pending.current)return false;
   if(data.get('website')){setStatus('error');setError('Unable to submit your enquiry. Please try again.');return false;}
   pending.current=true;setStatus('sending');setError('');
+  let sheetSaved=false;
   try {
-   if(requireGoogle){
-    const googleEndpoint=googleEnquiryEndpoint;
-    const enquiry={name:String(data.get('name')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),message,product,website:String(data.get('siteDomain')||''),requirement:String(data.get('requirement')||'')};
-    const body=JSON.stringify(enquiry);
-    if(request.current?.body!==body)request.current={body,id:crypto.randomUUID()};
-    await submitGoogleEnquiry(googleEndpoint,enquiry,request.current!.id);
-    setStatus('sent');return true;
-   }
+   const enquiry={name:String(data.get('name')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),message,product,website:String(data.get('siteDomain')||''),requirement:String(data.get('requirement')||'')};
+   const body=JSON.stringify(enquiry);
+   if(request.current?.body!==body)request.current={body,id:crypto.randomUUID()};
+   await submitGoogleEnquiry(googleEnquiryEndpoint,enquiry,request.current!.id);
+   sheetSaved=true;
+   if(requireGoogle){setStatus('sent');return true;}
    const response=await fetch('https://formsubmit.co/ajax/sales@parknonwoven.com',{
     method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
     body:JSON.stringify({name:String(data.get('name')||''),email:String(data.get('email')||''),message,...(product?{product}:{}),_replyto:String(data.get('email')||''),_subject:product?'Quotation enquiry: '+product:'Filtration enquiry',_template:'table'}),
@@ -30,7 +29,7 @@ export default function useEnquirySend({requireGoogle = false}: {requireGoogle?:
   }catch(cause){
    const message=cause instanceof Error ? cause.message : 'Your enquiry could not be submitted. Please try again.';
    if(requireGoogle&&message.toLowerCase().includes('details were saved, but the email could not be sent')){setStatus('sent');return true;}
-   setError(message);setStatus('error');return false;
+   setError(sheetSaved?'Your details were saved to the Sheet, but the email could not be sent. Please retry.':message);setStatus('error');return false;
   }
   finally{pending.current=false;}
  };

@@ -12,6 +12,7 @@ export default function Contact({id = 'contact', product}: {id?: string; product
     </div>
     <form className="contact-enquiry-card" onSubmit={async event=>{
       event.preventDefault();const form=event.currentTarget;const data=new FormData(form);
+      data.set('siteDomain',location.hostname);
       const body = (product ? `Product: ${product}\n\n` : '') + String(data.get('message')||'');
       if(await send(data,body,product)){form.reset();setMessage('');}
     }}>

@@ -18,7 +18,8 @@ PARK chatbot: Google Sheet setup
    deployments need NEXT_PUBLIC_GOOGLE_ENQUIRY_URL set in their build environment.
 7. Chat messages are logged in the Chat Logs tab (session, time, site, speaker,
    and message). Completed quote requests are saved in Enquiries with Query and
-   Requirement columns. The chatbot saves to the Sheet only; it sends no email.
+   Requirement columns. Chatbot leads save to the Sheet only; the contact form
+   saves to the Sheet and separately sends an email through FormSubmit.
 
 The public URL is safe to include in the frontend; account credentials stay in
 Apps Script. WhatsApp remains a separate button. Retrying updates the existing
