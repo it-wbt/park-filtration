@@ -7,7 +7,8 @@ PARK chatbot: Google Sheet setup
    To use a different spreadsheet later, set SHEET_ID to the ID between /d/ and /edit.
    ALLOWED_ORIGINS: any extra exact origins, separated by commas. Production
    PARK origins are built in: https://parknonwoven-filtration.com,
-   https://www.parknonwoven-filtration.com, and https://park-filtration.vercel.app.
+   https://www.parknonwoven-filtration.com, https://parknonwoven-epp.com,
+   https://www.parknonwoven-epp.com, and https://park-filtration.vercel.app.
    For local testing add http://localhost:3000.
 4. Deploy > New deployment > Web app. Execute as: Me. Access: Anyone.
    Authorize spreadsheet access with the Sheet owner's account.
@@ -19,7 +20,9 @@ PARK chatbot: Google Sheet setup
    deployments need NEXT_PUBLIC_GOOGLE_ENQUIRY_URL set in their build environment.
 7. After changing Code.gs, edit the web app deployment and select New version;
    changes in this repository do not automatically update the Apps Script deployment.
-8. Chat messages are logged in the Chat Logs tab (session, time, site, speaker,
+8. Point each website to the same deployed /exec URL. Website and Page origin
+   columns identify the source domain; use the Website column to filter leads.
+9. Chat messages are logged in the Chat Logs tab (session, time, site, speaker,
    and message). Completed quote requests are saved in Enquiries with Query and
    Requirement columns. Chatbot leads save to the Sheet only; the contact form
    saves to the Sheet and separately sends an email through FormSubmit.

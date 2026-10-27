@@ -2,7 +2,7 @@
 // ALLOWED_ORIGINS Script Property (comma-separated, exact origins).
 // Execute as the owner, with access for Anyone. No account keys go in the website.
 var PARK_LEADS_SHEET_ID = '1c10nm2Zs-7Jfs4xfeq86zLu6NSt2E9FkbEqnRZCzQUM';
-var PARK_ALLOWED_ORIGINS = ['https://parknonwoven-filtration.com','https://www.parknonwoven-filtration.com','https://park-filtration.vercel.app'];
+var PARK_ALLOWED_ORIGINS = ['https://parknonwoven-filtration.com','https://www.parknonwoven-filtration.com','https://parknonwoven-epp.com','https://www.parknonwoven-epp.com','https://park-filtration.vercel.app'];
 function doPost(e) {
   var payload, result = {type:'park-enquiry-result',success:false,requestId:''};
   var origin = '';
