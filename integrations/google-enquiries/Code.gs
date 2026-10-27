@@ -39,6 +39,7 @@ function doPost(e) {
     var product = String(payload.product || '').trim();
     var website = String(payload.website || '').trim();
     var requirement = String(payload.requirement || '').trim();
+    message = formatEnquiryMessage_(message,website,origin,requirement);
     if (website.length > 253 || requirement.length > 2000 || name.length < 2 || name.length > 100 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || phone.length > 30 || message.length > 12000 || !message || product.length > 150) throw new Error('Please check your contact details and try again.');
     var sheetId = settings.getProperty('SHEET_ID') || PARK_LEADS_SHEET_ID;
     if (!sheetId) throw new Error('Enquiry Sheet is not configured.');
@@ -72,6 +73,20 @@ function doPost(e) {
 }
 
 function safeCell_(value) {return /^[=+\-@]/.test(value) ? "'"+value : value;}
+function formatEnquiryMessage_(message,website,origin,requirement) {
+  if (/^Website:\s*PARK\s+(EPP|FILTRATION)\s*$/im.test(message)) return message;
+  var host = String(website || '').replace(/^https?:\/\//i,'').split('/')[0].toLowerCase().replace(/^www\./,'');
+  if (!host) {try {host = new URL(origin).hostname.toLowerCase().replace(/^www\./,'');} catch (ignored) {return message;}}
+  var isEpp = host === 'parknonwoven-epp.com';
+  var isFiltration = host === 'parknonwoven-filtration.com';
+  if (!isEpp && !isFiltration) return message;
+  var siteName = isEpp ? 'PARK EPP' : 'PARK FILTRATION';
+  var business = isEpp ? 'EPP' : 'Filtration';
+  var source = /chatbot enquiry/i.test(message) ? 'Chatbot' : 'Contact form';
+  var pageUrl = String(origin || ('https://' + host)).replace(/\/?$/,'/');
+  var brief = String(requirement || '').trim() || String(message || '').trim().slice(0,1000) || 'Not provided';
+  return 'Website: ' + siteName + '\nBusiness: ' + business + '\nWebsite URL: https://' + host + '\nPage URL: ' + pageUrl + '\nEnquiry source: ' + source + '\nSubject: [' + siteName + '] ' + source + ' enquiry\n\nbrief: ' + brief + '\n\n' + message;
+}
 function enquiryReply_(result,origin) {
   var data=JSON.stringify(result).replace(/</g,'\\u003c');
   var target=JSON.stringify(origin).replace(/</g,'\\u003c');

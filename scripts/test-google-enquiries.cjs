@@ -29,6 +29,13 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync('integrations/google-enquiries/Code.gs','utf8'),sandbox);
+const filtrationQuery = sandbox.formatEnquiryMessage_('Chatbot enquiry\nName: Test\nRequirement: HEPA filter','www.parknonwoven-filtration.com','https://www.parknonwoven-filtration.com','HEPA filter');
+assert.match(filtrationQuery,/Website: PARK FILTRATION\nBusiness: Filtration/);
+assert.match(filtrationQuery,/Enquiry source: Chatbot/);
+assert.match(filtrationQuery,/Subject: \[PARK FILTRATION\] Chatbot enquiry/);
+assert.match(filtrationQuery,/brief: HEPA filter/);
+const eppQuery = 'Website: PARK EPP\nBusiness: EPP\nWebsite URL: https://www.parknonwoven-epp.com';
+assert.equal(sandbox.formatEnquiryMessage_(eppQuery,'www.parknonwoven-epp.com','https://www.parknonwoven-epp.com',''),eppQuery);
 const payload = {requestId:'12345678-1234-1234-1234-123456789012',origin:'http://localhost:3000',website:'localhost',requirement:'Need a HEPA filter for a cleanroom',name:'Test customer',email:'test@example.com',phone:'7496961240',message:'Need a filter'};
 const submit = changes => sandbox.doPost({parameter:{payload:JSON.stringify({...payload,...changes})}});
 assert.match(submit(), /"success":true/);
