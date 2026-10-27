@@ -1,7 +1,8 @@
-// Configure this Script Property before deploying the web app:
-// ALLOWED_ORIGINS (comma-separated site origins).
+// Approved production origins are built in. Add local or other origins in the
+// ALLOWED_ORIGINS Script Property (comma-separated, exact origins).
 // Execute as the owner, with access for Anyone. No account keys go in the website.
 var PARK_LEADS_SHEET_ID = '1c10nm2Zs-7Jfs4xfeq86zLu6NSt2E9FkbEqnRZCzQUM';
+var PARK_ALLOWED_ORIGINS = ['https://parknonwoven-filtration.com','https://www.parknonwoven-filtration.com','https://park-filtration.vercel.app'];
 function doPost(e) {
   var payload, result = {type:'park-enquiry-result',success:false,requestId:''};
   var origin = '';
@@ -10,7 +11,7 @@ function doPost(e) {
     payload = JSON.parse(e.parameter.payload || '{}');
     result.requestId = String(payload.requestId || '');
     var settings = PropertiesService.getScriptProperties();
-    var allowed = (settings.getProperty('ALLOWED_ORIGINS') || '').split(',').map(function(value){return value.trim();});
+    var allowed = PARK_ALLOWED_ORIGINS.concat((settings.getProperty('ALLOWED_ORIGINS') || '').split(',').map(function(value){return value.trim();}).filter(Boolean));
     origin = String(payload.origin || '');
     if (allowed.indexOf(origin) === -1) throw new Error('This website is not configured for enquiries.');
     if (!/^[a-zA-Z0-9-]{20,80}$/.test(result.requestId)) throw new Error('Invalid request.');

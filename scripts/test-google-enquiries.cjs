@@ -41,6 +41,9 @@ assert.equal(rows.length,3);assert.equal(rows[2][9],'Saved');assert.equal(rows[2
 assert.match(submit({requestId:retryId}), /"success":true/);
 assert.equal(rows.length,3);assert.equal(emails,0);assert.equal(rows[2][9],'Saved');
 assert.match(submit({origin:'https://unconfigured.example'}), /"success":false/);
+const productionOrigin = submit({origin:'https://www.parknonwoven-filtration.com',requestId:'invalid'});
+assert.match(productionOrigin, /"success":false/);
+assert.doesNotMatch(productionOrigin, /not configured for enquiries/);
 assert.match(submit({email:'invalid'}), /"success":false/);
 assert.match(submit({requestId:'zzzzzzzz-1234-1234-1234-123456789012',email:'bad'}), /"success":false/);
 assert.equal(rows.length,3);assert.equal(emails,0);
