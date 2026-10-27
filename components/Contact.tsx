@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import useEnquirySend from './useEnquirySend';
 import { ArrowUpRight, UserRound, Mail, Send, Check, MessageSquareText, X, CircleCheck } from 'lucide-react';
+import { formatEnquiryContext } from '../lib/enquiry-context';
 
 export default function Contact({id = 'contact', product}: {id?: string; product?: string} = {}){
   const [message,setMessage]=useState('');const [showSuccess,setShowSuccess]=useState(false);const [emailSent,setEmailSent]=useState(false);const {status,error,send,reset}=useEnquirySend();
@@ -15,7 +16,8 @@ export default function Contact({id = 'contact', product}: {id?: string; product
     <form className="contact-enquiry-card" onSubmit={async event=>{
       event.preventDefault();const form=event.currentTarget;const data=new FormData(form);
       data.set('siteDomain',location.hostname);
-      const body = (product ? `Product: ${product}\n\n` : '') + String(data.get('message')||'');
+      const brief=String(data.get('message')||'');
+      const body=`${formatEnquiryContext('Contact form',product?'Product enquiry':'Website enquiry',brief)}\n\n${product?`Product: ${product}\n\n`:''}${brief}`;
       const result=await send(data,body,product);
       if(result.saved){form.reset();setMessage('');setEmailSent(result.sent);reset();setShowSuccess(true);}
     }}>

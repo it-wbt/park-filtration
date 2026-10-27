@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {MessageCircle, Send, X, ArrowUpRight} from 'lucide-react';
 import {products, type Product} from '../lib/products';
 import {logGoogleChatMessage} from '../lib/submit-google-enquiry';
+import {formatEnquiryContext} from '../lib/enquiry-context';
 import useEnquirySend from './useEnquirySend';
 
 type Message = {role: 'bot' | 'user'; text: string; links?: {name: string; href: string}[]};
@@ -72,7 +73,8 @@ export default function ParkChat() {
     const data=new FormData();data.set('name',details.name);data.set('email',details.email);data.set('phone',details.phone);
     data.set('requirement',details.requirement);
     const transcript=[...messages,{role:'user' as const,text:details.requirement}].map(message=>`${message.role==='user'?'Visitor':'PARK'}: ${message.text}`).join('\n').slice(0,8000);
-    const body=`Chatbot enquiry\nName: ${details.name}\nMobile: ${details.phone}\nEmail: ${details.email}\nRequirement: ${details.requirement}\n\nConversation:\n${transcript}`;
+    const context=formatEnquiryContext('Chatbot','Chatbot enquiry',details.requirement);
+    const body=`${context}\n\nChatbot enquiry\nName: ${details.name}\nMobile: ${details.phone}\nEmail: ${details.email}\nRequirement: ${details.requirement}\n\nConversation:\n${transcript}`;
     data.set('siteDomain',location.hostname);
     await send(data,body);
   };
