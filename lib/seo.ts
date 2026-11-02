@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.parknonwoven-filtration.com').replace(/\/$/, '');
 if (siteUrl && (!URL.canParse(siteUrl) || new URL(siteUrl).protocol !== 'https:' || new URL(siteUrl).pathname !== '/')) throw new Error('NEXT_PUBLIC_SITE_URL must be an HTTPS origin without a path');
 export function pageMetadata(title: string, description: string, path: string, image = '/images/products/panel-filter.webp'): Metadata {
  return { title, description, ...(siteUrl ? {alternates:{canonical:siteUrl + path}} : {}), openGraph:{title,description,type:'website',...(siteUrl ? {url:siteUrl + path,images:[{url:siteUrl + image,alt:title}]} : {})}, twitter:{card:'summary_large_image',title,description,...(siteUrl ? {images:[siteUrl + image]} : {})} };
