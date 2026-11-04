@@ -14,7 +14,6 @@ import './product-presentation.css';
 import './corporate.css';
 import './readability.css';
 import './media-process.css';
-import SiteEngagement from '../components/SiteEngagement';
 import ParkChat from '../components/ParkChat';
 import './park-chat.css';
 import SiteMotion from '../components/SiteMotion';
@@ -24,5 +23,5 @@ import StructuredData from '../components/StructuredData';
 export const metadata: Metadata = { ...(siteUrl ? {metadataBase:new URL(siteUrl)} : {}), title:'PARK Filtration | Air & Liquid Filtration Solutions',description:'PARK Nonwoven air and liquid filtration for automobiles, railways, manufacturing, heavy industry, homes and commercial buildings.',verification:{google:'b-l4NlmHUK1ssxXQf0qRI2nMpV8jJthASOCGARUCPJk'} };
 export default function RootLayout({children}:Readonly<{children:React.ReactNode}>) {
  const data = siteUrl ? {'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':siteUrl+'/#organization',name:'PARK Nonwoven',url:siteUrl},{'@type':'WebSite','@id':siteUrl+'/#website',name:'PARK Filtration',url:siteUrl,publisher:{'@id':siteUrl+'/#organization'}}]} : null;
- return <html lang="en"><body><a href="#main-content" className="skip-link">Skip to content</a>{children}<ProductNavigationScroll/><SiteMotion/><SiteEngagement/><ParkChat/><StructuredData data={data}/></body></html>;
+ return <html lang="en"><body><a href="#main-content" className="skip-link">Skip to content</a>{children}<ProductNavigationScroll/><SiteMotion/><ParkChat/><StructuredData data={data}/></body></html>;
 }
