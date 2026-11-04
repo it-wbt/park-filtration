@@ -25,7 +25,7 @@ function answer(query: string): Message {
   const text = query.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
   if (/^(hi|hello|hey|namaste|hii)$/.test(text)) return welcome;
   if (/price|cost|rate|delivery|shipping|warranty/.test(text)) return {role:'bot',text:'Pricing and delivery depend on the selected filter, dimensions and quantity. Choose “Request a quote” and share your details with the PARK team.'};
-  if (/contact|phone|number|email|whatsapp/.test(text)) return {role:'bot',text:'You can reach PARK on WhatsApp at +91 7496961240 or email sales@parknonwoven.com.',links:[{name:'Email PARK',href:'mailto:sales@parknonwoven.com'}]};
+  if (/contact|phone|number|email|whatsapp/.test(text)) return {role:'bot',text:'You can email PARK at sales@parknonwoven.com or send an enquiry using the contact form.',links:[{name:'Email PARK',href:'mailto:sales@parknonwoven.com'},{name:'Contact PARK',href:'/#contact'}]};
   const matched = products.filter(p=>(aliases[p.slug] || []).some(term=>new RegExp('\\b'+term+'\\b').test(text)));
   if (matched.length === 1) {
     const p = matched[0];

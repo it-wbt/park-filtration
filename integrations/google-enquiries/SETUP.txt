@@ -28,6 +28,6 @@ PARK chatbot: Google Sheet setup
    saves to the Sheet and separately sends an email through FormSubmit.
 
 The public URL is safe to include in the frontend; account credentials stay in
-Apps Script. WhatsApp remains a separate button. Retrying updates the existing
-lead rather than adding another one. Update the deployment version when changing
-Code.gs. Google account quotas apply to spreadsheet operations.
+Apps Script. Retrying updates the existing lead rather than adding another one.
+Update the deployment version when changing Code.gs. Google account quotas apply
+to spreadsheet operations.

@@ -13,6 +13,3 @@ export type CompanyEvent = {
 // Add confirmed company events here. Dates use YYYY-MM-DD; expired events are hidden.
 export const companyEvents: CompanyEvent[] = [];
 
-// International WhatsApp number, digits only including country code.
-export const whatsappNumber = '917496961240';
-export const whatsappMessage = 'Hello PARK, I would like help with a filtration requirement.';

@@ -15,6 +15,6 @@
  .site-header .mobile-nav-links>a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;font-size:14px;line-height:1.45;color:var(--navy);border-bottom:1px solid #dfe7eb}
  .site-header .mobile-nav-links>a:last-child{border-bottom:0}
  .site-header .mobile-nav-links svg{flex-shrink:0}
- body:has(.mobile-menu-open) .mega-backdrop,body:has(.mobile-menu-open) .park-chat-widget,body:has(.mobile-menu-open) .support-widget{display:none}
+ body:has(.mobile-menu-open) .mega-backdrop,body:has(.mobile-menu-open) .park-chat-widget{display:none}
 }
 
