@@ -1,6 +1,6 @@
-.park-chat-widget{position:fixed;bottom:26px;right:92px;z-index:41;font-family:'DM Sans',Arial,sans-serif}
+.park-chat-widget{position:fixed;bottom:26px;right:24px;z-index:41;font-family:'DM Sans',Arial,sans-serif}
 .park-chat-launch{display:flex;align-items:center;gap:9px;height:52px;padding:0 17px;border:2px solid white;border-radius:28px;background:#08639b;color:white;box-shadow:0 5px 20px #093b3630;font-size:13px;font-weight:600}
-.park-chat-panel{position:absolute;bottom:70px;right:-68px;display:flex;flex-direction:column;width:380px;height:min(560px,calc(100dvh - 130px));background:#fff;border:1px solid #dce7ed;border-radius:16px;overflow:hidden;box-shadow:0 14px 55px #12344730}
+.park-chat-panel{position:absolute;bottom:70px;right:0;display:flex;flex-direction:column;width:380px;height:min(560px,calc(100dvh - 130px));background:#fff;border:1px solid #dce7ed;border-radius:16px;overflow:hidden;box-shadow:0 14px 55px #12344730}
 .park-chat-panel .park-chat-header{position:static;display:flex;align-items:center;gap:11px;padding:16px;background:#0c2e43;color:white;border:0}
 .park-chat-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#ffffff16}
 .park-chat-header>div{flex:1}.park-chat-header strong{display:block;font-size:14px}.park-chat-header>div>span{display:block;margin-top:4px;font-size:11px;color:#bcd2df}
@@ -16,7 +16,7 @@
 .park-chat-form>button{display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:8px;background:#08639b;color:white;flex-shrink:0}.park-chat-form>button:disabled{opacity:.45}
 .park-chat-note{display:block;padding:0 12px 11px;text-align:center;font-size:10px;color:#708793}
 .park-chat-ready{padding:12px 12px 0;display:grid;gap:7px}.park-chat-ready a{display:flex;align-items:center;justify-content:center;gap:10px;background:#168c4d;color:white;border-radius:7px;padding:11px;font-size:13px;font-weight:600}.park-chat-ready button{background:transparent;border:0;color:#08639b;font-size:12px;padding:5px}
-@media(max-width:760px){.park-chat-widget{right:78px;bottom:17px}.park-chat-launch{height:48px;padding:0 13px;font-size:12px}.park-chat-panel{right:-62px;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100dvh - 115px));bottom:64px}.park-chat-form input{font-size:16px}}
+@media(max-width:760px){.park-chat-widget{right:16px;bottom:17px}.park-chat-launch{height:48px;padding:0 13px;font-size:12px}.park-chat-panel{right:0;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100dvh - 115px));bottom:64px}.park-chat-form input{font-size:16px}}
 .park-chat-ready .park-chat-submit-enquiry{display:flex;align-items:center;justify-content:center;gap:10px;background:#08639b;color:white;border-radius:7px;padding:12px;font-size:13px;font-weight:600}
 .park-chat-ready .park-chat-submit-enquiry:disabled{opacity:.65;cursor:wait}
 .park-chat-submit-status{font-size:13px!important;line-height:1.6!important;color:#246a45;background:#eef8f1;border-radius:8px;padding:12px;margin:0}
