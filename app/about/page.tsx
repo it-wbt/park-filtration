@@ -17,7 +17,7 @@ export default function AboutPage() {
     <p className="lead">Founded in 1997 by Pankaj Kapoor, PARK Group manufactures nonwoven textiles and polymer materials. The group is headquartered in Panipat, Haryana, and serves industries in India and overseas.</p>
     <div className="park-about-facts" aria-label="PARK Group at a glance"><div><strong>1997</strong><span>Year founded</span></div><div><strong>Panipat</strong><span>Group headquarters</span></div><div><strong>12+</strong><span>Manufacturing plants</span></div></div>
     <div className="park-about-sections">
-      <section><h2>A group with manufacturing experience</h2><p>PARK Industries Pvt Ltd, PARK Non-Woven Pvt Ltd, PARK Felts Pvt Ltd and Essar Industries form the group. Its manufacturing network includes locations across Delhi NCR, Chennai, Pune, Gujarat and Bangalore.</p></section>
+      <section><h2>A group with manufacturing experience</h2><p>PARK Group’s manufacturing network spans Delhi NCR, Chennai, Pune, Gujarat and Bangalore, supported by more than 12 plants.</p></section>
       <section><h2>Processes supported by testing</h2><p>Manufacturing capabilities include needle punching, stitch bonding, thermo-bonding and lamination. In-house laboratory testing supports the group’s focus on quality and responsible manufacturing.</p></section>
       <section><h2>Supporting the wider community</h2><p>PARK’s community initiatives include health check-ups and eye-care camps, alongside its commitment to environmentally responsible business practices.</p></section>
     </div>
