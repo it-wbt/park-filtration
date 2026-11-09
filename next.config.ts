@@ -4,6 +4,11 @@ const config: NextConfig = {
  async redirects() {
   return [
    {
+    source: '/sitemap.xml',
+    destination: 'https://raw.githubusercontent.com/it-wbt/park-filtration/main/public/sitemap.txt',
+    permanent: true,
+   },
+   {
     source: '/:path*',
     has: [{type: 'host', value: 'parknonwoven-filtration.com'}],
     destination: 'https://www.parknonwoven-filtration.com/:path*',
