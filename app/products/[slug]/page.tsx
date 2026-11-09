@@ -14,7 +14,22 @@ import { productDetails } from '../../../lib/product-details';
 import { products, toSlug } from '../../../lib/products';
 import { pageMetadata, breadcrumb, webPageSchema } from '../../../lib/seo';
 export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const p=products.find(p=>p.slug===slug);return p ? pageMetadata(p.name+' | PARK Filtration',p.description,'/products/'+slug,'/images/'+p.image+'.webp') : {title:'Product not found',robots:{index:false}};}
+const productSeo:Record<string,{title:string;description:string}>={
+ 'panel-filter':{title:'HVAC Panel Air Filters for Railways & Industry | PARK',description:'Explore synthetic nonwoven panel air filters for HVAC, railway ventilation, cleanrooms and commercial buildings. Choose metal or plastic frames and standard or special sizes.'},
+ 'pocket-filter':{title:'HVAC Pocket Filters for Air Handling Units | PARK',description:'PARK pocket filters for HVAC air handling units, hospitals, laboratories, paint booths and industrial ventilation. Review media, frame, dimensions and airflow for your application.'},
+ 'hepa-filter':{title:'HEPA Filters for Cleanrooms & Pharma | PARK',description:'PARK HEPA filters list E10–U15 grades with EN 1822 and ISO 29463 references. Discuss the selected grade, dimensions, seal and airflow for your controlled-air application.'},
+ 'cabin-air-filter':{title:'Automotive Cabin Air Filters | PARK Filtration',description:'Compare particulate, activated carbon, fine-dust PM2.5, bio-functional and HEPA cabin air filter options for passenger vehicles. Share your vehicle fitment and requirement.'},
+ 'engine-air-filter':{title:'Engine Air Filters for 2-Wheelers & Cars | PARK',description:'PARK engine air filters include synthetic nonwoven options for two-wheelers and cellulose options for passenger cars. Discuss standard or special sizes and catalogue grades.'},
+ 'battery-air-filter':{title:'Hybrid & EV Battery Air Filters | PARK',description:'Explore air-filter options for hybrid and electric vehicle battery cooling systems. Share the required grade, installation dimensions and fitment details for your application.'},
+ 'car-purifier-filter':{title:'Car Air Purifier Filters for Console Units | PARK',description:'Explore particulate and activated carbon filters for in-car console air purifiers. Confirm the purifier format, PET fabric frame option and dimensions before specification.'},
+ 'filter-mats':{title:'Nonwoven Air Filter Mats for HVAC & Paint Booths | PARK',description:'PARK PET/PES nonwoven air filter mats for paint booths, railway ventilation and control cabinets. Available as rolls or customer-specific cuts for air-handling needs.'},
+ 'ceiling-filter':{title:'Paint Booth Ceiling Filters | Nonwoven Media | PARK',description:'Synthetic PET/PES ceiling filter media for paint booths, spray booths and paint-drying systems. Compare roll goods or custom cuts and confirm grade and fit.'},
+ 'bag-filter':{title:'Industrial Bag Filter Manufacturer in India | PARK',description:'Industrial dust collector filter bags for cement, mining, metals, power and chemical processes. Compare PET, PPS, PTFE, glass fibre, aramid, polypropylene, acrylic and P84 media.'},
+ 'cartridge-filter':{title:'Industrial Dust Collector Cartridge Filters | PARK',description:'PARK cartridge filters for industrial dust collection and high-dust-load applications. Discuss media, dimensions, seal, cleaning arrangement and collector fit.'},
+ 'liquid-filter':{title:'Liquid Bag Filters for Process Filtration | PARK',description:'Polypropylene liquid bag filters for suspended-particle removal in process water, coolants, wastewater, food and pharmaceutical applications. Check micron rating and housing fit.'},
+ 'swimming-pool-filter':{title:'Swimming Pool Filter Options | PARK Filtration',description:'Discuss swimming pool filter options and confirm media, system fit and product specifications for your pool filtration setup with PARK.'},
+};
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const p=products.find(p=>p.slug===slug);const seo=productSeo[slug];return p ? pageMetadata(seo?.title??p.name+' | PARK Filtration',seo?.description??p.description,'/products/'+slug,'/images/'+p.image+'.webp') : {title:'Product not found',robots:{index:false}};}
 export default async function Page({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const p=products.find(p=>p.slug===slug);if(!p)notFound();
  const presentation=productPresentation[slug];const explanation=productDetails[slug];const buyingGuide=resourceForProduct(slug);

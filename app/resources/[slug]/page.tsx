@@ -9,7 +9,12 @@ import {buyerResources} from '../../../lib/buyer-resources';
 import {products} from '../../../lib/products';
 import {pageMetadata,breadcrumb,webPageSchema} from '../../../lib/seo';
 export function generateStaticParams(){return buyerResources.map(r=>({slug:r.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const resource=buyerResources.find(r=>r.slug===slug);return resource?pageMetadata(resource.title+' | PARK',resource.description,'/resources/'+slug):{title:'Guide not found',robots:{index:false}}}
+const resourceSeo:Record<string,{title:string;description:string}>={
+ 'panel-pocket-hepa-air-filters':{title:'Panel vs Pocket vs HEPA Filters: HVAC Guide | PARK',description:'Compare panel, pocket and HEPA air filters for HVAC and controlled-air systems. Review grade, airflow, frame, dimensions and sealing before choosing a filter stage.'},
+ 'bag-vs-cartridge-dust-collection':{title:'Industrial Bag vs Cartridge Filters for Dust Collection | PARK',description:'Compare dust collector bag filters and cartridge filters by collector design, dust, media, fit and operating conditions before specifying a replacement.'},
+ 'liquid-bag-filter-selection':{title:'Liquid Bag Filter Selection: Micron Rating & Fit | PARK',description:'Choose a process liquid bag filter by fluid, micron rating, flow, sealing ring and housing dimensions. Prepare the right details for a filtration enquiry.'},
+};
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const resource=buyerResources.find(r=>r.slug===slug);const seo=resourceSeo[slug];return resource?pageMetadata(seo?.title??resource.title+' | PARK',seo?.description??resource.description,'/resources/'+slug):{title:'Guide not found',robots:{index:false}}}
 export default async function Page({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const resource=buyerResources.find(r=>r.slug===slug);if(!resource)notFound();
  const related=products.filter(p=>resource.products.includes(p.slug));

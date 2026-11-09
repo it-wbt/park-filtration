@@ -1,4 +1,4 @@
 import Home from '../components/Home';
 import { pageMetadata } from '../lib/seo';
-export const metadata = pageMetadata('Air & Liquid Filtration Solutions | PARK Nonwoven','Find air filters, liquid bag filters and nonwoven media for HVAC, vehicles and industry. Discuss your filtration problem and compare suitable options with PARK.','/');
+export const metadata = pageMetadata('Air Filter Manufacturer in India | PARK Filtration','Explore nonwoven air filters for HVAC, automobiles, railways, paint booths and industrial dust collection, plus polypropylene liquid bag filters.','/');
 export default function Page(){return <Home/>}

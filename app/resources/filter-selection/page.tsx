@@ -3,7 +3,7 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
 import { pageMetadata } from '../../../lib/seo';
-export const metadata = pageMetadata('How to Specify an Air or Liquid Filter | PARK Filtration', 'Understand filter roles, materials, catalogue grades, dimensions, airflow and liquid compatibility before requesting a filtration quotation.', '/resources/filter-selection');
+export const metadata = pageMetadata('Air & Liquid Filter Selection Guide | PARK Filtration', 'Learn how to specify HVAC and industrial air filters or liquid bag filters. Check filter type, media, grade, dimensions, airflow, fluid compatibility and housing fit before requesting a quote.', '/resources/filter-selection');
 const comparisons = [
  ['Cabin vs engine filter','A cabin filter treats passenger ventilation air. An engine filter treats engine intake air. Their purpose and assemblies differ.','cabin-air-filter','engine-air-filter'],
  ['Panel vs pocket filter','Panel filters use framed pleated media. Pocket filters use extended-surface pockets in an air-handling assembly. Compare the housing, grade, media area and airflow requirement.','panel-filter','pocket-filter'],
