@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-const sitemapUrl = 'https://raw.githubusercontent.com/it-wbt/park-filtration/main/public/sitemap.txt';
+import {siteUrl} from '../lib/seo';
+const sitemapUrl = `${siteUrl}/sitemap.xml`;
 export default function robots():MetadataRoute.Robots {
  return {rules:{userAgent:'*',allow:'/'},sitemap:sitemapUrl};
 }
