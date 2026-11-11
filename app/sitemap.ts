@@ -8,6 +8,7 @@ const paths = [
   '/filtration-media',
   '/resources',
   '/resources/filter-selection',
+  '/resources/paint-booth-filter-guide',
   '/resources/panel-pocket-hepa-air-filters',
   '/resources/bag-vs-cartridge-dust-collection',
   '/resources/liquid-bag-filter-selection',

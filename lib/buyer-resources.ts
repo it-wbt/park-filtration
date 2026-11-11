@@ -1,12 +1,100 @@
 export type BuyerResource = {
  slug:string; title:string; description:string; kicker:string; readTime:string;
  intro:string; takeaways:string[];
- sections:{title:string;paragraphs:string[];checks?:string[]}[];
+ sections:{title:string;paragraphs:string[];checks?:string[];productLink?:{href:string;label:string}}[];
  products:string[]; question:string; answer:string;
+ faqs?:{question:string;answer:string}[];
+ callToAction?:{title:string;description:string;label:string;href:string};
 };
 // Buyer guidance developed from PARK's supplied catalogue and product explanations.
 // No prices, measured performance, certifications or service-life claims are inferred.
 export const buyerResources:BuyerResource[]=[
+ {
+  slug:'paint-booth-filter-guide',
+  title:'Paint Booth Filters in India: Ceiling Filters & Filter Mats',
+  description:'Compare PARK paint booth ceiling filters and PET/PES filter mats. Check their listed roles, grades and roll or customer-specific cut options, then prepare a product enquiry.',
+  kicker:'PAINT BOOTH FILTRATION',readTime:'6 min read',
+  intro:'Need a paint booth filter? Start with its position and job, then check the booth maker’s fit and airflow requirements. PARK’s catalogue lists synthetic PET/PES nonwoven ceiling filters for final-stage air filtration in paint and spray booths, plus filter mats listed for paint-booth applications. The two product families have different listed roles, so choose for the stage your booth actually uses.',
+  takeaways:[
+   'Ceiling filters and filter mats have different listed functions; choose by filter stage, not name alone.',
+   'Both PARK product families list synthetic PET/PES nonwoven media, rolled goods and customer-specific cuts.',
+   'Confirm the filter location, dimensions, requested grade and booth requirements before asking for a quote.',
+  ],
+  sections:[
+   {
+    title:'Start with the filter position in your paint booth',
+    paragraphs:[
+     '“Paint booth filter” can mean different things depending on where a filter sits and what the booth requires there. Before choosing a product, identify the exact filter position and the function specified for that stage.',
+     'This guide focuses on PARK’s catalogue-listed ceiling filters and filter mats for paint-booth applications. If you are replacing another type of booth filter, name that stage in your enquiry so the product can be checked against the equipment specification.',
+    ],
+   },
+   {
+    title:'Ceiling filters and filter mats have different listed roles',
+    paragraphs:[
+     'PARK describes ceiling filters for final-stage air filtration in applications that include paint booths, spray booths, cleanrooms and ventilation systems. The presentation says these filters are designed to capture fine dust, paint particles and other airborne contaminants.',
+     'PARK describes filter mats as a pre-filter option for dust, pollen and larger airborne particles, including use in paint booths, ventilation systems and air purification. The listed purpose also includes protecting finer filters and extending their service life.',
+     'Those descriptions are useful starting points, not a substitute for the booth maker’s design. A ceiling filter and a filter mat are not automatically interchangeable. Confirm the stage, assembly and requested grade before ordering.',
+    ],
+    checks:[
+     'Ceiling filters: listed for final-stage air filtration; paint booths and spray booths are among the applications.',
+     'Filter mats: listed for pre-filtration and paint-booth applications, among others.',
+    ],
+   },
+   {
+    title:'PARK ceiling filters for paint and spray booths',
+    paragraphs:[
+     'PARK’s catalogue lists ceiling filters made from synthetic PET/PES nonwoven fabric. The listed supply formats are rolled goods and customer-specific cuts, with the clean-air side mechanically compressed.',
+     'The presentation lists ISO Coarse and ePM10 classes, along with EN 779 grades G2, G3, G4, M5 and M6. Treat those as catalogue-listed classifications, not as a claim that every grade is interchangeable or suited to every booth. Confirm the exact grade required for your equipment.',
+    ],
+    productLink:{href:'/products/ceiling-filter',label:'Explore PARK ceiling filters'},
+   },
+   {
+    title:'PARK filter mats for paint-booth applications',
+    paragraphs:[
+     'PARK’s filter mats are also listed as synthetic PET/PES nonwoven fabric. The catalogue includes rolled goods and customer-specific cuts, and notes a mechanically compressed clean-air side.',
+     'Listed classifications include ISO Coarse and EN 779 grades G2, G3, G4 and M5. The catalogue names paint booths and painting, paint-spraying and drying systems among the applications. Share the filter stage and required specification so the right option can be checked.',
+    ],
+    productLink:{href:'/products/filter-mats',label:'Explore PARK filter mats'},
+   },
+   {
+    title:'How to choose a paint booth filter for your setup',
+    paragraphs:[
+     'Once you know whether you need a ceiling filter or filter mat, match the product details to your actual booth. Use the equipment documentation and the existing filter as references; a product name or grade by itself does not confirm fit.',
+     'If the booth specification uses a particular classification, quote that classification as written. PARK’s catalogue lists both ISO 16890 and EN 779 terms for these product families; do not assume one grade is a direct conversion of another.',
+    ],
+    checks:[
+     'Booth make, model and filter position or stage',
+     'Existing filter label, reference number, photo or drawing',
+     'Frame opening and filter dimensions, including depth',
+     'Required grade or standard from the booth documentation',
+     'Airflow or pressure requirements stated by the equipment maker',
+     'Roll or cut format, quantity and delivery location',
+    ],
+   },
+   {
+    title:'Avoid these common buying mistakes',
+    paragraphs:[
+     'Ordering by “paint booth filter” alone leaves out the information that determines which product family to consider. Add the filter location and current part reference to your request.',
+     'Do not select only by a grade label, appearance or a claim that one filter is “better.” The booth design, requested specification and physical fit all matter. A higher or different listed class does not automatically make a suitable replacement.',
+     'Finally, send dimensions and format requirements before asking for a custom cut. A clear enquiry helps the team discuss the catalogue option that best matches your application.',
+    ],
+   },
+  ],
+  products:['ceiling-filter','filter-mats'],
+  question:'What information should I send when asking about a paint booth filter?',
+  answer:'Include the booth make and model, filter position, existing filter reference, dimensions, required grade or standard, quantity and a photo or drawing if available. Add airflow or pressure requirements from the booth documentation when you have them.',
+  faqs:[
+   {question:'What is a paint booth ceiling filter?',answer:'PARK’s catalogue describes ceiling filters as final-stage air filters for applications including paint booths and spray booths. Confirm the filter stage and required grade against your booth documentation.'},
+   {question:'Are ceiling filters and filter mats the same product?',answer:'No. PARK lists ceiling filters for final-stage filtration and filter mats for pre-filtration, including paint-booth applications. Check the required stage before choosing between them.'},
+   {question:'Which grade should I choose for my paint booth?',answer:'There is no single grade for every booth. Use the class or standard specified by the booth maker, then confirm the selected product and grade with PARK. The catalogue lists multiple classifications for each family.'},
+   {question:'What details do I need to request a paint booth filter quote?',answer:'Send the booth model, filter location, existing part or label, exact dimensions, required grade, format and quantity. A photo or drawing can help clarify the assembly.'},
+  ],
+  callToAction:{
+   title:'Need a ceiling filter or filter mat for your booth?',
+   description:'Send PARK the booth model, filter position, dimensions and requested grade. The team can review the listed options with you before you specify a product.',
+   label:'Discuss your paint-booth filter requirement',href:'/#contact',
+  },
+ },
  {
   slug:'panel-pocket-hepa-air-filters',title:'Panel, Pocket or HEPA? Choose the Right Air Filtration Stage',
   description:'Compare panel, pocket and fine-filtration formats for HVAC and controlled-air systems. Understand media grade, airflow, sealing and what to send for a quote.',
