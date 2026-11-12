@@ -10,7 +10,7 @@ import {products} from '../../../lib/products';
 import {pageMetadata,breadcrumb,webPageSchema} from '../../../lib/seo';
 export function generateStaticParams(){return buyerResources.map(r=>({slug:r.slug}))}
 const resourceSeo:Record<string,{title:string;description:string}>={
- 'paint-booth-filter-guide':{title:'Paint Booth Filters in India: Ceiling Filters & Mats | PARK',description:'Explore PARK PET/PES paint booth ceiling filters and filter mats. Compare their listed roles, grades and roll or customer-specific cut options, then request a quote.'},
+ 'paint-booth-filter-guide':{title:'Paint Booth Filter Media: Ceiling Filters & Mats | PARK',description:'Explore PARK PET/PES paint booth filter media, ceiling filters and filter mats. Compare their listed roles, grades and roll or customer-specific cut options, then request a quote.'},
  'panel-pocket-hepa-air-filters':{title:'Panel vs Pocket vs HEPA Filters: HVAC Guide | PARK',description:'Compare panel, pocket and HEPA air filters for HVAC and controlled-air systems. Review grade, airflow, frame, dimensions and sealing before choosing a filter stage.'},
  'bag-vs-cartridge-dust-collection':{title:'Industrial Bag vs Cartridge Filters for Dust Collection | PARK',description:'Compare dust collector bag filters and cartridge filters by collector design, dust, media, fit and operating conditions before specifying a replacement.'},
  'liquid-bag-filter-selection':{title:'Liquid Bag Filter Selection: Micron Rating & Fit | PARK',description:'Choose a process liquid bag filter by fluid, micron rating, flow, sealing ring and housing dimensions. Prepare the right details for a filtration enquiry.'},
