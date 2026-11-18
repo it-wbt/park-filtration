@@ -20,7 +20,7 @@ Open http://localhost:3000. For a production build, run `npm run build`, then `n
 - `public/images`: images extracted from the supplied presentation, with optimized WebP variants.
 - `reference/park-filtration-products.pptx`: internal reference only; not publicly served.
 
-The enquiry form opens the visitor's email app with a prepared message addressed to sales@parknonwoven.com, as listed on the main PARK website. It does not submit to a server or store enquiries. A mail service would be needed for direct website submissions.
+The contact form submits enquiry details to the configured Google Apps Script endpoint for recording. Set NEXT_PUBLIC_GOOGLE_ENQUIRY_URL to the production deployment URL.
 
 Product specifications were summarized from the presentation. Repeated HEPA specifications on the swimming pool slide were excluded pending confirmation. Review technical claims and asset rights before publication. No deployment has been made.
 
@@ -37,7 +37,7 @@ The internal extraction retains all 36 source slides, 499 text runs and 411 read
 - `/resources/filter-selection`: product differences and a practical enquiry/specification checklist.
 - Homepage: source-product visuals, interactive industry/application finder, performance-parameter explorer and access to the product range.
 
-The finder returns a catalogue shortlist, not a confirmed technical recommendation. The quote forms prepare an email in the visitor's mail app; they do not submit to a server or store an enquiry. Prices, delivery promises, certifications, reviews and checkout have not been invented. Pool specifications, copied bag/cartridge descriptions and catalogue efficiency claims retain explicit clarification.
+The finder returns a catalogue shortlist, not a confirmed technical recommendation. Contact and product enquiry forms submit details to the configured Google Apps Script endpoint and save them to its Sheet; this deployment does not send email notifications. Prices, delivery promises, certifications, reviews and checkout have not been invented. Pool specifications, copied bag/cartridge descriptions and catalogue efficiency claims retain explicit clarification.
 
 Source text can be regenerated and checked with:
 

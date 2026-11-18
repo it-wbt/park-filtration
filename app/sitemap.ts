@@ -1,37 +1,22 @@
-import type {MetadataRoute} from 'next';
-import {siteUrl} from '../lib/seo';
+import type { MetadataRoute } from 'next';
+import { buyerResources } from '../lib/buyer-resources';
+import { industries, products, toSlug } from '../lib/products';
+import { siteUrl } from '../lib/seo';
 
-const paths = [
+const fixedPaths = [
   '/',
   '/about',
   '/products',
   '/filtration-media',
   '/resources',
   '/resources/filter-selection',
-  '/resources/paint-booth-filter-guide',
-  '/resources/panel-pocket-hepa-air-filters',
-  '/resources/bag-vs-cartridge-dust-collection',
-  '/resources/liquid-bag-filter-selection',
-  '/products/hepa-filter',
-  '/products/swimming-pool-filter',
-  '/products/panel-filter',
-  '/products/pocket-filter',
-  '/products/cabin-air-filter',
-  '/products/engine-air-filter',
-  '/products/battery-air-filter',
-  '/products/car-purifier-filter',
-  '/products/filter-mats',
-  '/products/ceiling-filter',
-  '/products/bag-filter',
-  '/products/cartridge-filter',
-  '/products/liquid-filter',
-  '/industries/mobility',
-  '/industries/manufacturing',
-  '/industries/heavy-duty-industry',
-  '/industries/living',
-  '/industries/liquid',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return paths.map((path) => ({url: `${siteUrl}${path}`}));
+  const productPaths = products.map((product) => `/products/${product.slug}`);
+  const resourcePaths = buyerResources.map((resource) => `/resources/${resource.slug}`);
+  const industryPaths = industries.map((industry) => `/industries/${toSlug(industry.name)}`);
+
+  return [...new Set([...fixedPaths, ...productPaths, ...resourcePaths, ...industryPaths])]
+    .map((path) => ({ url: path === '/' ? siteUrl : `${siteUrl}${path}` }));
 }

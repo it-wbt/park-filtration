@@ -12,7 +12,7 @@ import { resourceForProduct } from '../../../lib/buyer-resources';
 import { productPresentation } from '../../../lib/product-presentation';
 import { productDetails } from '../../../lib/product-details';
 import { products, toSlug } from '../../../lib/products';
-import { pageMetadata, breadcrumb, webPageSchema } from '../../../lib/seo';
+import { pageMetadata, breadcrumb, productSchema, webPageSchema } from '../../../lib/seo';
 export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
 const productSeo:Record<string,{title:string;description:string}>={
  'panel-filter':{title:'Panel Filter Manufacturer in India | HVAC & Railway | PARK',description:'PARK makes synthetic nonwoven panel air filters for HVAC, railway ventilation, cleanrooms and commercial buildings. Choose listed metal or plastic frames and standard or special sizes.'},
@@ -58,5 +58,5 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
  <ProductEnquiry product={p.name} variants={explanation.variants?.map(v=>v.name)||p.variants}/>
 
 
- </main><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(p.name,p.description,'/products/'+slug)}/><Footer/></>;
+ </main><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(p.name,p.description,'/products/'+slug)}/><StructuredData data={productSchema(p)}/><Footer/></>;
 }

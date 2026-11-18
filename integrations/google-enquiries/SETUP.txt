@@ -24,8 +24,8 @@ PARK chatbot: Google Sheet setup
    columns identify the source domain; use the Website column to filter leads.
 9. Chat messages are logged in the Chat Logs tab (session, time, site, speaker,
    and message). Completed quote requests are saved in Enquiries with Query and
-   Requirement columns. Chatbot leads save to the Sheet only; the contact form
-   saves to the Sheet and separately sends an email through FormSubmit.
+   Requirement columns. Contact form and chatbot enquiries are saved to the
+   Sheet. This deployment does not send email notifications.
 
 The public URL is safe to include in the frontend; account credentials stay in
 Apps Script. Retrying updates the existing lead rather than adding another one.
