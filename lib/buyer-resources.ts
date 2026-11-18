@@ -1,7 +1,7 @@
 export type BuyerResource = {
  slug:string; title:string; description:string; kicker:string; readTime:string;
  intro:string; takeaways:string[];
- sections:{title:string;paragraphs:string[];checks?:string[];productLink?:{href:string;label:string}}[];
+ sections:{title:string;paragraphs:string[];checks?:string[];productLink?:{href:string;label:string};paragraphLinks?:{before:string;label:string;href:string;after?:string;external?:boolean}[];table?:{caption:string;headers:string[];rows:string[][]}}[];
  products:string[]; question:string; answer:string;
  faqs?:{question:string;answer:string}[];
  callToAction?:{title:string;description:string;label:string;href:string};
@@ -134,6 +134,133 @@ export const buyerResources:BuyerResource[]=[
    {question:'Can a cartridge filter replace a bag in the same dust collector?',answer:'Bag and cartridge formats are not interchangeable by default. Confirm the collector design, mounting, seal, clearance, cleaning arrangement and selected media before specifying a replacement.'},
    {question:'What details should I send for a baghouse bag or cartridge quotation?',answer:'Include the collector make and model, current filter reference, dimensions, mounting and seal, cleaning method, dust or process description, temperature, relevant chemical exposure, quantity and any available drawing.'},
   ]
+ },
+ {
+  slug:'dust-collector-filter-bag-selection',
+  title:'Dust Collector Filter Bags Manufacturer: Materials and Selection Guide',
+  description:'A practical guide to PARK industrial bag filters: catalogue-listed media, size and frame options, buyer quote details, and product-specific data to confirm.',
+  kicker:'INDUSTRIAL DUST COLLECTION',readTime:'8 min read',
+  intro:'Choosing industrial bag-filter media starts with the collector and process conditions, not a fibre name alone. If your team is comparing a dust collector filter bags manufacturer, begin with the current bag assembly, dimensions, material requirement and dust-collection application. A replacement that matches only a label or approximate size still needs to be checked against the collector. PARK lists Industrial Bag Filters for industrial dust collection, with several material options, standard and special sizes, and metal or plastic frame options. The catalogue does not provide a model-by-model pressure-drop curve, operating-temperature limit or efficiency report for this guide. This page explains what PARK lists, what buyers should send with a request, and which performance details need written confirmation before purchase. Use the collector documentation and product-specific data for final selection.',
+  takeaways:[
+   'PARK lists industrial bag filters for dust collection, with multiple media options and metal or plastic frame options.',
+   'Standard and special sizes are listed; provide a drawing or current bag dimensions for fit review.',
+   'Confirm performance labels and operating limits against a product-specific document before specifying a bag.',
+  ],
+  sections:[
+   {
+    title:'Industrial bag filters and HVAC pocket filters serve different systems',
+    paragraphs:[
+     'Buyers may see the words bag filter and pocket filter used for different products. PARK lists industrial bag filters for process dust collection. Its pocket filters are a separate product family used in HVAC and air-handling systems. The outline of a filter alone does not confirm its collector, mounting or duty. Start with the equipment nameplate, the current filter reference and the collection point, then identify the product family you are replacing.',
+     'This guide covers process-dust bags. Use the separate HVAC guide for panel, pocket and HEPA filters, and the existing bag-versus-cartridge guide for collector-format questions.',
+    ],
+    paragraphLinks:[
+     {before:'Read the ',label:'panel, pocket and HEPA filter guide',href:'/resources/panel-pocket-hepa-air-filters',after:' for the separate HVAC product families.'},
+     {before:'See ',label:'bag vs. cartridge filters for industrial dust collection',href:'/resources/bag-vs-cartridge-dust-collection',after:' for collector-format questions.'},
+    ],
+   },
+   {
+    title:'What PARK lists for industrial bag filters',
+    paragraphs:[
+     'PARK’s product range includes Industrial Bag Filters for industrial dust collection. The product information lists PET (polyester), PPS, PTFE, glass fibre, aramid, polypropylene (PP), homopolymer acrylic (HPA) and P84 as media options. These are catalogue-listed materials, not a claim that every material suits every dust stream or collector.',
+     'The current product information also lists standard and special sizes, with metal or plastic ring/frame options. The exact assembly still needs to match the collector. Confirm the required media and construction with the system information before requesting a quotation. The table below separates what PARK lists from details that need a product-specific confirmation.',
+    ],
+    table:{
+     caption:'PARK industrial bag filter information and confirmation points',
+     headers:['Specification area','What PARK lists','What to confirm for your collector'],
+     rows:[
+      ['Media options','PET/polyester, PPS, PTFE, glass fibre, aramid, PP, HPA and P84.','Which listed medium is specified for the actual dust and operating conditions.'],
+      ['Size','Standard and special sizes.','Bag dimensions, drawing, and collector or replacement reference.'],
+      ['Ring/frame','Metal or plastic options are listed.','The exact top, support and mounting interface for the assembly.'],
+      ['Performance evidence','The catalogue lists class labels for the range.','The grade, test basis and report for the exact product configuration.'],
+      ['Operating limits','No model-specific pressure-drop or temperature figures are given here.','Written limits and test data for the selected bag before approval.'],
+     ],
+    },
+    paragraphLinks:[
+     {before:'View the ',label:'Industrial Bag Filters product page',href:'/products/bag-filter',after:' for the listed product details.'},
+     {before:'Explore the wider ',label:'PARK product range',href:'/products',after:' when you are comparing other filtration families.'},
+     {before:'For media used across the range, see ',label:'PARK filtration media',href:'/filtration-media',after:'.'},
+    ],
+   },
+   {
+    title:'Build the specification from collector and process information',
+    paragraphs:[
+     'A useful filter-bag request connects the replacement part to the system that uses it. Share the collector make and model where available, the existing bag reference, the number of bags required and a clear drawing or photograph. Add the application and the process description so the team can check whether the request matches the industrial bag-filter family.',
+     'For process review, provide the operating information your plant engineer already uses: dust type, relevant moisture or chemical exposure, normal and peak temperature, and the collector cleaning arrangement. These details are buyer inputs, not published performance limits for PARK bags. Ask the supplier to confirm which information is needed for the selected medium and assembly. Do not substitute a general material name for approval against a specific process.',
+     'If the old filter failed early, describe the observed condition and send a photograph of the bag, top connection and wear. Keep the collector specification, reference bag and new quotation together so the review uses the same assembly throughout.',
+    ],
+    checks:[
+     'Collector make, model and current filter reference',
+     'Bag dimensions, mounting details, drawing or clear photographs',
+     'Application, dust description and relevant operating conditions',
+     'Requested material, quantity and any required test documentation',
+    ],
+    paragraphLinks:[
+     {before:'Use the broader ',label:'industrial filter selection guide',href:'/resources/filter-selection',after:' to organize the information for an enquiry.'},
+    ],
+   },
+   {
+    title:'Read filter grades and test claims in context',
+    paragraphs:[
+     'A grade label is useful only when the test method, product configuration and intended application are clear. The product presentation supplied for this project includes class references for the industrial bag-filter range, but it does not map each class to a specific bag construction or include a report for an individual item. Ask for the technical document tied to the exact medium and assembly you are considering.',
+     'For cleanable filter media used in dry-gas cleaning, ISO 11057 describes a comparative characterization test method. A standard’s existence does not show that a specific bag has been tested to it. Request the report, sample configuration and conditions behind any quoted efficiency, pressure-drop or durability result, then compare suppliers on the same basis.',
+     'Treat HVAC class labels as separate from a dust-collector test result. If your plant specification names EN 779, ISO 16890, MERV or another class, quote it exactly and request evidence for the selected industrial bag. Compare pressure drop, temperature and particle performance only when the test report identifies the same configuration.',
+    ],
+    paragraphLinks:[
+     {before:'See the scope of ',label:'ISO 11057:2011',href:'https://www.iso.org/standard/50020.html',after:' when reviewing cleanable-media test reports.',external:true},
+    ],
+   },
+   {
+    title:'Specify dimensions and construction without guessing',
+    paragraphs:[
+     'PARK lists standard and special sizes for industrial bag filters. The supplied product information does not give a universal dust-collector bag dimension or a roll-width schedule. Send the actual dimensions or drawing for the collector under review. Do not copy a size from a pocket-filter or HVAC specification into a dust-collection enquiry unless the equipment documentation confirms that it is the required assembly.',
+     'Metal or plastic ring/frame options are listed. Confirm the opening, support and mounting against the collector drawing or current part. The available catalogue does not provide a complete cuff, seam, gasket or finish schedule, so request details for your specific assembly.',
+    ],
+    table:{
+     caption:'Buyer-side checklist for a comparable filter-bag quotation',
+     headers:['Information to send','Why it helps','Confirmation to request'],
+     rows:[
+      ['Collector model and filter reference','Connects the request to the equipment and current assembly.','Confirm compatibility with the collector and mounting.'],
+      ['Drawing, dimensions and photographs','Clarifies the requested size and visible connection details.','Confirm the final dimensions and frame/ring configuration.'],
+      ['Application and dust description','Gives context for reviewing the catalogue-listed media.','Confirm the proposed material against the process.'],
+      ['Operating data and cleaning arrangement','Provides the plant’s current technical requirements.','Request product-specific operating limits and supporting evidence.'],
+      ['Quantity and required documentation','Helps define the commercial request and approval records.','Confirm availability, quotation scope and documents with the supplier.'],
+     ],
+    },
+   },
+   {
+    title:'Match the product to PARK’s listed applications',
+    paragraphs:[
+     'PARK’s industrial bag-filter information names applications across cement and construction, steel and metals, power plants, chemical and pharmaceutical processing, mining and minerals, food processing, wood and furniture, automotive and general manufacturing, and paint and coating. These are the catalogue’s stated application areas. A listed industry is a starting point for an enquiry, not proof that one material or bag construction fits every process within it.',
+     'Include the operation inside the plant, dust description and collector details; an industry name alone cannot determine material, dimensions or performance. For an application outside the listed examples, send the process details and request a suitability review.',
+    ],
+   },
+   {
+    title:'What to confirm with a dust collector filter bags manufacturer',
+    paragraphs:[
+     'Compare quotations against the same dimensions, mounting, material designation and requested documents. A price comparison is useful when the proposed assemblies address the same collector and specification. Ask suppliers to identify and explain any change in material or construction.',
+     'Keep the source of each performance value in your approval record. Confirm whether a test result applies to the exact medium and finished bag or only to a media specimen. Get tolerances, frame details and approval documents in writing before releasing a purchase order.',
+     'Start with PARK’s listed Industrial Bag Filters and include the collector information. The team can review the available options and identify specifications needing confirmation. Product-specific service life, efficiency, minimum-order and sample terms require separate confirmation.',
+    ],
+    paragraphLinks:[
+     {before:'Start with the ',label:'Industrial Bag Filters product page',href:'/products/bag-filter',after:' and share your project details through the enquiry section.'},
+    ],
+   },
+  ],
+  products:['bag-filter'],
+  question:'What should I send to a dust collector filter bags manufacturer for a quotation?',
+  answer:'Send the collector make and model, current bag reference, dimensions or drawing, application and dust description, relevant operating information, requested material, quantity and any required technical documents. Ask the supplier to confirm fit and product-specific limits in writing.',
+  faqs:[
+   {question:'Which materials are listed for PARK industrial bag filters?',answer:'PARK lists PET (polyester), PPS, PTFE, glass fibre, aramid, polypropylene (PP), homopolymer acrylic (HPA) and P84. Confirm the material for your collector and process before ordering.'},
+   {question:'Can I request a special size for a dust collector bag?',answer:'PARK’s product information lists standard and special sizes. Send the collector reference, dimensions or drawing so the requested size and assembly can be reviewed.'},
+   {question:'Which frame options are listed for PARK bag filters?',answer:'The product information lists metal or plastic ring/frame options. Confirm the exact mounting and support arrangement against your dust collector.'},
+   {question:'Which industries are listed for PARK industrial bag filters?',answer:'The catalogue lists cement and construction, steel and metals, power plants, chemical and pharmaceutical processing, mining and minerals, food processing, wood and furniture, automotive and general manufacturing, and paint and coating.'},
+   {question:'What should I send to a dust collector filter bags manufacturer for a quotation?',answer:'Include the collector make and model, current filter reference, dimensions or drawing, application, dust description, relevant operating conditions, requested media, quantity and any technical-document requirements. Ask for written confirmation of fit and performance data for the selected assembly.'},
+  ],
+  callToAction:{
+   title:'Discuss an industrial bag-filter requirement',
+   description:'Share your collector reference, current bag dimensions, application and requested material. PARK can review the listed Industrial Bag Filter options and identify the product details that need confirmation.',
+   label:'Send your dust-collection enquiry',href:'/#contact',
+  },
  },
  {
   slug:'liquid-bag-filter-selection',title:'How to Specify a Liquid Bag Filter for Your Process',
