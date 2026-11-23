@@ -10,6 +10,7 @@ Canonical product destinations are the five dedicated product pages. Product lin
 | `/resources/panel-pocket-hepa-air-filters` | Panel Filters | `/products/panel-filter` |
 | `/resources/panel-pocket-hepa-air-filters` | Pocket Filters | `/products/pocket-filters` |
 | `/resources/panel-pocket-hepa-air-filters` | HEPA Filters | `/products/hepa-filters` |
+| `/resources/panel-pocket-hepa-air-filters` | Filter Mats | `/products/filter-mats` |
 | `/resources/panel-pocket-hepa-air-filters` | Nonwoven filtration media | `/filtration-media` |
 | `/resources/bag-vs-cartridge-dust-collection` | Industrial Bag Filters | `/products/dust-collector-bag-filters` |
 | `/resources/bag-vs-cartridge-dust-collection` | Cartridge Filters | `/products/cartridge-filter` |
@@ -25,4 +26,4 @@ Canonical product destinations are the five dedicated product pages. Product lin
 | `/resources/filter-selection` | Liquid bag filters | `/products/liquid-bag-filters` |
 | `/resources/filter-selection` | Nonwoven filtration media | `/filtration-media` |
 
-The paint-booth guide does not link to pocket, dust-collector, HEPA, cabin or liquid pages because those product families do not match that guide’s ceiling-filter and filter-mat subject. The panel/pocket/HEPA guide’s related-product set excludes filter mats for the same relevance reason.
+All PARK product families remain available. Related-product links are maintained as supplied, including Filter Mats on the panel, pocket and HEPA guide.
