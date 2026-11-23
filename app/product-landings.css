@@ -23,8 +23,12 @@
 .product-landing-specs, .product-landing-applications, .product-landing-faq, .product-landing-resources, .product-landing-enquiry { max-width: 1320px; margin: 0 auto; padding-top: 55px; padding-bottom: 55px; }
 .product-landing-table-scroll, .media-table-scroll { overflow-x: auto; border: 1px solid #dfe7e7; border-radius: 16px; }
 .product-landing-table-scroll table, .media-table-scroll table { width: 100%; min-width: 620px; border-collapse: collapse; text-align: left; }
+.product-landing-table-scroll.is-wide table { min-width: 1050px; }
+.product-landing-table-scroll caption { padding: 16px 18px; color: #183d42; font-weight: 700; text-align: left; background: #f5f8f7; }
 .product-landing-table-scroll th, .product-landing-table-scroll td, .media-table-scroll th, .media-table-scroll td { padding: 16px 18px; border-bottom: 1px solid #e5ebeb; vertical-align: top; line-height: 1.55; }
 .product-landing-table-scroll th, .media-table-scroll th { width: 30%; color: #183d42; background: #f5f8f7; font-weight: 700; }
+.product-landing-table-scroll.is-wide th { width: auto; }
+.product-landing-table-note { max-width: 900px; color: #536365; font-size: .92rem; line-height: 1.65; }
 .product-landing-table-scroll tr:last-child th, .product-landing-table-scroll tr:last-child td, .media-table-scroll tr:last-child th, .media-table-scroll tr:last-child td { border-bottom: 0; }
 .product-landing-applications ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; padding: 0; list-style: none; }
 .product-landing-applications li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }

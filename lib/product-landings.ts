@@ -1,5 +1,15 @@
 export type LandingFaq = { question: string; answer: string };
-export type LandingSection = { title: string; paragraphs: string[] };
+export type LandingSection = {
+  title: string;
+  paragraphs: string[];
+  paragraphLinks?: { before: string; label: string; href: string; after?: string }[];
+};
+export type LandingSpecificationTable = {
+  caption: string;
+  headers: string[];
+  rows: string[][];
+  note?: string;
+};
 export type ProductLandingContent = {
   slug: string;
   baseSlug: string;
@@ -9,56 +19,94 @@ export type ProductLandingContent = {
   intro: string;
   sections: LandingSection[];
   specifications: [string, string][];
+  specificationTables?: LandingSpecificationTable[];
   applications: string[];
   faqs: LandingFaq[];
   resources: { label: string; href: string }[];
+  ctaHeading?: string;
+  ctaText?: string;
 };
 
 export const productLandings: Record<string, ProductLandingContent> = {
   'pocket-filters': {
     slug: 'pocket-filters', baseSlug: 'pocket-filter',
-    title: 'Pocket Filter Manufacturer | HVAC Air Filters | PARK',
-    description: 'Explore PARK synthetic pocket filters for HVAC and air handling. Compare listed EN 779 and ISO 16890 grades, frame options and applications; confirm dimensions and airflow.',
-    h1: 'Pocket Filter Manufacturer for HVAC and Air-Handling Systems',
-    intro: 'PARK Nonwoven Filtration supplies synthetic pocket filters for HVAC and air-handling applications. The catalogue lists standard and special sizes, metal or plastic frames, and several EN 779 and ISO 16890 grade references. A pocket filter must be selected for the actual housing, airflow and required filtration stage. Send the existing filter reference or drawing to confirm the construction and available option for your system.',
+    title: 'Pocket Air Filter Manufacturer | Synthetic HVAC Filters',
+    description: 'Synthetic pocket air filters for HVAC and AHU systems. Review PARK-listed grades and frame options; confirm PFA/PFAH/HV3 references, dimensions, and OEM fit.',
+    h1: 'Pocket Air Filter Manufacturer for HVAC and AHU Systems',
+    intro: 'PARK Nonwoven Filtration offers a synthetic pocket air filter for HVAC and air-handling applications in its catalogue. The pocket format uses an extended surface of media supported by a frame, but the format alone does not establish efficiency, pressure drop, energy savings, or fit for every AHU. When comparing a pocket filter manufacturer for a replacement, specify the required class, design airflow, frame dimensions, pocket arrangement, and installation details. PARK lists standard and special sizes, metal or plastic frames, and classification references under EN 779 and ISO 16890. The supplied product information does not define PFA, PFAH, or HV3 codes or confirm exact nominal sizes used in buyer searches. Send the equipment reference, filter label, and drawing so availability and dimensions can be checked before ordering.',
     sections: [
-      { title: 'Pocket filters for commercial and industrial air handling', paragraphs: [
-        'A pocket filter uses an extended-surface arrangement in an air-handling assembly. Air passes through the synthetic media while airborne dust and particles are retained. The filter format, media grade, pocket arrangement, frame and system operating point all affect the selection. This is an HVAC product family; it is different from an industrial dust-collector bag filter, even though both products use a bag-shaped form.',
-        'PARK lists pocket filters for HVAC and air handling, industrial environments, medical facilities and hospitals, laboratories, shopping centres, public institutions and paint booths. These are catalogue application areas, not a statement that one filter configuration suits every system in those sectors. Tell us the filter stage, equipment model and required class so the available options can be reviewed against the application.',
+      { title: 'What Is a Pocket Air Filter and How Does It Work?', paragraphs: [
+        'A pocket air filter is an HVAC filter with flexible media formed into pockets on a supporting frame. Air passes through the media, which retains particles. Pocket depth, layout, grade, frame and airflow affect selection; the word “pocket” alone states neither efficiency nor pressure drop.',
+        'For an AHU replacement, match the system schedule and installed part. Confirm face dimensions, depth, header, seal and airflow. HVAC pocket filters are not interchangeable with industrial dust-collector bags.',
       ]},
-      { title: 'Listed pocket-filter grades and media', paragraphs: [
-        'The supplied product information describes synthetic media and lists ISO Coarse 75%, ePM10 55% and 70%, ePM2.5 65%, and ePM1 70% and 80% under ISO 16890. It also retains the catalogue’s EN 779 references G4, M5, M6, F7, F8 and F9. These are separate classification references. Do not infer a direct conversion between standards or assume every grade is available in every size.',
-        'Select a grade from the project specification or the system designer’s requirement. Ask for the technical data and test basis for the exact filter under consideration. If a legacy drawing uses an EN 779 class, quote the code as written and request confirmation of the offered product’s documentation before approval.',
+      { title: 'Choose a Pocket Filter Grade for Your AHU', paragraphs: [
+        'PARK lists ISO 16890 references of ISO Coarse 75%, ePM10 55% and 70%, ePM2.5 65%, and ePM1 70% and 80%, plus EN 779 references G4, M5, M6, F7, F8 and F9. These are catalogue options; availability by size or series needs confirmation.',
+        'Specify the class in the project documents and request technical data for the exact product. Keep EN 779 references separate from ISO 16890; do not assume direct conversion or transfer a rating between sizes without evidence.',
+      ], paragraphLinks: [
+        { before: 'For the role of each air-filter format, see the ', label: 'panel, pocket, and HEPA air filters', href: '/resources/panel-pocket-hepa-air-filters', after: '.' },
       ]},
-      { title: 'Check dimensions, pockets and frame together', paragraphs: [
-        'A useful pocket-filter request includes the outside frame width, height and depth, pocket count or arrangement, pocket depth, attachment details and sealing requirement. Provide the air-handling-unit make and model, a photograph of the installed filter, or a drawing if available. PARK’s catalogue lists standard and special sizes and metal or plastic frame options; it does not publish a universal pocket depth, frame schedule or dimensional tolerance.',
-        'The product codes PFA, PFAH and HV3 are not defined in the supplied PARK catalogue. Treat them as reference terms from the buyer’s equipment or filter label, not as confirmed PARK models. Send the label, source manufacturer, drawing and dimensions so the required construction can be identified and checked without guessing.',
+      { title: 'PFA, PFAH and HV3: Confirm the Series Before Specification', paragraphs: [
+        'The supplied PARK catalogue does not define PFA pre filter pockets, PFAH pocket filter or HV3 pocket filter as PARK model codes or identify their filtration stages. Treat them as references from a buyer label or equipment schedule until PARK confirms their meaning and availability.',
+        'Send the original label, drawing and system specification. Ask PARK to confirm each code, stage, grade, dimensions and intended application before comparing series.',
       ]},
-      { title: 'Airflow and operating information to confirm', paragraphs: [
-        'Provide the required airflow and the pressure-drop allowance specified for the air-handling system. These values are not stated as universal PARK pocket-filter performance figures. The selected filter’s resistance depends on its construction, media, operating airflow and dust loading, so request product-specific information for the exact configuration.',
-        'Also identify the filtration stage and the space available for installation and servicing. A change in grade or format can affect the system and should be reviewed with the responsible designer or maintenance team. Confirm replacement procedure and inspection criteria against the equipment documentation rather than applying a generic interval.',
+      { title: 'Pocket Filter Media and Seam Construction', paragraphs: [
+        'PARK identifies synthetic media but does not specify progressive density, electrostatic meltblown, non-shedding test results or ultrasonic welding for pocket filters. If your specification requires these features, request a product-specific datasheet.',
+        'Ultrasonic welding and stitching describe seam methods; neither proves efficiency, leakage control or fibre performance. Ask how pockets are constructed and request supporting tests for the exact size, grade and airflow.',
+      ], paragraphLinks: [
+        { before: 'Explore the listed materials and processes on the ', label: 'nonwoven filtration media rolls', href: '/filtration-media', after: ' page; confirm raw-roll format and dimensions for your specific requirement.' },
       ]},
-      { title: 'Build a clear commercial enquiry', paragraphs: [
-        'For a quotation, send the application, existing part reference, frame dimensions, pocket arrangement, requested classification, quantity and delivery format. Attach a drawing or clear photographs of the filter and housing. If you are comparing replacement options, share the current product label and any system requirement that defines filtration grade or allowable pressure drop.',
-        'PARK can review the catalogue-listed synthetic pocket-filter range and identify the product details that need confirmation. Ask for written confirmation of dimensions, frame material, selected grade and supporting test information for the proposed assembly. That keeps the quote tied to the filter your equipment can accept.',
+      { title: 'Standard Pocket Air Filter Sizes and Configurations', paragraphs: [
+        'The terms 24x24x22 and 24x12x22 are buyer references, not sizes confirmed in PARK’s published pocket-filter schedule. PARK lists standard and special sizes but no actual frame dimensions or pocket counts. Verify the header measurements; nominal size alone does not prove fit.',
+        'PARK lists metal or plastic frames but no alloy or polymer specifics. Provide width, height, depth, pocket layout, seal and photos. Confirm actual metric dimensions and tolerances before approval.',
+      ]},
+      { title: 'Applications Listed for PARK Pocket Filters', paragraphs: [
+        'PARK lists HVAC and air handling, industrial environments, medical facilities, hospitals, laboratories, shopping centres, public institutions and paint booths. These are stated application areas, not guaranteed fit for every process.',
+        'Pharmaceutical cleanroom pre-filtration and gas-turbine intake are not specified for this product. Share operating conditions and required evidence, then request written suitability confirmation.',
+      ]},
+      { title: 'Airflow, Pressure Drop and Fan Energy', paragraphs: [
+        'Evaluate pressure drop at the specified airflow for the selected size, grade and construction. PARK publishes no model-specific initial or final values in the supplied catalogue. Request a curve or test data for the quoted configuration.',
+        'Fan energy depends on the AHU, controls, operating hours and filter loading. Compare pressure-drop data at the same airflow and condition; have the system designer assess energy impact.',
+      ]},
+      { title: 'Prepare a Manufacturer and OEM Enquiry', paragraphs: [
+        'Send the AHU make and model, installed filter label, grade, airflow, allowable pressure drop, dimensions, pocket layout, seal and quantity. Attach a drawing or photos; include source documents for any PFA, PFAH or HV3 reference.',
+        'Ask the supplier to confirm grade, frame material, dimensions, seam construction and test information. If you need a technical datasheet or sample pocket, request availability and timing; the catalogue does not establish either.',
+      ], paragraphLinks: [
+        { before: 'Browse the ', label: 'industrial air and liquid filtration products', href: '/products', after: ' catalogue for the wider range.' },
+        { before: 'Use the ', label: 'industrial filter selection guide', href: '/resources/filter-selection', after: ' to organize the specification.' },
       ]},
     ],
-    specifications: [
-      ['Media', 'Synthetic media; confirm the selected construction'],
-      ['Catalogue ISO 16890 references', 'ISO Coarse 75%; ePM10 55% / 70%; ePM2.5 65%; ePM1 70% / 80%'],
-      ['Catalogue EN 779 references', 'G4, M5, M6, F7, F8, F9; confirm the selected grade and test basis'],
-      ['Frame', 'Metal or plastic options listed; confirm the required frame'],
-      ['Size and pocket layout', '[INSERT FRAME SIZE], [INSERT POCKET DEPTH], [INSERT POCKET CONFIGURATION]'],
-      ['Airflow and pressure drop', '[INSERT REQUIRED AIRFLOW] / [INSERT ALLOWABLE PRESSURE DROP]'],
-      ['Media weight', '[INSERT EXACT GSM, IF APPLICABLE]'],
+    specifications: [],
+    specificationTables: [
+      {
+        caption: 'PFA / PFAH / HV3 series comparison — complete only with factory-confirmed data',
+        headers: ['Buyer reference', 'Filtration stage', 'Efficiency standard / class', 'Media construction', 'Initial and final pressure drop', 'Recommended application'],
+        rows: [
+          ['PFA', '[INSERT FACTORY-CONFIRMED STAGE]', '[INSERT VALIDATED CLASS AND STANDARD]', '[INSERT CONFIRMED MEDIA CONSTRUCTION]', '[INSERT INITIAL Pa AT AIRFLOW] / [INSERT FINAL Pa]', '[INSERT FACTORY-CONFIRMED APPLICATION]'],
+          ['PFAH', '[INSERT FACTORY-CONFIRMED STAGE]', '[INSERT VALIDATED CLASS AND STANDARD]', '[INSERT CONFIRMED MEDIA CONSTRUCTION]', '[INSERT INITIAL Pa AT AIRFLOW] / [INSERT FINAL Pa]', '[INSERT FACTORY-CONFIRMED APPLICATION]'],
+          ['HV3', '[INSERT FACTORY-CONFIRMED STAGE]', '[INSERT VALIDATED CLASS AND STANDARD]', '[INSERT CONFIRMED MEDIA CONSTRUCTION]', '[INSERT INITIAL Pa AT AIRFLOW] / [INSERT FINAL Pa]', '[INSERT FACTORY-CONFIRMED APPLICATION]'],
+        ],
+        note: 'These terms are buyer search references, not series definitions in PARK’s supplied catalogue. Confirm code meaning, availability, test basis and application before publishing a comparison.',
+      },
+      {
+        caption: 'Nominal pocket-filter size and OEM configuration — verify actual dimensions before order',
+        headers: ['Buyer-requested nominal size', 'Actual metric dimensions', 'Pocket count', 'Frame material', 'OEM / custom availability'],
+        rows: [
+          ['24x24x22', '[INSERT VERIFIED ACTUAL WIDTH × HEIGHT × DEPTH IN mm]', '[INSERT FACTORY-VERIFIED COUNT]', '[INSERT FACTORY-VERIFIED MATERIAL]', '[CONFIRM FOR THIS CONFIGURATION]'],
+          ['24x12x22', '[INSERT VERIFIED ACTUAL WIDTH × HEIGHT × DEPTH IN mm]', '[INSERT FACTORY-VERIFIED COUNT]', '[INSERT FACTORY-VERIFIED MATERIAL]', '[CONFIRM FOR THIS CONFIGURATION]'],
+          ['Custom / drawing-based', '[INSERT VERIFIED ACTUAL WIDTH × HEIGHT × DEPTH IN mm]', '[INSERT REQUIRED COUNT]', '[INSERT FACTORY-VERIFIED MATERIAL]', '[CONFIRM AFTER DRAWING REVIEW]'],
+        ],
+        note: 'The PARK catalogue lists standard and special sizes and metal or plastic frames, but does not publish this size schedule, pocket counts or exact frame alloys/polymers.',
+      },
     ],
     applications: ['HVAC and air-handling systems', 'Industrial environments', 'Medical facilities and hospitals', 'Laboratories', 'Shopping centres', 'Public institutions', 'Paint booths'],
     faqs: [
-      { question: 'Does PARK make PFA/PFAH pre-filter pockets or HV3 pocket filters?', answer: 'The supplied PARK product catalogue does not define PFA, PFAH or HV3 as PARK model codes. Share the original label, manufacturer reference, drawing and dimensions so the requested construction can be reviewed.' },
-      { question: 'Which EN 779 or ISO 16890 class is available for a pocket filter?', answer: 'The catalogue lists G4, M5, M6, F7, F8 and F9 references under EN 779, plus ISO Coarse and ePM options under ISO 16890. Confirm the selected class, availability and product-specific test information for your size.' },
-      { question: 'Can a pocket filter replace an industrial bag filter?', answer: 'No. PARK lists pocket filters for HVAC and air handling and industrial bag filters for process dust collection. Confirm which equipment and filtration stage the replacement serves before selecting a product family.' },
-      { question: 'What information is needed for a pocket-filter quotation?', answer: 'Provide the system model, existing filter reference, frame dimensions, pocket depth and arrangement, required grade, airflow, quantity and a drawing or clear photograph where possible.' },
+      { question: 'What is a pocket air filter?', answer: 'An HVAC filter with flexible media pockets on a support frame. Match its grade, airflow, dimensions and frame to the AHU.' },
+      { question: 'Does PARK offer PFA, PFAH or HV3 pocket-filter series?', answer: 'The catalogue does not define them as PARK codes or identify stages. Send the label and drawing for confirmation.' },
+      { question: 'Are 24x24x22 and 24x12x22 standard PARK pocket-air-filter sizes?', answer: 'PARK lists standard and special sizes, but does not confirm these dimensions. Send actual header measurements and a drawing to verify fit and pocket count.' },
+      { question: 'How does ultrasonic-welded synthetic media differ from fiberglass pocket media?', answer: 'These terms describe media type and seam method. PARK lists synthetic media but does not specify fiberglass or ultrasonic seams; request construction and test data.' },
     ],
+    ctaHeading: 'Request a pocket-filter specification review',
+    ctaText: 'Send the AHU model, filter label, drawing, required grade and airflow. If your approval process needs a technical datasheet or sample pocket, ask us to confirm availability and timing with the proposed OEM quote.',
     resources: [
       { label: 'Panel, pocket and HEPA air-filter selection guide', href: '/resources/panel-pocket-hepa-air-filters' },
       { label: 'Industrial filter selection guide', href: '/resources/filter-selection' },

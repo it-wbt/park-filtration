@@ -37,6 +37,7 @@ export default function ProductLanding({ product, content }: { product: Product;
             <span className="product-landing-index">{String(index + 1).padStart(2, '0')}</span>
             <h2>{section.title}</h2>
             {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {section.paragraphLinks?.map((link) => <p key={link.href}>{link.before}<Link href={link.href}>{link.label}</Link>{link.after}</p>)}
           </section>)}
         </article>
       </div>
@@ -45,11 +46,24 @@ export default function ProductLanding({ product, content }: { product: Product;
         <span className="eyebrow">TECHNICAL SPECIFICATION</span>
         <h2>Confirm the product details for your system</h2>
         <p>Catalogue options are shown where available. Values marked as placeholders need confirmation for the selected product and configuration.</p>
-        <div className="product-landing-table-scroll" role="region" aria-label={`${product.name} technical specification`} tabIndex={0}>
-          <table>
-            <tbody>{content.specifications.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody>
-          </table>
-        </div>
+        {content.specificationTables
+          ? content.specificationTables.map((table) => <div className="product-landing-spec-table" key={table.caption}>
+            <div className="product-landing-table-scroll is-wide" role="region" aria-label={table.caption} tabIndex={0}>
+              <table>
+                <caption>{table.caption}</caption>
+                <thead><tr>{table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr></thead>
+                <tbody>{table.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => cellIndex === 0
+                  ? <th scope="row" key={`${rowIndex}-${cellIndex}`}>{cell}</th>
+                  : <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+            {table.note && <p className="product-landing-table-note">{table.note}</p>}
+          </div>)
+          : <div className="product-landing-table-scroll" role="region" aria-label={`${product.name} technical specification`} tabIndex={0}>
+            <table>
+              <tbody>{content.specifications.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody>
+            </table>
+          </div>}
       </section>
 
       <section className="section product-landing-applications" id="product-applications">
@@ -72,8 +86,8 @@ export default function ProductLanding({ product, content }: { product: Product;
         <div>{content.resources.map((resource) => <Link key={resource.href} href={resource.href}>{resource.label} <ArrowUpRight size={16} /></Link>)}</div>
       </section>
       <div className="section product-landing-enquiry">
-        <h2>Discuss this filtration requirement</h2>
-        <p>Share the system reference, dimensions, required grade or media, process conditions and quantity. PARK can review the listed options and confirm which details need product-specific verification.</p>
+        <h2>{content.ctaHeading ?? 'Discuss this filtration requirement'}</h2>
+        <p>{content.ctaText ?? 'Share the system reference, dimensions, required grade or media, process conditions and quantity. PARK can review the listed options and confirm which details need product-specific verification.'}</p>
         <ProductEnquiry product={product.name} variants={product.variants} />
       </div>
     </main>
