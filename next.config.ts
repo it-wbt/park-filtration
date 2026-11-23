@@ -3,6 +3,11 @@ const config: NextConfig = {
  poweredByHeader: false,
  async redirects() {
   return [
+   {source:'/products/pocket-filter',destination:'https://www.parknonwoven-filtration.com/products/pocket-filters',permanent:true},
+   {source:'/products/bag-filter',destination:'https://www.parknonwoven-filtration.com/products/dust-collector-bag-filters',permanent:true},
+   {source:'/products/hepa-filter',destination:'https://www.parknonwoven-filtration.com/products/hepa-filters',permanent:true},
+   {source:'/products/cabin-air-filter',destination:'https://www.parknonwoven-filtration.com/products/cabin-air-filters',permanent:true},
+   {source:'/products/liquid-filter',destination:'https://www.parknonwoven-filtration.com/products/liquid-bag-filters',permanent:true},
    {
     source: '/:path*',
     has: [{type: 'host', value: 'parknonwoven-filtration.com'}],

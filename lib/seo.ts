@@ -37,7 +37,7 @@ export function webPageSchema(name: string, description: string, path: string) {
 export function organizationSchema() {
  return {
   '@context':'https://schema.org',
-  '@type':['Organization','LocalBusiness'],
+  '@type':'Organization',
   '@id':siteUrl+'/#organization',
   name:'Park Nonwoven Filtration',
   legalName:'Park Industries Pvt. Ltd.',
@@ -56,8 +56,8 @@ export function faqPageSchema(faqs: {question:string;answer:string}[]) {
  return {'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqs.map(faq=>({'@type':'Question',name:faq.question,acceptedAnswer:{'@type':'Answer',text:faq.answer}}))};
 }
 
-export function productSchema(product: Product) {
- const url = absoluteUrl('/products/'+product.slug);
+export function productSchema(product: Product, canonicalPath = '/products/'+product.slug) {
+ const url = absoluteUrl(canonicalPath);
  return {
   '@context':'https://schema.org',
   '@type':'Product',

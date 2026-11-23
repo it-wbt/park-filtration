@@ -7,6 +7,7 @@ import Footer from '../../../components/Footer';
 import StructuredData from '../../../components/StructuredData';
 import { buyerResources } from '../../../lib/buyer-resources';
 import { products } from '../../../lib/products';
+import { productHref } from '../../../lib/product-routes';
 import { pageMetadata, breadcrumb, faqPageSchema, webPageSchema } from '../../../lib/seo';
 
 export function generateStaticParams() {
@@ -19,16 +20,16 @@ const resourceSeo: Record<string, { title: string; description: string }> = {
     description: 'Explore PARK PET/PES paint booth filter media, ceiling filters and filter mats. Compare their listed roles, grades and roll or customer-specific cut options, then request a quote.',
   },
   'panel-pocket-hepa-air-filters': {
-    title: 'Panel, Pocket & HEPA Filters: HVAC Guide | Park Nonwoven',
-    description: 'Compare panel, pocket and HEPA filters for HVAC. Verify PFA/PFAH codes, listed EN 779 and ISO 16890 classes, airflow and fit before you specify.',
+    title: 'Panel, Pocket & HEPA Air Filters | Buyer Guide | PARK',
+    description: 'Compare panel, pocket and HEPA air filters for HVAC. Check listed EN 779 and ISO 16890 references, airflow, filter fit and how to verify PFA, PFAH or HV3 codes.',
   },
   'bag-vs-cartridge-dust-collection': {
-    title: 'Baghouse Filter Bags vs Cartridge Filters | Park Nonwoven',
-    description: 'Compare industrial baghouse bags and cartridge filters by collector fit, media and dust. Confirm what to check before evaluating cleaning, reuse or recycling.',
+    title: 'Baghouse Filter Bags vs Cartridge Filters | PARK Guide',
+    description: 'Compare industrial dust-collector bags and cartridge filters by fit, media and process. Learn what to confirm before asking about reuse or recycling.',
   },
   'dust-collector-filter-bag-selection': {
-    title: 'Dust Collector Filter Bags Manufacturer | PARK Nonwoven',
-    description: 'Dust collector filter bags manufacturer for industry. Compare media, frame options and custom sizes; contact PARK to discuss your dust collection application.',
+    title: 'Dust Collector Filter Bag Selection | PARK Filtration',
+    description: 'Review PARK industrial bag-filter materials, frame options and sizes. Prepare collector, dust and operating details for a product-specific quotation.',
   },
   'liquid-bag-filter-selection': {
     title: 'Liquid Bag Filter Selection: Micron Rating & Fit | PARK',
@@ -52,6 +53,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (!resource) notFound();
 
   const related = products.filter((product) => resource.products.includes(product.slug));
+  const relatedTargets: Record<string, { label: string; href: string }[]> = {
+    'paint-booth-filter-guide': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
+    'panel-pocket-hepa-air-filters': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
+    'bag-vs-cartridge-dust-collection': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
+    'dust-collector-filter-bag-selection': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
+    'liquid-bag-filter-selection': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
+  };
   const faqs = resource.faqs ?? [{ question: resource.question, answer: resource.answer }];
   const faqSchema = [
     'panel-pocket-hepa-air-filters',
@@ -121,10 +129,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </div>
       <section className="resource-related">
         <div className="section-heading"><h2>Explore the relevant products</h2><Link href="/products" className="underlined-link">Compare the range <ArrowRight size={16} /></Link></div>
-        <div className="product-grid">{related.map((product) => <Link key={product.slug} href={`/products/${product.slug}`} className="product-card">
+        <div className="product-grid">{related.map((product) => <Link key={product.slug} href={productHref(product.slug)} className="product-card">
           <div className="product-image"><NextImage sizes="(max-width: 640px) 90vw, (max-width: 1000px) 45vw, 640px" src={`/images/${product.image}.webp`} alt={product.name} width={480} height={360} loading="lazy" /></div>
           <div className="product-info"><h3>{product.name}</h3><p>{product.description}</p></div>
         </Link>)}</div>
+        <nav className="resource-product-targets" aria-label="Related product and media pages">
+          {(relatedTargets[slug] ?? []).map((target) => <Link key={target.href} href={target.href}>{target.label} <ArrowUpRight size={15} /></Link>)}
+        </nav>
       </section>
       {resource.callToAction && <section className="section resource-hub-cta resource-article-cta">
         <h2>{resource.callToAction.title}</h2><p>{resource.callToAction.description}</p>

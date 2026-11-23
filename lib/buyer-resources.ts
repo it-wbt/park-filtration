@@ -107,7 +107,7 @@ export const buyerResources:BuyerResource[]=[
    {title:'Pocket filters: extended surface for air handling',paragraphs:['Pocket filters provide an extended-surface arrangement in an air-handling unit. The pocket media retain dust and airborne particles as air passes through them. Media selection and system airflow determine the resistance of the selected assembly.','Check the pocket depth and arrangement as well as the frame size. PARK lists hospitals, laboratories, paint booths and industrial ventilation among the applications. An HVAC pocket filter is different from an industrial dust-collection bag filter.']},
    {title:'Fine filtration: specify the exact grade and seal',paragraphs:['The PARK fine-filtration range lists E10, E11, E12, H13, H14 and U15 options with EN 1822 and ISO 29463 catalogue references. These are different classifications. Ask for the selected filter grade and its supporting report rather than applying one efficiency number to the whole range.','Media performance is only part of the assembly. Confirm the housing, seal, dimensions and operating airflow to address bypass around the filter. Particle filtration should not be treated as gas adsorption or a guarantee of infection prevention.']},
    {title:'Compare the whole filtration stage',paragraphs:['A staged system may use an upstream filter to retain larger contamination before a fine-filtration stage. The arrangement depends on the equipment design; adding stages or changing a grade can change the system resistance.','Share the current arrangement with the team. Discuss performance at the required airflow, the available pressure-drop limit and the planned maintenance approach. Do not choose a replacement by image or nominal dimensions alone.'],checks:['Overall frame size, depth and sealing arrangement','Required airflow and acceptable pressure drop','Selected grade and filter-specific technical evidence','System drawing or existing part reference','Quantity and standard or custom format']},
-  ],products:['panel-filter','pocket-filter','hepa-filter','filter-mats'],question:'Can I upgrade to a finer filter without changing anything else?',answer:'Suitability depends on the housing, airflow, fan capability, pressure-drop allowance and required grade. Share the current filter and system details so these can be checked before selecting a replacement.',
+  ],products:['panel-filter','pocket-filter','hepa-filter'],question:'Can I upgrade to a finer filter without changing anything else?',answer:'Suitability depends on the housing, airflow, fan capability, pressure-drop allowance and required grade. Share the current filter and system details so these can be checked before selecting a replacement.',
   faqs:[
    {question:'What do PFA and PFAH mean on a pocket-filter specification?',answer:'The supplied PARK product catalogue does not define PFA or PFAH. Treat them as unconfirmed reference codes and share the exact manufacturer, model, drawing or filter label so the construction and any equivalent option can be checked.'},
    {question:'Which EN 779 or ISO 16890 class should I specify for a PARK pocket filter?',answer:'PARK’s catalogue lists EN 779 grades G4, M5, M6, F7, F8 and F9, plus ISO 16890 options ISO Coarse 75%, ePM10 55% and 70%, ePM2.5 65%, and ePM1 70% and 80%. Use the class required by your system specification and ask for the selected filter’s test data; the catalogue does not provide a cross-standard conversion.'},
@@ -176,7 +176,7 @@ export const buyerResources:BuyerResource[]=[
      ],
     },
     paragraphLinks:[
-     {before:'View the ',label:'Industrial Bag Filters product page',href:'/products/bag-filter',after:' for the listed product details.'},
+     {before:'View the ',label:'Industrial Bag Filters product page',href:'/products/dust-collector-bag-filters',after:' for the listed product details.'},
      {before:'Explore the wider ',label:'PARK product range',href:'/products',after:' when you are comparing other filtration families.'},
      {before:'For media used across the range, see ',label:'PARK filtration media',href:'/filtration-media',after:'.'},
     ],
@@ -242,7 +242,7 @@ export const buyerResources:BuyerResource[]=[
      'Start with PARK’s listed Industrial Bag Filters and include the collector information. The team can review the available options and identify specifications needing confirmation. Product-specific service life, efficiency, minimum-order and sample terms require separate confirmation.',
     ],
     paragraphLinks:[
-     {before:'Start with the ',label:'Industrial Bag Filters product page',href:'/products/bag-filter',after:' and share your project details through the enquiry section.'},
+     {before:'Start with the ',label:'Industrial Bag Filters product page',href:'/products/dust-collector-bag-filters',after:' and share your project details through the enquiry section.'},
     ],
    },
   ],

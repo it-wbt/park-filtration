@@ -10,12 +10,13 @@ import './home-banner.css';
 import ShowcaseVideo from './ShowcaseVideo';
 import {industryMedia} from '../lib/industry-media';
 import {bannerMedia} from '../lib/banner-media';
+import {productHref} from '../lib/product-routes';
 
 const slides = [
   {description: 'Explore PARK nonwoven air filters for HVAC, vehicles, railways, paint booths and industrial dust collection, plus liquid bag filters and filter media.', context: 'AIR FILTERS / HVAC, VEHICLES & INDUSTRY', href: '/products', action: 'Explore filters'},
   {description: 'Compare product families by application, filter fit, media and operating conditions. Share your system details to start a focused enquiry.', context: 'FILTRATION / CHOOSE YOUR APPLICATION', href: '/products', action: 'Browse product range'},
   {description: 'Explore cabin, engine, battery cooling-air and panel filters for vehicle and railway applications.', context: 'MOBILITY / RAILWAY & AUTOMOTIVE', href: '/industries/mobility', action: 'Explore mobility'},
-  {description: 'Compare particulate, activated-carbon, fine-dust and HEPA cabin filter options. Share vehicle and fitment details for confirmation.', context: 'CABIN AIR FILTERS / VEHICLE FITMENT', href: '/products/cabin-air-filter', action: 'Explore cabin filters'},
+  {description: 'Compare particulate, activated-carbon, fine-dust and HEPA cabin filter options. Share vehicle and fitment details for confirmation.', context: 'CABIN AIR FILTERS / VEHICLE FITMENT', href: productHref('cabin-air-filter'), action: 'Explore cabin filters'},
 ];
 
 export default function HomeBanner() {
@@ -65,7 +66,7 @@ export default function HomeBanner() {
       <div className={'park-banner-film' + (active === 2 ? ' park-banner-film-rail' : '') + (fading ? ' is-changing' : '')}>{active === 0 ? <NextImage className="park-banner-video park-banner-process-image" src={bannerMedia[0].poster} alt="Illustrative journey from fibre through nonwoven processing and filter-media roll to a finished filter" width={1672} height={941} sizes="100vw" loading="eager" fetchPriority="high"/> : <ShowcaseVideo key={active} priority className="park-banner-video" src={bannerMedia[active].src} highResolutionSrc={bannerMedia[active].highResolutionSrc} poster={bannerMedia[active].poster} paused={paused}/>}</div>
       <div className="park-banner-panel"/>
       <div className={'park-banner-copy' + (fading ? ' is-changing' : '')} aria-live={paused ? 'polite' : 'off'}>
-        <div className="park-banner-eyebrow"><span/>{slide.context}</div><h1>Air Filter Manufacturer in India</h1><p>{slide.description}</p>
+        <div className="park-banner-eyebrow"><span/>{slide.context}</div><h1>Industrial Air Filter Manufacturer in India</h1><p>{slide.description}</p>
         <Link href={slide.href} className="park-banner-link">{slide.action} <ChevronRight size={18}/></Link>
       </div>
       <div className="park-banner-arrows"><span className="park-banner-count">0{active + 1}<span> / {String(slides.length).padStart(2, "0")}</span></span><button onClick={() => move(-1)} aria-label="Previous banner"><ChevronLeft/></button><button onClick={() => move(1)} aria-label="Next banner"><ChevronRight/></button></div>

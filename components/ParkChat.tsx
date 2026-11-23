@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 import {MessageCircle, Send, X, ArrowUpRight} from 'lucide-react';
 import {products, type Product} from '../lib/products';
+import {productHref} from '../lib/product-routes';
 import {logGoogleChatMessage} from '../lib/submit-google-enquiry';
 import {formatEnquiryContext} from '../lib/enquiry-context';
 import useEnquirySend from './useEnquirySend';
@@ -19,7 +20,7 @@ const aliases: Record<string, string[]> = {
   'cartridge-filter': ['cartridge'], 'filter-mats': ['mat', 'mats'], 'ceiling-filter': ['ceiling', 'paint booth'],
   'battery-air-filter': ['battery', 'ev', 'hybrid'], 'car-purifier-filter': ['purifier', 'console'],
 };
-const productLinks = (items: Product[]) => items.map(p=>({name:p.name,href:'/products/'+p.slug}));
+const productLinks = (items: Product[]) => items.map(p=>({name:p.name,href:productHref(p.slug)}));
 
 function answer(query: string): Message {
   const text = query.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();

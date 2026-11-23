@@ -8,12 +8,15 @@ import StructuredData from '../../../components/StructuredData';
 import ProductEnquiry from '../../../components/ProductEnquiry';
 import Product3D from '../../../components/Product3D';
 import ProductVariants from '../../../components/ProductVariants';
+import ProductLanding from '../../../components/ProductLanding';
 import { resourceForProduct } from '../../../lib/buyer-resources';
+import { productLandings } from '../../../lib/product-landings';
+import { baseProductSlugByLandingSlug, productHref } from '../../../lib/product-routes';
 import { productPresentation } from '../../../lib/product-presentation';
 import { productDetails } from '../../../lib/product-details';
 import { products, toSlug } from '../../../lib/products';
-import { pageMetadata, breadcrumb, productSchema, webPageSchema } from '../../../lib/seo';
-export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
+import { pageMetadata, breadcrumb, faqPageSchema, productSchema, webPageSchema } from '../../../lib/seo';
+export function generateStaticParams(){return [...products.map(p=>({slug:p.slug})),...Object.keys(productLandings).map(slug=>({slug}))]}
 const productSeo:Record<string,{title:string;description:string}>={
  'panel-filter':{title:'Panel Filter Manufacturer in India | HVAC & Railway | PARK',description:'PARK makes synthetic nonwoven panel air filters for HVAC, railway ventilation, cleanrooms and commercial buildings. Choose listed metal or plastic frames and standard or special sizes.'},
  'pocket-filter':{title:'HVAC Pocket Filter Manufacturer in India | PARK',description:'PARK pocket filters serve HVAC air handling units, hospitals, laboratories, paint booths and industrial ventilation. Review the media, frame, dimensions and airflow for your application.'},
@@ -29,9 +32,13 @@ const productSeo:Record<string,{title:string;description:string}>={
  'liquid-filter':{title:'Liquid Bag Filter Manufacturer in India | PARK',description:'PARK polypropylene liquid bag filters support suspended-particle removal in process water, coolants, wastewater, food and pharmaceutical applications. Check micron rating and housing fit.'},
  'swimming-pool-filter':{title:'Swimming Pool Filter Options | PARK Filtration',description:'Discuss swimming pool filter options and confirm media, system fit and product specifications for your pool filtration setup with PARK.'},
 };
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const p=products.find(p=>p.slug===slug);const seo=productSeo[slug];return p ? pageMetadata(seo?.title??p.name+' | PARK Filtration',seo?.description??p.description,'/products/'+slug,'/images/'+p.image+'.webp') : {title:'Product not found',robots:{index:false}};}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const landing=productLandings[slug];const baseSlug=landing?baseProductSlugByLandingSlug[slug]:slug;const p=products.find(p=>p.slug===baseSlug);const seo=productSeo[slug];return p ? pageMetadata(landing?.title??seo?.title??p.name+' | PARK Filtration',landing?.description??seo?.description??p.description,'/products/'+slug,'/images/'+p.image+'.webp') : {title:'Product not found',robots:{index:false}};}
 export default async function Page({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params;const p=products.find(p=>p.slug===slug);if(!p)notFound();
+ const {slug}=await params;
+ const landing=productLandings[slug];
+ const productSlug=landing ? baseProductSlugByLandingSlug[slug] : slug;
+ const p=products.find(p=>p.slug===productSlug);if(!p)notFound();
+ if(landing){return <><Header/><ProductLanding product={p} content={landing}/><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(landing.h1,landing.description,'/products/'+slug)}/><StructuredData data={productSchema(p,'/products/'+slug)}/><StructuredData data={faqPageSchema(landing.faqs)}/><Footer/></>;}
  const presentation=productPresentation[slug];const explanation=productDetails[slug];const buyingGuide=resourceForProduct(slug);
  const related=products.filter(item=>item.slug!==slug && item.categories.some(c=>p.categories.includes(c))).slice(0,3);
  return <><Header/><main id="main-content" className="section detail-page"><nav aria-label="Breadcrumb" className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/products">Products</Link><span>/</span><span>{p.name}</span></nav>
@@ -39,7 +46,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
  <section className="product-introduction" aria-labelledby="product-title"><div className="product-introduction-copy"><span className="eyebrow">{p.categories[0].toUpperCase()} FILTRATION</span><h1 id="product-title">{p.name}</h1><p className="product-introduction-context">{presentation.context}</p><a href="#product-enquiry" className="button small">Discuss your requirement <ArrowUpRight size={16}/></a></div></section>
  </div>
  {explanation.variants ? <ProductVariants key={p.slug} variants={explanation.variants}/> : p.variants && <section className="application-box" id="product-variants"><h2>Available variants</h2><div className="application-tags">{p.variants.map(v=><span key={v}>{v}</span>)}</div></section>}
- <ProductVariants key={p.slug+"-related"} id="related-products" heading="Related filtration products" related variants={related.map(r=>({name:r.name,image:r.image,explanation:r.description,href:"/products/"+r.slug}))}/>
+ <ProductVariants key={p.slug+"-related"} id="related-products" heading="Related filtration products" related variants={related.map(r=>({name:r.name,image:r.image,explanation:r.description,href:productHref(r.slug)}))}/>
  <nav className="product-page-nav" aria-label="Product page sections"><a href="#understand-product">The solution</a><a href="#product-range">Product overview</a>{(explanation.variants || p.variants)&&<a href="#product-variants">Media options</a>}<a href="#technical-options">Technical options</a><a href="#product-applications">Applications</a><a href="#product-enquiry">Contact our team</a></nav>
  <section className="product-explanation" id="understand-product"><div className="explanation-columns"><div><h2>What is this filter?</h2><p>{explanation.definition}</p></div><div><h2>How it works</h2><p>{explanation.operation}</p></div></div><div className="product-benefit-grid">{explanation.benefits.map((b,index)=><article key={b.title}><span>0{index+1}</span><h3>{b.title}</h3><p>{b.text}</p></article>)}</div></section>
  <section className="product-range-section product-spec-sheet" id="product-range" aria-labelledby="product-overview-title">

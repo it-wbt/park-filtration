@@ -1,0 +1,56 @@
+.product-landing { overflow: hidden; }
+.product-landing > .breadcrumbs { max-width: 1440px; margin: 0 auto; padding: 28px 5vw 0; }
+.product-landing-hero { max-width: 1440px; margin: 0 auto; padding: clamp(44px, 7vw, 100px) 5vw 70px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); align-items: center; gap: clamp(36px, 6vw, 90px); }
+.product-landing-copy h1 { max-width: 800px; margin: 16px 0 20px; font-size: clamp(2.4rem, 5.3vw, 5rem); line-height: 1.04; letter-spacing: -.045em; }
+.product-landing-copy .lead { max-width: 760px; line-height: 1.75; }
+.product-landing-image { overflow: hidden; border-radius: 28px; background: #f1f5f5; }
+.product-landing-image img { display: block; width: 100%; height: auto; object-fit: cover; }
+.product-landing-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; margin-top: 28px; }
+.product-landing-toc { position: sticky; top: 0; z-index: 10; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 28px; padding: 15px 5vw; background: rgba(255,255,255,.96); border-top: 1px solid #e8eded; border-bottom: 1px solid #e8eded; backdrop-filter: blur(12px); }
+.product-landing-toc a, .resource-product-targets a, .filter-guide-landing-links a, .media-related-links a { color: #124e58; font-weight: 600; text-decoration: none; }
+.product-landing-body { max-width: 1320px; margin: 0 auto; padding: 74px 5vw 35px; display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.product-landing-section { position: relative; padding: 0 0 38px 54px; }
+.product-landing-index { position: absolute; left: 0; top: 5px; color: #77898b; font-size: .82rem; letter-spacing: .08em; }
+.product-landing-section h2, .product-landing-specs h2, .product-landing-applications h2, .product-landing-faq h2, .product-landing-resources h2, .product-landing-enquiry h2 { margin: 0 0 16px; font-size: clamp(1.5rem, 2.6vw, 2.15rem); letter-spacing: -.025em; }
+.product-landing-section p, .product-landing-applications > p, .product-landing-specs > p, .product-landing-enquiry > p { max-width: 840px; color: #48595b; font-size: 1.02rem; line-height: 1.78; }
+.product-landing-aside { position: sticky; top: 74px; padding: 26px; border: 1px solid #dfe7e7; border-radius: 18px; background: #f7f9f8; }
+.product-landing-aside h2 { margin: 10px 0; font-size: 1.45rem; }
+.product-landing-aside > p { color: #536365; line-height: 1.65; }
+.product-landing-aside dl { margin: 22px 0; }
+.product-landing-aside dl > div { padding: 12px 0; border-top: 1px solid #dfe7e7; }
+.product-landing-aside dt { font-weight: 700; }
+.product-landing-aside dd { margin: 5px 0 0; color: #536365; line-height: 1.5; }
+.product-landing-specs, .product-landing-applications, .product-landing-faq, .product-landing-resources, .product-landing-enquiry { max-width: 1320px; margin: 0 auto; padding-top: 55px; padding-bottom: 55px; }
+.product-landing-table-scroll, .media-table-scroll { overflow-x: auto; border: 1px solid #dfe7e7; border-radius: 16px; }
+.product-landing-table-scroll table, .media-table-scroll table { width: 100%; min-width: 620px; border-collapse: collapse; text-align: left; }
+.product-landing-table-scroll th, .product-landing-table-scroll td, .media-table-scroll th, .media-table-scroll td { padding: 16px 18px; border-bottom: 1px solid #e5ebeb; vertical-align: top; line-height: 1.55; }
+.product-landing-table-scroll th, .media-table-scroll th { width: 30%; color: #183d42; background: #f5f8f7; font-weight: 700; }
+.product-landing-table-scroll tr:last-child th, .product-landing-table-scroll tr:last-child td, .media-table-scroll tr:last-child th, .media-table-scroll tr:last-child td { border-bottom: 0; }
+.product-landing-applications ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; padding: 0; list-style: none; }
+.product-landing-applications li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.product-landing-applications li svg { flex: 0 0 auto; color: #19816f; margin-top: 2px; }
+.product-landing-faq details, .media-faq details { border-top: 1px solid #dfe7e7; padding: 18px 0; }
+.product-landing-faq details:last-child, .media-faq details:last-child { border-bottom: 1px solid #dfe7e7; }
+.product-landing-faq summary, .media-faq summary { cursor: pointer; font-weight: 700; line-height: 1.5; }
+.product-landing-faq details p, .media-faq details p { max-width: 900px; color: #536365; line-height: 1.7; }
+.product-landing-resources > div, .filter-guide-landing-links > div, .media-related-links > div { display: flex; flex-wrap: wrap; gap: 12px; }
+.product-landing-resources a, .filter-guide-landing-links a, .media-related-links a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 15px; border: 1px solid #dfe7e7; border-radius: 999px; }
+.product-landing-enquiry { padding-top: 45px; padding-bottom: 80px; }
+.resource-product-targets { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 28px; }
+.resource-product-targets a { display: inline-flex; align-items: center; gap: 6px; }
+.media-specifications, .media-faq, .media-related-links { max-width: 1320px; margin: 0 auto; padding-top: 50px; padding-bottom: 50px; }
+.media-faq details p { margin-bottom: 0; }
+.filter-guide-landing-links { margin-top: 48px; padding: 30px; border-radius: 18px; background: #f4f8f7; }
+.filter-guide-landing-links h2 { margin-top: 0; }
+@media (max-width: 860px) {
+ .product-landing-hero { grid-template-columns: 1fr; }
+ .product-landing-image { max-width: 700px; }
+ .product-landing-body { grid-template-columns: 1fr; }
+ .product-landing-aside { position: static; }
+}
+@media (max-width: 600px) {
+ .product-landing-toc { position: static; justify-content: flex-start; gap: 12px 18px; }
+ .product-landing-section { padding-left: 36px; }
+ .product-landing-applications ul { grid-template-columns: 1fr; }
+ .product-landing-specs, .product-landing-applications, .product-landing-faq, .product-landing-resources, .product-landing-enquiry, .media-specifications, .media-faq, .media-related-links { padding-top: 35px; padding-bottom: 35px; }
+}

@@ -6,14 +6,14 @@ import StructuredData from '../../components/StructuredData';
 import {pageMetadata, breadcrumb, organizationSchema} from '../../lib/seo';
 import './about.css';
 
-export const metadata = pageMetadata('About Park Nonwoven Filtration | Park Industries','Learn about Park Nonwoven Filtration, the industrial filtration media manufacturer legally named Park Industries Pvt. Ltd., located in Panipat, Haryana, India.','/about');
+export const metadata = pageMetadata('About Park Nonwoven Filtration | Industrial Filter Manufacturer','Meet Park Nonwoven Filtration, the industrial filtration business legally named Park Industries Pvt. Ltd. Explore its nonwoven media, air-filter and liquid-filter product range.','/about');
 
 // Company facts: reference/company-content-sources.json.
 export default function AboutPage() {
   return <><Header/><main id="main-content" className="section park-about-page">
     <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><span>About us</span></nav>
     <div className="eyebrow">ABOUT PARK NONWOVEN FILTRATION</div>
-    <h1>Material innovation.<br/><span>Built on experience.</span></h1>
+    <h1>Park Nonwoven Filtration.<br/><span>Industrial media and filters.</span></h1>
     <p className="lead">Park Nonwoven Filtration is the industrial filtration media manufacturer legally named Park Industries Pvt. Ltd. Located in Panipat, Haryana, it offers nonwoven filtration media and air, dust-collection and liquid-filter products for industrial applications.</p>
     <div className="park-about-facts" aria-label="PARK Group at a glance"><div><strong>1997</strong><span>Year founded</span></div><div><strong>Panipat</strong><span>Group headquarters</span></div><div><strong>12+</strong><span>Manufacturing plants</span></div></div>
     <div className="park-about-sections">
