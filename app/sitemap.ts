@@ -7,6 +7,7 @@ import { allCanonicalProductSlugs } from '../lib/product-routes';
 const fixedPaths = [
   '/',
   '/about',
+  '/contact',
   '/products',
   '/filtration-media',
   '/resources',

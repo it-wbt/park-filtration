@@ -61,11 +61,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     'liquid-bag-filter-selection': [{ label: 'Nonwoven filtration media', href: '/filtration-media' }],
   };
   const faqs = resource.faqs ?? [{ question: resource.question, answer: resource.answer }];
-  const faqSchema = [
-    'panel-pocket-hepa-air-filters',
-    'bag-vs-cartridge-dust-collection',
-    'dust-collector-filter-bag-selection',
-  ].includes(slug) ? faqPageSchema(faqs) : null;
+  const faqSchema = faqPageSchema(faqs);
 
   return <>
     <Header />

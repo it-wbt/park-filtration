@@ -8,8 +8,8 @@ import StructuredData from '../../components/StructuredData';
 import { breadcrumb, faqPageSchema, filtrationMediaCollectionSchema, pageMetadata } from '../../lib/seo';
 
 export const metadata = pageMetadata(
-  'Nonwoven Filtration Media Manufacturer | PARK Filtration',
-  'Explore PET, polypropylene and glass-fibre nonwoven filter media and listed processes from PARK. Confirm material, GSM and roll format for your B2B filtration requirement.',
+  'Nonwoven Filtration Media Rolls Manufacturer | Air & Liquid Filter Media',
+  'Nonwoven filtration media for air and liquid filter applications. Ask about roll goods, GSM, width and cut formats; confirm availability for your selected construction.',
   '/filtration-media',
 );
 
@@ -79,7 +79,7 @@ export default function MediaPage() {
         <span className="eyebrow">BUYER QUESTIONS</span><h2 id="media-faq-title">Nonwoven filter-media FAQs</h2>
         {faqs.map((faq, index) => <details key={faq.question} open={index === 0}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
       </section>
-      <section className="section media-related-links"><h2>Explore related product pages</h2><div><Link href="/products/pocket-filters">Pocket filters</Link><Link href="/products/hepa-filters">HEPA filters</Link><Link href="/products/dust-collector-bag-filters">Dust collector bag filters</Link><Link href="/products/liquid-bag-filters">Liquid bag filters</Link></div></section>
+      <section className="section media-related-links"><h2>Explore related product pages</h2><div><Link href="/products/pocket-filters">Pocket filters</Link><Link href="/products/hepa-filters">HEPA filters</Link><Link href="/products/cabin-air-filters">Cabin air filters</Link><Link href="/products/dust-collector-bag-filters">Dust collector bag filters</Link><Link href="/products/liquid-bag-filters">Liquid bag filters</Link></div></section>
     </main>
     <StructuredData data={filtrationMediaCollectionSchema()} />
     <StructuredData data={faqPageSchema(faqs)} />
