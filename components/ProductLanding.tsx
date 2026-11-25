@@ -45,25 +45,12 @@ export default function ProductLanding({ product, content }: { product: Product;
       <section className="section product-landing-specs" id="product-specifications">
         <span className="eyebrow">TECHNICAL SPECIFICATION</span>
         <h2>Confirm the product details for your system</h2>
-        <p>Catalogue options are shown where available. Values marked as placeholders need confirmation for the selected product and configuration.</p>
-        {content.specificationTables
-          ? content.specificationTables.map((table) => <div className="product-landing-spec-table" key={table.caption}>
-            <div className="product-landing-table-scroll is-wide" role="region" aria-label={table.caption} tabIndex={0}>
-              <table>
-                <caption>{table.caption}</caption>
-                <thead><tr>{table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr></thead>
-                <tbody>{table.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => cellIndex === 0
-                  ? <th scope="row" key={`${rowIndex}-${cellIndex}`}>{cell}</th>
-                  : <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>)}</tr>)}</tbody>
-              </table>
-            </div>
-            {table.note && <p className="product-landing-table-note">{table.note}</p>}
-          </div>)
-          : <div className="product-landing-table-scroll" role="region" aria-label={`${product.name} technical specification`} tabIndex={0}>
-            <table>
-              <tbody>{content.specifications.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody>
-            </table>
-          </div>}
+        <p>Catalogue-listed details for this product are shown below. Confirm the selected grade and fit for the specific system before ordering.</p>
+        <div className="product-landing-table-scroll" role="region" aria-label={`${product.name} technical specification`} tabIndex={0}>
+          <table>
+            <tbody>{content.specifications.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody>
+          </table>
+        </div>
       </section>
 
       <section className="section product-landing-applications" id="product-applications">
