@@ -1,4 +1,3 @@
-import NextImage from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowUpRight, Check } from 'lucide-react';
@@ -8,7 +7,6 @@ import StructuredData from '../../../components/StructuredData';
 import ProductEnquiry from '../../../components/ProductEnquiry';
 import Product3D from '../../../components/Product3D';
 import ProductVariants from '../../../components/ProductVariants';
-import ProductLanding from '../../../components/ProductLanding';
 import { resourceForProduct } from '../../../lib/buyer-resources';
 import { productLandings } from '../../../lib/product-landings';
 import { baseProductSlugByLandingSlug, productHref } from '../../../lib/product-routes';
@@ -38,17 +36,33 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
  const landing=productLandings[slug];
  const productSlug=landing ? baseProductSlugByLandingSlug[slug] : slug;
  const p=products.find(p=>p.slug===productSlug);if(!p)notFound();
- if(landing){return <><Header/><ProductLanding product={p} content={landing}/><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(landing.h1,landing.description,'/products/'+slug)}/><StructuredData data={productSchema(p,'/products/'+slug)}/><StructuredData data={faqPageSchema(landing.faqs)}/><Footer/></>;}
- const presentation=productPresentation[slug];const explanation=productDetails[slug];const buyingGuide=resourceForProduct(slug);
- const related=products.filter(item=>item.slug!==slug && item.categories.some(c=>p.categories.includes(c))).slice(0,3);
+ const presentation=productPresentation[productSlug];const explanation=productDetails[productSlug];const buyingGuide=resourceForProduct(productSlug);
+ const related=products.filter(item=>item.slug!==productSlug && item.categories.some(c=>p.categories.includes(c))).slice(0,3);
+ const faqItems=landing?.faqs??[
+  {question:explanation.question,answer:explanation.answer},
+  {question:'Can I request a custom size?',answer:productSlug==='swimming-pool-filter'?'Send the housing dimensions and pool-system details so the team can confirm available formats.':'The catalogue lists standard or customer-specific formats. Share the filter dimensions and system details to confirm availability.'},
+  {question:'What information should I include in my enquiry?',answer:'Include the application, existing filter dimensions, required media or grade, operating conditions and estimated quantity. Attach an existing drawing or specification when available.'},
+ ];
+ const specifications=(landing
+  ? landing.specifications.map(([label,value])=>({label,value}))
+  : p.specifications??[]
+ ).filter(specification=>! /\[(?:INSERT|CONFIRM)\b/i.test(specification.value));
+ const applications=landing?.applications??p.applications;
+ const guideLinks=[...(landing?.resources??[]),...(buyingGuide?[{label:buyingGuide.title,href:'/resources/'+buyingGuide.slug}]:[])]
+  .filter((resource,index,resources)=>resources.findIndex(item=>item.href===resource.href)===index);
+ const pageTitle=landing?.h1??p.name;
+ const pageDescription=landing?.description??p.description;
+ const pageIntro=landing?.intro??presentation.context;
  return <><Header/><main id="main-content" className="section detail-page"><nav aria-label="Breadcrumb" className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/products">Products</Link><span>/</span><span>{p.name}</span></nav>
  <div className="product-top-layout"><section className="product-first-view" aria-label={p.name+" product viewer"}><Product3D slug={p.slug} name={p.name} image={p.image}/></section>
- <section className="product-introduction" aria-labelledby="product-title"><div className="product-introduction-copy"><span className="eyebrow">{p.categories[0].toUpperCase()} FILTRATION</span><h1 id="product-title">{p.name}</h1><p className="product-introduction-context">{presentation.context}</p><a href="#product-enquiry" className="button small">Discuss your requirement <ArrowUpRight size={16}/></a></div></section>
+ <section className="product-introduction" aria-labelledby="product-title"><div className="product-introduction-copy"><span className="eyebrow">{p.categories[0].toUpperCase()} FILTRATION</span><h1 id="product-title">{pageTitle}</h1><p className="product-introduction-context">{pageIntro}</p><a href="#product-enquiry" className="button small">Discuss your requirement <ArrowUpRight size={16}/></a></div></section>
  </div>
  {explanation.variants ? <ProductVariants key={p.slug} variants={explanation.variants}/> : p.variants && <section className="application-box" id="product-variants"><h2>Available variants</h2><div className="application-tags">{p.variants.map(v=><span key={v}>{v}</span>)}</div></section>}
  <ProductVariants key={p.slug+"-related"} id="related-products" heading="Related filtration products" related variants={related.map(r=>({name:r.name,image:r.image,explanation:r.description,href:productHref(r.slug)}))}/>
  <nav className="product-page-nav" aria-label="Product page sections"><a href="#understand-product">The solution</a><a href="#product-range">Product overview</a>{(explanation.variants || p.variants)&&<a href="#product-variants">Media options</a>}<a href="#technical-options">Technical options</a><a href="#product-applications">Applications</a><a href="#product-enquiry">Contact our team</a></nav>
- <section className="product-explanation" id="understand-product"><div className="explanation-columns"><div><h2>What is this filter?</h2><p>{explanation.definition}</p></div><div><h2>How it works</h2><p>{explanation.operation}</p></div></div><div className="product-benefit-grid">{explanation.benefits.map((b,index)=><article key={b.title}><span>0{index+1}</span><h3>{b.title}</h3><p>{b.text}</p></article>)}</div></section>
+ <section className="product-explanation" id="understand-product"><div className="explanation-columns"><div><h2>What is this filter?</h2><p>{explanation.definition}</p></div><div><h2>How it works</h2><p>{explanation.operation}</p></div></div><div className="product-benefit-grid">{explanation.benefits.map((b,index)=><article key={b.title}><span>0{index+1}</span><h3>{b.title}</h3><p>{b.text}</p></article>)}</div>
+ {landing&&<div className="explanation-columns">{landing.sections.map(section=><div key={section.title}><h2>{section.title}</h2>{section.paragraphs.map(paragraph=><p key={paragraph}>{paragraph}</p>)}{section.paragraphLinks?.map(link=><p key={link.href}>{link.before}<Link href={link.href}>{link.label}</Link>{link.after}</p>)}</div>)}</div>}
+ </section>
  <section className="product-range-section product-spec-sheet" id="product-range" aria-labelledby="product-overview-title">
  <div className="product-sheet-header"><div><span className="eyebrow">PRODUCT OVERVIEW</span><h2 id="product-overview-title">{p.name}</h2><p>{p.description}</p></div><Link href="#product-enquiry" className="button">Discuss this filter <ArrowUpRight size={18}/></Link></div>
  <div className="product-sheet-row"><h3>Material</h3><p>{p.material}</p></div>
@@ -58,12 +72,12 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
 
 
 
- <section className="specifications" id="technical-options"><div className="eyebrow">PRODUCT SPECIFICATIONS</div><h2>Technical options</h2>{p.specifications ? <dl>{p.specifications.map(s=><div key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd></div>)}</dl> : <p>Request confirmation of the selected filter material, dimensions, grade and operating conditions. Send your equipment model and application details for technical confirmation.</p>}<p className="spec-note">Ranges are listed in the supplied PARK product catalogue and describe available options, rather than a single filter specification. Confirm the selected grade, dimensions, test report and operating conditions before ordering. EN 779 references are retained as catalogue terminology.</p></section>
- <section className="application-box" id="product-applications"><div className="eyebrow">DESIGNED FOR YOUR APPLICATION</div><h2>Where it works</h2><div className="application-tags">{p.applications.map(a=><span key={a}>{a}</span>)}</div><p>Final media grade, dimensions and performance specifications are selected for the application. For liquids, confirm chemical compatibility, temperature, flow rate and the required particle rating. For air systems, confirm airflow, pressure drop and installation fit.</p></section>
- <section className="product-selection"><div><div className="eyebrow">BEFORE YOU SELECT</div><h2>Specify with confidence.</h2><Link href="/resources/filter-selection" className="underlined-link">Read the filter selection guide <ArrowUpRight size={16}/></Link></div><ol>{explanation.selection.map(item=><li key={item}>{item}</li>)}</ol></section>{buyingGuide&&<Link className="product-reading-link" href={"/resources/"+buyingGuide.slug}>{buyingGuide.title}<ArrowUpRight size={16}/></Link>}
- <section className="product-faq"><h2>Before you enquire</h2><details><summary>{explanation.question}</summary><p>{explanation.answer}</p></details><details><summary>Can I request a custom size?</summary><p>{slug==='swimming-pool-filter'?'Send the housing dimensions and pool-system details so the team can confirm available formats.':'The catalogue lists standard or customer-specific formats. Share the filter dimensions and system details to confirm availability.'}</p></details><details><summary>What information should I include in my enquiry?</summary><p>Include the application, existing filter dimensions, required media or grade, operating conditions and estimated quantity. Attach an existing drawing or specification when available.</p></details></section>
+ <section className="specifications" id="technical-options"><div className="eyebrow">PRODUCT SPECIFICATIONS</div><h2>Technical options</h2>{specifications.length ? <dl>{specifications.map(s=><div key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd></div>)}</dl> : <p>Request confirmation of the selected filter material, dimensions, grade and operating conditions. Send your equipment model and application details for technical confirmation.</p>}<p className="spec-note">Ranges are listed in the supplied PARK product catalogue and describe available options, rather than a single filter specification. Confirm the selected grade, dimensions, test report and operating conditions before ordering. EN 779 references are retained as catalogue terminology.</p></section>
+ <section className="application-box" id="product-applications"><div className="eyebrow">DESIGNED FOR YOUR APPLICATION</div><h2>Where it works</h2><div className="application-tags">{applications.map(a=><span key={a}>{a}</span>)}</div><p>Final media grade, dimensions and performance specifications are selected for the application. For liquids, confirm chemical compatibility, temperature, flow rate and the required particle rating. For air systems, confirm airflow, pressure drop and installation fit.</p></section>
+ <section className="product-selection"><div><div className="eyebrow">BEFORE YOU SELECT</div><h2>Specify with confidence.</h2><Link href="/resources/filter-selection" className="underlined-link">Read the filter selection guide <ArrowUpRight size={16}/></Link>{landing?.ctaHeading&&<><h3>{landing.ctaHeading}</h3><p>{landing.ctaText}</p></>}</div><ol>{explanation.selection.map(item=><li key={item}>{item}</li>)}</ol></section>{guideLinks.map(guide=><Link className="product-reading-link" key={guide.href} href={guide.href}>{guide.label}<ArrowUpRight size={16}/></Link>)}
+ <section className="product-faq"><h2>Before you enquire</h2>{faqItems.map(item=><details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
  <ProductEnquiry product={p.name} variants={explanation.variants?.map(v=>v.name)||p.variants}/>
 
 
- </main><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(p.name,p.description,'/products/'+slug)}/><StructuredData data={productSchema(p)}/><Footer/></>;
+ </main><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'Products',path:'/products'},{name:p.name,path:'/products/'+slug}])}/><StructuredData data={webPageSchema(pageTitle,pageDescription,'/products/'+slug)}/><StructuredData data={productSchema(p,'/products/'+slug)}/><StructuredData data={faqPageSchema(faqItems)}/><Footer/></>;
 }

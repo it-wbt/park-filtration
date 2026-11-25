@@ -106,7 +106,7 @@ export const productLandings: Record<string, ProductLandingContent> = {
       ]},
       { title: 'Match size and mounting to the collector', paragraphs: [
         'The catalogue lists standard and special sizes, with metal or plastic ring and frame options. A replacement still needs to match the tube sheet, cage or support arrangement, bag length, attachment and sealing interface. Provide the collector make and model, existing part number, drawing and measured dimensions. Photographs of the top connection and the full bag can clarify the assembly when a drawing is unavailable.',
-        'No universal dimensions or tolerance schedule is published. Mark open values as [INSERT BAG DIAMETER], [INSERT BAG LENGTH] and [INSERT ATTACHMENT DETAILS], then verify the drawing and fit before ordering.',
+        'No universal dimensions or tolerance schedule is published. Use the collector drawing to specify bag diameter, length and attachment details, then verify fit before ordering.',
       ]},
       { title: 'Describe the process conditions', paragraphs: [
         'Useful technical inputs include dust composition, particle characteristics, moisture exposure, normal and peak process temperature, chemical exposure, airflow, cleaning method and operating cycle. These are buyer-side requirements; they are not published PARK performance limits. The selected material and assembly must be checked against the actual collector and process conditions.',
@@ -161,7 +161,7 @@ export const productLandings: Record<string, ProductLandingContent> = {
       ]},
       { title: 'Seal and housing fit are part of the specification', paragraphs: [
         'The catalogue lists different seal types. Confirm the housing interface, filter dimensions, gasket or seal arrangement and installation direction from the equipment drawing. A filter that fits the opening but does not seal correctly may allow air to bypass the media, which can undermine the intended filtration stage.',
-        'Provide the equipment manufacturer and model, current filter label, overall dimensions and a drawing or clear photographs. The supplied product information does not provide a universal frame size, seal profile, depth, airflow, pressure-drop limit or dimensional tolerance. Record these values as [INSERT VALUE] until confirmed for the selected unit.',
+        'Provide the equipment manufacturer and model, current filter label, overall dimensions and a drawing or clear photographs. Ask the supplier to verify the frame size, seal profile, depth, airflow, pressure-drop limit and tolerance for the selected unit.',
       ]},
       { title: 'Define airflow and operating requirements', paragraphs: [
         'Share the design airflow and allowable pressure drop from the air-handling specification. Include operating temperature, humidity or other environmental conditions if they are relevant to the application. These figures are system-specific and are not universal PARK product values. Request technical data for the exact grade, size, media pack and seal.',
@@ -215,7 +215,7 @@ export const productLandings: Record<string, ProductLandingContent> = {
       ]},
       { title: 'Confirm fitment before ordering', paragraphs: [
         'Cabin-filter dimensions and attachment features can differ between vehicles. Provide the vehicle make, model, year or platform where relevant, the existing filter reference, and the filter’s length, width and depth. A drawing or clear photograph can help identify the frame, seal and orientation. Confirm fitment against the vehicle or replacement-part specification before ordering.',
-        'The supplied PARK catalogue does not provide a complete vehicle-by-vehicle fitment list, universal dimensions, pleat count, frame schedule or dimensional tolerance. Keep those fields open until confirmed: [INSERT VEHICLE FITMENT], [INSERT FILTER DIMENSIONS] and [INSERT FRAME / SEAL DETAILS].',
+        'The supplied PARK catalogue does not provide a complete vehicle-by-vehicle fitment list or universal dimensions. Confirm the vehicle fitment, filter dimensions, frame and seal against the existing part or drawing before ordering.',
       ]},
       { title: 'Discuss airflow and media requirements', paragraphs: [
         'The cabin ventilation system needs an appropriate airflow through the installed filter. Share any airflow or pressure-drop requirement in the vehicle or system specification and ask for selected-product data. The source material does not establish one pressure-drop figure for every cabin-filter variant or vehicle.',
@@ -272,7 +272,7 @@ export const productLandings: Record<string, ProductLandingContent> = {
       ]},
       { title: 'Match bag dimensions and sealing ring to the housing', paragraphs: [
         'The catalogue lists customer-specific bag sizes and polypropylene or stainless-steel sealing-ring options. Provide the housing make and model, existing bag reference, bag length and diameter, ring dimensions and installation arrangement. Include a drawing or photograph of the bag and housing to make fit review more direct.',
-        'The sealing interface must match the housing to help prevent bypass. The supplied information does not define every ring profile, size, stitching detail or tolerance. Record the open values as [INSERT BAG SIZE] and [INSERT RING TYPE / DIMENSIONS] until confirmed for the product being quoted.',
+        'The sealing interface must match the housing to help prevent bypass. Share the bag dimensions and ring type from the equipment drawing so the required interface can be confirmed for the product being quoted.',
       ]},
       { title: 'Plan the system around flow and contamination load', paragraphs: [
         'Flow rate and the amount of suspended contamination influence how a filter operates in the process. Share the normal and peak flow, pressure conditions, contaminant description and any downstream equipment the bag protects. Request the product data and service guidance for the selected rating, size and fluid rather than assuming a universal replacement interval.',
