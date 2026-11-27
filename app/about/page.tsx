@@ -21,6 +21,7 @@ export default function AboutPage() {
       <section><h2>Processes supported by testing</h2><p>Manufacturing capabilities include needle punching, stitch bonding, thermo-bonding and lamination. In-house laboratory testing supports the group’s focus on quality and responsible manufacturing.</p></section>
       <section><h2>Supporting the wider community</h2><p>PARK’s community initiatives include health check-ups and eye-care camps, alongside its commitment to environmentally responsible business practices.</p></section>
     </div>
+    <section className="park-about-certificates"><div><div className="eyebrow">DOCUMENTED BY PLANT</div><h2>Certificates &amp; recognition</h2><p>Explore the supplied certificates for PARK Group entities and their named locations, including ISO and IATF documents, plus export awards presented to P.A.R.K. Industries Private Limited.</p></div><Link href="/certifications" className="underlined-link">View certificates &amp; awards <ArrowUpRight size={18}/></Link></section>
     <div className="park-about-actions"><Link href="/products" className="button">Explore filtration products <ArrowUpRight size={18}/></Link><Link href="/#contact" className="underlined-link">Talk to our team <ArrowUpRight size={18}/></Link></div>
   </main><StructuredData data={organizationSchema()}/><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'About us',path:'/about'}])}/><Footer/></>;
 }

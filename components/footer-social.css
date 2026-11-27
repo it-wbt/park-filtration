@@ -3,3 +3,9 @@
 .footer-social a span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .footer-social a:hover{background:#ffffff12;border-color:#ffffff75}
 .footer-social img{width:18px;height:18px;filter:brightness(0) invert(1);flex-shrink:0}
+.footer-credentials{max-width:330px;margin-top:22px}
+.footer-credential-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.footer-credential-logos a{display:flex;flex-direction:column;gap:7px;min-width:0;padding:5px;border:1px solid #ffffff35;color:#e4f1f7;transition:background .2s,border-color .2s}
+.footer-credential-logos a:hover{background:#ffffff10;border-color:#ffffff80}
+.footer-credential-logos img{display:block;width:100%;height:64px;object-fit:contain;background:#fff}
+.footer-credential-logos span{font-size:10px;line-height:1.35;text-align:center;min-height:27px}
