@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import {ArrowUpRight, Download} from 'lucide-react';
+import {ArrowUpRight} from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import BrochureFeature from '../../components/BrochureFeature';
 import StructuredData from '../../components/StructuredData';
 import {pageMetadata, breadcrumb, organizationSchema} from '../../lib/seo';
 import './about.css';
@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section><h2>Processes supported by testing</h2><p>Manufacturing capabilities include needle punching, stitch bonding, thermo-bonding and lamination. In-house laboratory testing supports the group’s focus on quality and responsible manufacturing.</p></section>
       <section><h2>Supporting the wider community</h2><p>PARK’s community initiatives include health check-ups and eye-care camps, alongside its commitment to environmentally responsible business practices.</p></section>
     </div>
-    <section className="park-about-brochure" aria-labelledby="park-brochure-title"><Image src="/brochures/park-group-brochure-cover.webp" alt="Cover of the PARK Nonwoven catalogue" width={612} height={792} sizes="(max-width: 760px) 42vw, 190px"/><div><div className="eyebrow">PARK NONWOVEN CATALOGUE</div><h2 id="park-brochure-title">Explore the brochure.</h2><p>View the original PARK Nonwoven group catalogue in PDF format.</p><div className="park-brochure-actions"><a href="/brochures/park-group-brochure.pdf" target="_blank" rel="noopener noreferrer" className="button" aria-label="View PARK Nonwoven brochure PDF in a new tab">View brochure <ArrowUpRight size={18}/></a><a href="/brochures/park-group-brochure.pdf" download className="underlined-link">Download PDF (15.8 MB) <Download size={18}/></a></div></div></section>
+    <BrochureFeature headingId="park-brochure-title" embedded/>
     <section className="park-about-certificates"><div><div className="eyebrow">DOCUMENTED BY PLANT</div><h2>Certificates &amp; recognition</h2><p>Explore the supplied certificates for PARK Group entities and their named locations, including ISO and IATF documents, plus export awards presented to P.A.R.K. Industries Private Limited.</p></div><Link href="/certifications" className="underlined-link">View certificates &amp; awards <ArrowUpRight size={18}/></Link></section>
     <div className="park-about-actions"><Link href="/products" className="button">Explore filtration products <ArrowUpRight size={18}/></Link><Link href="/#contact" className="underlined-link">Talk to our team <ArrowUpRight size={18}/></Link></div>
   </main><StructuredData data={organizationSchema()}/><StructuredData data={breadcrumb([{name:'Home',path:'/'},{name:'About us',path:'/about'}])}/><Footer/></>;
