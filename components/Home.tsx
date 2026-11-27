@@ -5,6 +5,7 @@ import MediaArchitecture from './MediaArchitecture';
 import Header from './Header';
 import Footer from './Footer';
 import ProductHighlights from './ProductHighlights';
+import BrochureFeature from './BrochureFeature';
 import Contact from './Contact';
 import './home-compact.css';
 
@@ -21,6 +22,8 @@ export default function Home() {
 </div></section>
 
 <ProductHighlights/>
+
+<BrochureFeature headingId="home-brochure-title"/>
 
 <Contact/>
 </main><Footer/></>;
